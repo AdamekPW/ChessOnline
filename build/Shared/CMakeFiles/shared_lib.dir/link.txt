@@ -1,0 +1,2 @@
+/usr/bin/ar qc libshared_lib.a CMakeFiles/shared_lib.dir/src/bishop.cpp.o CMakeFiles/shared_lib.dir/src/board.cpp.o CMakeFiles/shared_lib.dir/src/config.cpp.o CMakeFiles/shared_lib.dir/src/figure.cpp.o CMakeFiles/shared_lib.dir/src/gui.cpp.o CMakeFiles/shared_lib.dir/src/king.cpp.o CMakeFiles/shared_lib.dir/src/knight.cpp.o CMakeFiles/shared_lib.dir/src/main.cpp.o CMakeFiles/shared_lib.dir/src/pawn.cpp.o CMakeFiles/shared_lib.dir/src/queen.cpp.o CMakeFiles/shared_lib.dir/src/rook.cpp.o
+/usr/bin/ranlib libshared_lib.a

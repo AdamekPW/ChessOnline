@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/server.dir/src/Game.cpp.o CMakeFiles/server.dir/src/Server.cpp.o CMakeFiles/server.dir/src/main.cpp.o -o server  ../Shared/libshared_lib.a 

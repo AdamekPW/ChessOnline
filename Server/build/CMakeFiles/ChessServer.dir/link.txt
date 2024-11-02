@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/ChessServer.dir/src/Game.cpp.o CMakeFiles/ChessServer.dir/src/Server.cpp.o CMakeFiles/ChessServer.dir/src/main.cpp.o -o ChessServer  -lpthread 

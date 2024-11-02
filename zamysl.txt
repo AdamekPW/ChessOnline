@@ -1,0 +1,21 @@
+1. Serwer nasłuchuje.
+2. Jeśli klient się połączy, umieszcza go w kolejce.
+3. Jeżeli w kolejce jest conajmniej dwóch klientów, zdjemij taką parę:
+3.1 Sprawdź czy są połączeni (recv z flagą MSG_PEEK).
+3.2 Jeżeli któryś z nich nie jest połączony, zamknij gniazdo i weź kolejnego.
+3.2.a Jeżeli w kolejce nie ma więcej klientów, dodaj aktywnego gracza do kolejki, przejdź do pkt 1.
+3.2.b Jeżeli w kolejce jest conajmniej jeden klient, weź go, przejdź do pkt 3.1.
+4. Stwórz wątek gry przekazując deskryptory obu graczy.
+
+W wątku:
+1. Stwórz pakiet json w którym znajdzie się:
+    - nazwa przeciwnika (na obecną chwilę losowa)
+    - kolor jakim ta osoba będzie grała
+2. Wyślij pakiety do obu graczy.
+
+Rozpocznij grę:
+1. Czekaj na ruch gracza.-
+2. Biały gracz wysłał ruch, przeanalizuj go pod kątem poprawności.
+2.1. Ruch jest niemożliwy do zrobienia, wyślij informację graczowi. Przejdź do pkt 1.
+3. Wyślij do obu graczy nowy stan planszy.
+4. Wróc do pkt 1 i wykonaj dla przeciwnego koloru.

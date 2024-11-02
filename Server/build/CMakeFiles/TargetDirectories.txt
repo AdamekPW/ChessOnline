@@ -1,0 +1,3 @@
+/home/adam/Pulpit/ChessServer/Server/build/CMakeFiles/ChessServer.dir
+/home/adam/Pulpit/ChessServer/Server/build/CMakeFiles/edit_cache.dir
+/home/adam/Pulpit/ChessServer/Server/build/CMakeFiles/rebuild_cache.dir

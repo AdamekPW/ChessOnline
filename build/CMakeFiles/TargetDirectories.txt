@@ -1,0 +1,11 @@
+/home/adam/Pulpit/ChessServer/build/CMakeFiles/edit_cache.dir
+/home/adam/Pulpit/ChessServer/build/CMakeFiles/rebuild_cache.dir
+/home/adam/Pulpit/ChessServer/build/Shared/CMakeFiles/shared_lib.dir
+/home/adam/Pulpit/ChessServer/build/Shared/CMakeFiles/edit_cache.dir
+/home/adam/Pulpit/ChessServer/build/Shared/CMakeFiles/rebuild_cache.dir
+/home/adam/Pulpit/ChessServer/build/Client/CMakeFiles/client.dir
+/home/adam/Pulpit/ChessServer/build/Client/CMakeFiles/edit_cache.dir
+/home/adam/Pulpit/ChessServer/build/Client/CMakeFiles/rebuild_cache.dir
+/home/adam/Pulpit/ChessServer/build/Server/CMakeFiles/server.dir
+/home/adam/Pulpit/ChessServer/build/Server/CMakeFiles/edit_cache.dir
+/home/adam/Pulpit/ChessServer/build/Server/CMakeFiles/rebuild_cache.dir
