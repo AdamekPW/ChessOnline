@@ -218,6 +218,15 @@ ClientServerProject_IS_TOP_LEVEL:STATIC=ON
 //Value Computed by CMake
 ClientServerProject_SOURCE_DIR:STATIC=/home/adam/Pulpit/ChessServer
 
+//The directory containing a CMake configuration file for SFML.
+SFML_DIR:PATH=/usr/lib/x86_64-linux-gnu/cmake/SFML
+
+//Path to a file.
+SFML_DOC_DIR:PATH=SFML_DOC_DIR-NOTFOUND
+
+//Dependencies for the target
+shared_lib_LIB_DEPENDS:STATIC=general;sfml-graphics;general;sfml-window;general;sfml-system;
+
 
 ########################
 # INTERNAL cache entries

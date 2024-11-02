@@ -4,6 +4,77 @@
 #include "custom_structs.hpp"
 #define SQUARE_SIZE 150
 
+void HandleEvent(sf::Vector2i &mouse_position, 
+                Board &board, 
+                sf::RenderWindow &window,
+                GUI &GUI,
+                vector<pmove> &possible_moves,
+                pair<int, int> &active_figure, 
+                bool &asWhite,
+                bool &is_white_to_move,
+                bool &is_promotion,
+                bool &END){
+
+    pair<int, int> cords = GUI.ClickedFigure(window, board, mouse_position);
+    if (!asWhite){
+        cords.first = 7 - cords.first;
+        cords.second = 7 - cords.second;
+    }
+    //cout << cords.first << " " << cords.second << endl;
+    if (is_promotion){
+        if (cords.first == 8 || cords.first == -1){
+            cout << "promotion" << endl;
+            board.Promote(active_figure, cords.second);
+            is_promotion = false;
+        }
+        return;
+    }
+    if (cords.first < 0 || cords.first > 7) return;
+
+    
+    bool move_maked = false;
+    if (active_figure.first != -1 && board.IsWhite(active_figure) == is_white_to_move){
+        cout << active_figure.first << " " << active_figure.second << endl;
+        move_maked = board.MakeMove(possible_moves, active_figure, cords);
+
+    }
+    possible_moves.resize(0);
+    if (!move_maked){
+        //show possible moves
+        int x = cords.first;
+        int y = cords.second;
+        
+        if (!board.IsEmpty(x, y) && board.IsWhite(x, y) == is_white_to_move){
+            cout << "Calculating moves for " << x << " " << y << endl;
+            possible_moves = board.board[x][y]->PossibleMoves(board, x, y);
+            //adding possible castling moves
+            board.addCastlingMoves(possible_moves, x, y);
+
+            active_figure = make_pair(x, y);
+        } else {
+            active_figure = make_pair(-1, -1);
+            
+        }
+    } else {
+        //check for promotions
+        if (board.IsPromotion(active_figure.first, active_figure.second)){
+            is_promotion = true;
+        }
+
+        is_white_to_move = !is_white_to_move;
+        //check for mate
+        if (board.IsMate(is_white_to_move)){
+            END=true;
+            if (is_white_to_move){
+                cout << "Black wins!" << endl;
+            } else {
+                cout << "White wins!" << endl;
+            }
+        }
+    }
+}   
+
+
 int main()
 {
 
@@ -18,8 +89,6 @@ int main()
     sf::Sprite board_sprite;
 
     window.setFramerateLimit(60);
-
-   
 
     vector<pmove> possible_moves;
     pair<int, int> active_figure = make_pair(4, 4);
@@ -38,63 +107,8 @@ int main()
             if (event.mouseButton.button == sf::Mouse::Left){
                 sf::Vector2i mouse_position = sf::Mouse::getPosition(window);
 
-                pair<int, int> cords = GUI.ClickedFigure(window, board, mouse_position);
-                if (!asWhite){
-                    cords.first = 7 - cords.first;
-                    cords.second = 7 - cords.second;
-                }
-                //cout << cords.first << " " << cords.second << endl;
-                if (is_promotion){
-                    if (cords.first == 8 || cords.first == -1){
-                        cout << "promotion" << endl;
-                        board.Promote(active_figure, cords.second);
-                        is_promotion = false;
-                    }
-                    continue;
-                }
-                if (cords.first < 0 || cords.first > 7) continue;
-
+                HandleEvent(mouse_position, board, window, GUI, possible_moves, active_figure, asWhite, is_white_to_move, is_promotion, END);
                 
-                bool move_maked = false;
-                if (active_figure.first != -1 && board.IsWhite(active_figure) == is_white_to_move){
-                    cout << active_figure.first << " " << active_figure.second << endl;
-                    move_maked = board.MakeMove(possible_moves, active_figure, cords);
-
-                }
-                possible_moves.resize(0);
-                if (!move_maked){
-                    //show possible moves
-                    int x = cords.first;
-                    int y = cords.second;
-                    
-                    if (!board.IsEmpty(x, y) && board.IsWhite(x, y) == is_white_to_move){
-                        cout << "Calculating moves for " << x << " " << y << endl;
-                        possible_moves = board.board[x][y]->PossibleMoves(board, x, y);
-                        //adding possible castling moves
-                        board.addCastlingMoves(possible_moves, x, y);
-
-                        active_figure = make_pair(x, y);
-                    } else {
-                        active_figure = make_pair(-1, -1);
-                        
-                    }
-                } else {
-                    //check for promotions
-                    if (board.IsPromotion(active_figure.first, active_figure.second)){
-                        is_promotion = true;
-                    }
-
-                    is_white_to_move = !is_white_to_move;
-                    //check for mate
-                    if (board.IsMate(is_white_to_move)){
-                        END=true;
-                        if (is_white_to_move){
-                            cout << "Black wins!" << endl;
-                        } else {
-                            cout << "White wins!" << endl;
-                        }
-                    }
-                }
 
             }
             }

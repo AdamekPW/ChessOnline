@@ -14,7 +14,7 @@
 #include <queue>
 #include "Game.hpp"
 #include "ServerStructs.h"
-#include "config.hpp"
+#include "common.hpp"
 #include <nlohmann/json.hpp>
 #include <sstream>
 

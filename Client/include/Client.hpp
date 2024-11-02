@@ -15,6 +15,8 @@
 #include "Client.hpp"
 #include <nlohmann/json.hpp>
 #include <cstring>
+#include "board.hpp"
+#include "common.hpp"
 using json = nlohmann::json;
 
 using namespace std;
@@ -29,7 +31,9 @@ class Client {
         Client(string serverAddresss, int serverPort);
         ~Client();
         bool Connect();
+        bool SendMove(int x_from, int y_from, int x_to, int y_to);
         bool SendJson(json json_obj);
+        bool GetBoard(Board &board);
 
 };
 

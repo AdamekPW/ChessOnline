@@ -377,7 +377,17 @@ Client/CMakeFiles/client.dir/src/Client.cpp.o: ../Client/src/Client.cpp \
   /usr/include/nlohmann/detail/conversions/to_chars.hpp \
   /usr/include/nlohmann/ordered_map.hpp \
   /usr/include/nlohmann/detail/macro_unscope.hpp \
-  /usr/include/nlohmann/thirdparty/hedley/hedley_undef.hpp
+  /usr/include/nlohmann/thirdparty/hedley/hedley_undef.hpp \
+  ../Shared/include/board.hpp \
+  ../Shared/include/figure.hpp \
+  ../Shared/include/custom_structs.hpp \
+  ../Shared/include/pawn.hpp \
+  ../Shared/include/board.hpp \
+  ../Shared/include/common.hpp \
+  /usr/include/c++/11/fstream \
+  /usr/include/x86_64-linux-gnu/c++/11/bits/basic_file.h \
+  /usr/include/x86_64-linux-gnu/c++/11/bits/c++io.h \
+  /usr/include/c++/11/bits/fstream.tcc
 
 Client/CMakeFiles/client.dir/src/main.cpp.o: ../Client/src/main.cpp \
   /usr/include/stdc-predef.h \
@@ -778,16 +788,169 @@ Client/CMakeFiles/client.dir/src/main.cpp.o: ../Client/src/main.cpp \
   /usr/include/nlohmann/ordered_map.hpp \
   /usr/include/nlohmann/detail/macro_unscope.hpp \
   /usr/include/nlohmann/thirdparty/hedley/hedley_undef.hpp \
-  ../Shared/include/config.hpp \
+  ../Shared/include/board.hpp \
+  ../Shared/include/figure.hpp \
+  ../Shared/include/custom_structs.hpp \
+  ../Shared/include/pawn.hpp \
+  ../Shared/include/board.hpp \
+  ../Shared/include/common.hpp \
   /usr/include/c++/11/fstream \
   /usr/include/x86_64-linux-gnu/c++/11/bits/basic_file.h \
   /usr/include/x86_64-linux-gnu/c++/11/bits/c++io.h \
-  /usr/include/c++/11/bits/fstream.tcc
+  /usr/include/c++/11/bits/fstream.tcc \
+  /usr/include/SFML/Graphics.hpp \
+  /usr/include/SFML/Window.hpp \
+  /usr/include/SFML/System.hpp \
+  /usr/include/SFML/Config.hpp \
+  /usr/include/SFML/System/Clock.hpp \
+  /usr/include/SFML/System/Export.hpp \
+  /usr/include/SFML/System/Time.hpp \
+  /usr/include/SFML/System/Err.hpp \
+  /usr/include/SFML/System/FileInputStream.hpp \
+  /usr/include/SFML/System/InputStream.hpp \
+  /usr/include/SFML/System/NonCopyable.hpp \
+  /usr/include/SFML/System/Lock.hpp \
+  /usr/include/SFML/System/MemoryInputStream.hpp \
+  /usr/include/SFML/System/Mutex.hpp \
+  /usr/include/SFML/System/Sleep.hpp \
+  /usr/include/SFML/System/String.hpp \
+  /usr/include/SFML/System/Utf.hpp \
+  /usr/include/SFML/System/Utf.inl \
+  /usr/include/SFML/System/String.inl \
+  /usr/include/SFML/System/Thread.hpp \
+  /usr/include/SFML/System/Thread.inl \
+  /usr/include/SFML/System/ThreadLocal.hpp \
+  /usr/include/SFML/System/ThreadLocalPtr.hpp \
+  /usr/include/SFML/System/ThreadLocalPtr.inl \
+  /usr/include/SFML/System/Vector2.hpp \
+  /usr/include/SFML/System/Vector2.inl \
+  /usr/include/SFML/System/Vector3.hpp \
+  /usr/include/SFML/System/Vector3.inl \
+  /usr/include/SFML/Window/Clipboard.hpp \
+  /usr/include/SFML/Window/Export.hpp \
+  /usr/include/SFML/Window/Context.hpp \
+  /usr/include/SFML/Window/GlResource.hpp \
+  /usr/include/SFML/Window/ContextSettings.hpp \
+  /usr/include/SFML/Window/Cursor.hpp \
+  /usr/include/SFML/Window/Event.hpp \
+  /usr/include/SFML/Window/Joystick.hpp \
+  /usr/include/SFML/Window/Keyboard.hpp \
+  /usr/include/SFML/Window/Mouse.hpp \
+  /usr/include/SFML/Window/Sensor.hpp \
+  /usr/include/SFML/Window/Touch.hpp \
+  /usr/include/SFML/Window/VideoMode.hpp \
+  /usr/include/SFML/Window/Window.hpp \
+  /usr/include/SFML/Window/WindowHandle.hpp \
+  /usr/include/SFML/Window/WindowStyle.hpp \
+  /usr/include/SFML/Graphics/BlendMode.hpp \
+  /usr/include/SFML/Graphics/Export.hpp \
+  /usr/include/SFML/Graphics/CircleShape.hpp \
+  /usr/include/SFML/Graphics/Shape.hpp \
+  /usr/include/SFML/Graphics/Drawable.hpp \
+  /usr/include/SFML/Graphics/RenderStates.hpp \
+  /usr/include/SFML/Graphics/Transform.hpp \
+  /usr/include/SFML/Graphics/Rect.hpp \
+  /usr/include/SFML/Graphics/Rect.inl \
+  /usr/include/SFML/Graphics/Transformable.hpp \
+  /usr/include/SFML/Graphics/VertexArray.hpp \
+  /usr/include/SFML/Graphics/Vertex.hpp \
+  /usr/include/SFML/Graphics/Color.hpp \
+  /usr/include/SFML/Graphics/PrimitiveType.hpp \
+  /usr/include/SFML/Graphics/ConvexShape.hpp \
+  /usr/include/SFML/Graphics/Font.hpp \
+  /usr/include/SFML/Graphics/Glyph.hpp \
+  /usr/include/SFML/Graphics/Texture.hpp \
+  /usr/include/SFML/Graphics/Image.hpp \
+  /usr/include/SFML/Graphics/RectangleShape.hpp \
+  /usr/include/SFML/Graphics/RenderTarget.hpp \
+  /usr/include/SFML/Graphics/View.hpp \
+  /usr/include/SFML/Graphics/RenderTexture.hpp \
+  /usr/include/SFML/Graphics/RenderWindow.hpp \
+  /usr/include/SFML/Graphics/Shader.hpp \
+  /usr/include/SFML/Graphics/Glsl.hpp \
+  /usr/include/SFML/Graphics/Glsl.inl \
+  /usr/include/SFML/Graphics/Sprite.hpp \
+  /usr/include/SFML/Graphics/Text.hpp \
+  /usr/include/SFML/Graphics/VertexBuffer.hpp \
+  ../Shared/include/gui.hpp \
+  ../Shared/include/custom_structs.hpp
 
 
-/usr/include/x86_64-linux-gnu/c++/11/bits/c++io.h:
+/usr/include/SFML/Graphics/Sprite.hpp:
 
-/usr/include/x86_64-linux-gnu/c++/11/bits/basic_file.h:
+/usr/include/SFML/Graphics/Shader.hpp:
+
+/usr/include/SFML/Graphics/RenderWindow.hpp:
+
+/usr/include/SFML/Graphics/RenderTarget.hpp:
+
+/usr/include/SFML/Graphics/Image.hpp:
+
+/usr/include/SFML/Graphics/Texture.hpp:
+
+/usr/include/SFML/Graphics/Rect.inl:
+
+/usr/include/SFML/Graphics/Rect.hpp:
+
+/usr/include/SFML/Graphics/RenderStates.hpp:
+
+/usr/include/SFML/Graphics/Shape.hpp:
+
+/usr/include/SFML/Graphics/CircleShape.hpp:
+
+/usr/include/SFML/Graphics/Export.hpp:
+
+/usr/include/SFML/Graphics/BlendMode.hpp:
+
+/usr/include/SFML/Window/WindowStyle.hpp:
+
+/usr/include/SFML/Window/Touch.hpp:
+
+/usr/include/SFML/Window/Joystick.hpp:
+
+/usr/include/SFML/Window/Cursor.hpp:
+
+/usr/include/SFML/Window/ContextSettings.hpp:
+
+/usr/include/SFML/Window/Clipboard.hpp:
+
+/usr/include/SFML/System/Vector2.hpp:
+
+/usr/include/SFML/System/ThreadLocalPtr.inl:
+
+/usr/include/SFML/System/ThreadLocalPtr.hpp:
+
+/usr/include/SFML/System/ThreadLocal.hpp:
+
+/usr/include/SFML/System/Thread.hpp:
+
+/usr/include/SFML/System/Utf.inl:
+
+/usr/include/SFML/System/Sleep.hpp:
+
+/usr/include/SFML/System/Mutex.hpp:
+
+/usr/include/SFML/System/MemoryInputStream.hpp:
+
+/usr/include/SFML/System/Lock.hpp:
+
+/usr/include/SFML/System/NonCopyable.hpp:
+
+/usr/include/SFML/System/InputStream.hpp:
+
+/usr/include/SFML/System/Err.hpp:
+
+/usr/include/SFML/System/Export.hpp:
+
+/usr/include/SFML/Config.hpp:
+
+/usr/include/SFML/Graphics/Color.hpp:
+
+/usr/include/SFML/System.hpp:
+
+/usr/include/SFML/System/FileInputStream.hpp:
+
+/usr/include/SFML/Window.hpp:
 
 /usr/include/x86_64-linux-gnu/bits/signal_ext.h:
 
@@ -815,6 +978,16 @@ Client/CMakeFiles/client.dir/src/main.cpp.o: ../Client/src/main.cpp \
 
 ../Client/src/main.cpp:
 
+/usr/include/SFML/Graphics/Glsl.hpp:
+
+/usr/include/x86_64-linux-gnu/c++/11/bits/c++io.h:
+
+/usr/include/x86_64-linux-gnu/c++/11/bits/basic_file.h:
+
+../Shared/include/pawn.hpp:
+
+../Shared/include/figure.hpp:
+
 /usr/include/nlohmann/thirdparty/hedley/hedley_undef.hpp:
 
 /usr/include/nlohmann/detail/macro_unscope.hpp:
@@ -826,6 +999,8 @@ Client/CMakeFiles/client.dir/src/main.cpp.o: ../Client/src/main.cpp \
 /usr/include/c++/11/fstream:
 
 /usr/include/nlohmann/detail/output/output_adapters.hpp:
+
+/usr/include/SFML/Graphics/ConvexShape.hpp:
 
 /usr/include/nlohmann/detail/output/binary_writer.hpp:
 
@@ -843,6 +1018,8 @@ Client/CMakeFiles/client.dir/src/main.cpp.o: ../Client/src/main.cpp \
 
 /usr/include/nlohmann/byte_container_with_subtype.hpp:
 
+/usr/include/SFML/Window/WindowHandle.hpp:
+
 /usr/include/nlohmann/detail/conversions/to_json.hpp:
 
 /usr/include/c++/11/bits/fs_ops.h:
@@ -856,6 +1033,8 @@ Client/CMakeFiles/client.dir/src/main.cpp.o: ../Client/src/main.cpp \
 /usr/include/c++/11/bits/quoted_string.h:
 
 /usr/include/c++/11/bits/locale_facets_nonio.tcc:
+
+/usr/include/SFML/System/String.hpp:
 
 /usr/include/libintl.h:
 
@@ -887,6 +1066,10 @@ Client/CMakeFiles/client.dir/src/main.cpp.o: ../Client/src/main.cpp \
 
 /usr/include/nlohmann/detail/meta/cpp_future.hpp:
 
+/usr/include/SFML/Graphics/Font.hpp:
+
+/usr/include/SFML/Window/VideoMode.hpp:
+
 /usr/include/assert.h:
 
 /usr/include/c++/11/cassert:
@@ -896,8 +1079,6 @@ Client/CMakeFiles/client.dir/src/main.cpp.o: ../Client/src/main.cpp \
 /usr/include/nlohmann/thirdparty/hedley/hedley.hpp:
 
 /usr/include/nlohmann/detail/macro_scope.hpp:
-
-../Shared/include/config.hpp:
 
 /usr/include/c++/11/bits/locale_conv.h:
 
@@ -922,6 +1103,8 @@ Client/CMakeFiles/client.dir/src/main.cpp.o: ../Client/src/main.cpp \
 /usr/include/c++/11/tr1/poly_laguerre.tcc:
 
 /usr/include/c++/11/tr1/poly_hermite.tcc:
+
+/usr/include/SFML/Graphics/VertexBuffer.hpp:
 
 /usr/include/c++/11/tr1/modified_bessel_func.tcc:
 
@@ -961,6 +1144,8 @@ Client/CMakeFiles/client.dir/src/main.cpp.o: ../Client/src/main.cpp \
 
 /usr/include/c++/11/bits/stl_tree.h:
 
+/usr/include/SFML/System/Utf.hpp:
+
 /usr/include/c++/11/map:
 
 /usr/include/nlohmann/adl_serializer.hpp:
@@ -983,6 +1168,8 @@ Client/CMakeFiles/client.dir/src/main.cpp.o: ../Client/src/main.cpp \
 
 /usr/include/c++/11/bits/atomic_base.h:
 
+/usr/include/SFML/Graphics/Drawable.hpp:
+
 /usr/include/c++/11/bits/shared_ptr_atomic.h:
 
 /usr/include/c++/11/ext/concurrence.h:
@@ -1001,6 +1188,8 @@ Client/CMakeFiles/client.dir/src/main.cpp.o: ../Client/src/main.cpp \
 
 /usr/include/c++/11/cwchar:
 
+/usr/include/SFML/Graphics/Glsl.inl:
+
 /usr/include/c++/11/bits/forward_list.h:
 
 /usr/lib/gcc/x86_64-linux-gnu/11/include/stdint.h:
@@ -1010,6 +1199,8 @@ Client/CMakeFiles/client.dir/src/main.cpp.o: ../Client/src/main.cpp \
 /usr/include/x86_64-linux-gnu/bits/types/__fpos64_t.h:
 
 /usr/include/x86_64-linux-gnu/bits/fcntl-linux.h:
+
+/usr/include/SFML/System/Vector3.hpp:
 
 /usr/include/asm-generic/socket.h:
 
@@ -1024,6 +1215,8 @@ Client/CMakeFiles/client.dir/src/main.cpp.o: ../Client/src/main.cpp \
 /usr/include/x86_64-linux-gnu/bits/unistd_ext.h:
 
 /usr/include/x86_64-linux-gnu/bits/confname.h:
+
+/usr/include/SFML/Window/GlResource.hpp:
 
 /usr/include/c++/11/bits/char_traits.h:
 
@@ -1067,6 +1260,10 @@ Client/CMakeFiles/client.dir/src/main.cpp.o: ../Client/src/main.cpp \
 
 /usr/include/c++/11/stdlib.h:
 
+/usr/include/SFML/Graphics/View.hpp:
+
+/usr/include/SFML/Graphics/Transformable.hpp:
+
 /usr/include/signal.h:
 
 /usr/include/strings.h:
@@ -1084,6 +1281,8 @@ Client/CMakeFiles/client.dir/src/main.cpp.o: ../Client/src/main.cpp \
 /usr/include/c++/11/bit:
 
 /usr/include/x86_64-linux-gnu/bits/types/sigevent_t.h:
+
+../Shared/include/custom_structs.hpp:
 
 /usr/include/x86_64-linux-gnu/bits/types/struct_osockaddr.h:
 
@@ -1147,6 +1346,8 @@ Client/CMakeFiles/client.dir/src/main.cpp.o: ../Client/src/main.cpp \
 
 /usr/include/x86_64-linux-gnu/bits/types/clock_t.h:
 
+/usr/include/SFML/Graphics.hpp:
+
 /usr/include/x86_64-linux-gnu/bits/socket_type.h:
 
 /usr/include/c++/11/tr1/gamma.tcc:
@@ -1168,6 +1369,10 @@ Client/CMakeFiles/client.dir/src/main.cpp.o: ../Client/src/main.cpp \
 /usr/include/nlohmann/detail/conversions/to_chars.hpp:
 
 ../Client/include/Client.hpp:
+
+/usr/include/SFML/System/Vector2.inl:
+
+/usr/include/SFML/System/Thread.inl:
 
 /usr/include/x86_64-linux-gnu/c++/11/bits/c++allocator.h:
 
@@ -1191,6 +1396,8 @@ Client/CMakeFiles/client.dir/src/main.cpp.o: ../Client/src/main.cpp \
 
 /usr/include/c++/11/bits/vector.tcc:
 
+/usr/include/SFML/Graphics/Text.hpp:
+
 /usr/include/linux/posix_types.h:
 
 /usr/include/x86_64-linux-gnu/bits/types/struct_timeval.h:
@@ -1200,6 +1407,8 @@ Client/CMakeFiles/client.dir/src/main.cpp.o: ../Client/src/main.cpp \
 /usr/include/x86_64-linux-gnu/asm/errno.h:
 
 /usr/include/x86_64-linux-gnu/sys/cdefs.h:
+
+/usr/include/SFML/Graphics/Transform.hpp:
 
 /usr/include/c++/11/cstring:
 
@@ -1231,6 +1440,8 @@ Client/CMakeFiles/client.dir/src/main.cpp.o: ../Client/src/main.cpp \
 
 /usr/include/x86_64-linux-gnu/bits/time64.h:
 
+../Shared/include/board.hpp:
+
 /usr/include/x86_64-linux-gnu/bits/libc-header-start.h:
 
 /usr/include/c++/11/chrono:
@@ -1243,6 +1454,8 @@ Client/CMakeFiles/client.dir/src/main.cpp.o: ../Client/src/main.cpp \
 
 /usr/include/locale.h:
 
+/usr/include/SFML/Window/Window.hpp:
+
 /usr/include/c++/11/bits/gslice_array.h:
 
 /usr/include/x86_64-linux-gnu/bits/struct_stat.h:
@@ -1251,9 +1464,13 @@ Client/CMakeFiles/client.dir/src/main.cpp.o: ../Client/src/main.cpp \
 
 /usr/include/x86_64-linux-gnu/bits/select.h:
 
+/usr/include/SFML/Graphics/RenderTexture.hpp:
+
 /usr/include/x86_64-linux-gnu/asm/bitsperlong.h:
 
 /usr/include/c++/11/backward/binders.h:
+
+/usr/include/SFML/Graphics/Glyph.hpp:
 
 /usr/include/x86_64-linux-gnu/bits/fp-fast.h:
 
@@ -1267,11 +1484,15 @@ Client/CMakeFiles/client.dir/src/main.cpp.o: ../Client/src/main.cpp \
 
 /usr/include/x86_64-linux-gnu/bits/socket.h:
 
+/usr/include/SFML/Window/Mouse.hpp:
+
 /usr/include/x86_64-linux-gnu/sys/types.h:
 
 /usr/include/c++/11/ext/aligned_buffer.h:
 
 /usr/include/x86_64-linux-gnu/bits/types/timer_t.h:
+
+/usr/include/SFML/Window/Export.hpp:
 
 /usr/include/c++/11/bits/stl_iterator.h:
 
@@ -1303,6 +1524,8 @@ Client/CMakeFiles/client.dir/src/main.cpp.o: ../Client/src/main.cpp \
 
 /usr/include/x86_64-linux-gnu/bits/types/__sigset_t.h:
 
+/usr/include/SFML/Graphics/RectangleShape.hpp:
+
 /usr/include/x86_64-linux-gnu/bits/stdint-uintn.h:
 
 /usr/include/x86_64-linux-gnu/bits/types/struct_timespec.h:
@@ -1311,11 +1534,15 @@ Client/CMakeFiles/client.dir/src/main.cpp.o: ../Client/src/main.cpp \
 
 /usr/include/x86_64-linux-gnu/bits/thread-shared-types.h:
 
+../Shared/include/common.hpp:
+
 /usr/include/c++/11/ext/new_allocator.h:
 
 /usr/include/nlohmann/detail/input/binary_reader.hpp:
 
 /usr/include/x86_64-linux-gnu/bits/types/time_t.h:
+
+/usr/include/SFML/System/Vector3.inl:
 
 /usr/include/x86_64-linux-gnu/bits/sigstksz.h:
 
@@ -1327,7 +1554,11 @@ Client/CMakeFiles/client.dir/src/main.cpp.o: ../Client/src/main.cpp \
 
 /usr/include/c++/11/vector:
 
+/usr/include/SFML/Graphics/Vertex.hpp:
+
 /usr/include/c++/11/bits/align.h:
+
+/usr/include/SFML/Window/Context.hpp:
 
 /usr/include/x86_64-linux-gnu/sys/single_threaded.h:
 
@@ -1346,6 +1577,8 @@ Client/CMakeFiles/client.dir/src/main.cpp.o: ../Client/src/main.cpp \
 /usr/include/asm-generic/bitsperlong.h:
 
 /usr/include/c++/11/bits/concept_check.h:
+
+../Shared/include/gui.hpp:
 
 /usr/include/features-time64.h:
 
@@ -1385,6 +1618,8 @@ Client/CMakeFiles/client.dir/src/main.cpp.o: ../Client/src/main.cpp \
 
 /usr/include/c++/11/cctype:
 
+/usr/include/SFML/System/Time.hpp:
+
 /usr/include/c++/11/unordered_map:
 
 /usr/include/c++/11/locale:
@@ -1421,6 +1656,8 @@ Client/CMakeFiles/client.dir/src/main.cpp.o: ../Client/src/main.cpp \
 
 /usr/include/c++/11/bits/stl_construct.h:
 
+/usr/include/SFML/Graphics/PrimitiveType.hpp:
+
 /usr/include/x86_64-linux-gnu/bits/libm-simd-decl-stubs.h:
 
 /usr/lib/gcc/x86_64-linux-gnu/11/include/stddef.h:
@@ -1435,6 +1672,8 @@ Client/CMakeFiles/client.dir/src/main.cpp.o: ../Client/src/main.cpp \
 
 /usr/include/c++/11/bits/hash_bytes.h:
 
+/usr/include/SFML/System/Clock.hpp:
+
 /usr/include/c++/11/bits/string_view.tcc:
 
 /usr/include/c++/11/ext/string_conversions.h:
@@ -1442,6 +1681,8 @@ Client/CMakeFiles/client.dir/src/main.cpp.o: ../Client/src/main.cpp \
 /usr/include/c++/11/bits/exception_ptr.h:
 
 /usr/include/c++/11/cstdio:
+
+/usr/include/SFML/Graphics/VertexArray.hpp:
 
 /usr/include/x86_64-linux-gnu/bits/types/cookie_io_functions_t.h:
 
@@ -1501,6 +1742,8 @@ Client/CMakeFiles/client.dir/src/main.cpp.o: ../Client/src/main.cpp \
 
 /usr/include/c++/11/system_error:
 
+/usr/include/SFML/Window/Sensor.hpp:
+
 /usr/include/c++/11/cstddef:
 
 /usr/include/c++/11/bits/stl_vector.h:
@@ -1532,6 +1775,8 @@ Client/CMakeFiles/client.dir/src/main.cpp.o: ../Client/src/main.cpp \
 /usr/include/c++/11/cwctype:
 
 /usr/include/c++/11/bits/streambuf_iterator.h:
+
+/usr/include/SFML/Window/Keyboard.hpp:
 
 /usr/include/nlohmann/detail/value_t.hpp:
 
@@ -1572,6 +1817,10 @@ Client/CMakeFiles/client.dir/src/main.cpp.o: ../Client/src/main.cpp \
 /usr/include/c++/11/bits/hashtable.h:
 
 /usr/include/c++/11/bits/hashtable_policy.h:
+
+/usr/include/SFML/Window/Event.hpp:
+
+/usr/include/SFML/System/String.inl:
 
 /usr/include/c++/11/bits/codecvt.h:
 

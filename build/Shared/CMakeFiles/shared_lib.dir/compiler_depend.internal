@@ -434,10 +434,10 @@ Shared/CMakeFiles/shared_lib.dir/src/board.cpp.o
  /home/adam/Pulpit/ChessServer/Shared/include/queen.hpp
  /home/adam/Pulpit/ChessServer/Shared/include/king.hpp
 
-Shared/CMakeFiles/shared_lib.dir/src/config.cpp.o
- /home/adam/Pulpit/ChessServer/Shared/src/config.cpp
+Shared/CMakeFiles/shared_lib.dir/src/common.cpp.o
+ /home/adam/Pulpit/ChessServer/Shared/src/common.cpp
  /usr/include/stdc-predef.h
- /home/adam/Pulpit/ChessServer/Shared/include/config.hpp
+ /home/adam/Pulpit/ChessServer/Shared/include/common.hpp
  /usr/include/c++/11/fstream
  /usr/include/c++/11/istream
  /usr/include/c++/11/ios

@@ -1,1 +1,1 @@
-/usr/bin/c++ CMakeFiles/server.dir/src/Game.cpp.o CMakeFiles/server.dir/src/Server.cpp.o CMakeFiles/server.dir/src/main.cpp.o -o server  ../Shared/libshared_lib.a 
+/usr/bin/c++ CMakeFiles/server.dir/src/Game.cpp.o CMakeFiles/server.dir/src/Server.cpp.o CMakeFiles/server.dir/src/main.cpp.o -o server  ../Shared/libshared_lib.a /usr/lib/x86_64-linux-gnu/libsfml-graphics.so.2.5.1 /usr/lib/x86_64-linux-gnu/libsfml-window.so.2.5.1 /usr/lib/x86_64-linux-gnu/libsfml-system.so.2.5.1 

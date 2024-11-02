@@ -125,6 +125,9 @@ Server/server: Server/CMakeFiles/server.dir/src/Server.cpp.o
 Server/server: Server/CMakeFiles/server.dir/src/main.cpp.o
 Server/server: Server/CMakeFiles/server.dir/build.make
 Server/server: Shared/libshared_lib.a
+Server/server: /usr/lib/x86_64-linux-gnu/libsfml-graphics.so.2.5.1
+Server/server: /usr/lib/x86_64-linux-gnu/libsfml-window.so.2.5.1
+Server/server: /usr/lib/x86_64-linux-gnu/libsfml-system.so.2.5.1
 Server/server: Server/CMakeFiles/server.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/adam/Pulpit/ChessServer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable server"
 	cd /home/adam/Pulpit/ChessServer/build/Server && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/server.dir/link.txt --verbose=$(VERBOSE)

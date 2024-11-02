@@ -97,19 +97,19 @@ Shared/CMakeFiles/shared_lib.dir/src/board.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/shared_lib.dir/src/board.cpp.s"
 	cd /home/adam/Pulpit/ChessServer/build/Shared && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/adam/Pulpit/ChessServer/Shared/src/board.cpp -o CMakeFiles/shared_lib.dir/src/board.cpp.s
 
-Shared/CMakeFiles/shared_lib.dir/src/config.cpp.o: Shared/CMakeFiles/shared_lib.dir/flags.make
-Shared/CMakeFiles/shared_lib.dir/src/config.cpp.o: ../Shared/src/config.cpp
-Shared/CMakeFiles/shared_lib.dir/src/config.cpp.o: Shared/CMakeFiles/shared_lib.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/adam/Pulpit/ChessServer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object Shared/CMakeFiles/shared_lib.dir/src/config.cpp.o"
-	cd /home/adam/Pulpit/ChessServer/build/Shared && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT Shared/CMakeFiles/shared_lib.dir/src/config.cpp.o -MF CMakeFiles/shared_lib.dir/src/config.cpp.o.d -o CMakeFiles/shared_lib.dir/src/config.cpp.o -c /home/adam/Pulpit/ChessServer/Shared/src/config.cpp
+Shared/CMakeFiles/shared_lib.dir/src/common.cpp.o: Shared/CMakeFiles/shared_lib.dir/flags.make
+Shared/CMakeFiles/shared_lib.dir/src/common.cpp.o: ../Shared/src/common.cpp
+Shared/CMakeFiles/shared_lib.dir/src/common.cpp.o: Shared/CMakeFiles/shared_lib.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/adam/Pulpit/ChessServer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object Shared/CMakeFiles/shared_lib.dir/src/common.cpp.o"
+	cd /home/adam/Pulpit/ChessServer/build/Shared && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT Shared/CMakeFiles/shared_lib.dir/src/common.cpp.o -MF CMakeFiles/shared_lib.dir/src/common.cpp.o.d -o CMakeFiles/shared_lib.dir/src/common.cpp.o -c /home/adam/Pulpit/ChessServer/Shared/src/common.cpp
 
-Shared/CMakeFiles/shared_lib.dir/src/config.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/shared_lib.dir/src/config.cpp.i"
-	cd /home/adam/Pulpit/ChessServer/build/Shared && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/adam/Pulpit/ChessServer/Shared/src/config.cpp > CMakeFiles/shared_lib.dir/src/config.cpp.i
+Shared/CMakeFiles/shared_lib.dir/src/common.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/shared_lib.dir/src/common.cpp.i"
+	cd /home/adam/Pulpit/ChessServer/build/Shared && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/adam/Pulpit/ChessServer/Shared/src/common.cpp > CMakeFiles/shared_lib.dir/src/common.cpp.i
 
-Shared/CMakeFiles/shared_lib.dir/src/config.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/shared_lib.dir/src/config.cpp.s"
-	cd /home/adam/Pulpit/ChessServer/build/Shared && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/adam/Pulpit/ChessServer/Shared/src/config.cpp -o CMakeFiles/shared_lib.dir/src/config.cpp.s
+Shared/CMakeFiles/shared_lib.dir/src/common.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/shared_lib.dir/src/common.cpp.s"
+	cd /home/adam/Pulpit/ChessServer/build/Shared && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/adam/Pulpit/ChessServer/Shared/src/common.cpp -o CMakeFiles/shared_lib.dir/src/common.cpp.s
 
 Shared/CMakeFiles/shared_lib.dir/src/figure.cpp.o: Shared/CMakeFiles/shared_lib.dir/flags.make
 Shared/CMakeFiles/shared_lib.dir/src/figure.cpp.o: ../Shared/src/figure.cpp
@@ -227,7 +227,7 @@ Shared/CMakeFiles/shared_lib.dir/src/rook.cpp.s: cmake_force
 shared_lib_OBJECTS = \
 "CMakeFiles/shared_lib.dir/src/bishop.cpp.o" \
 "CMakeFiles/shared_lib.dir/src/board.cpp.o" \
-"CMakeFiles/shared_lib.dir/src/config.cpp.o" \
+"CMakeFiles/shared_lib.dir/src/common.cpp.o" \
 "CMakeFiles/shared_lib.dir/src/figure.cpp.o" \
 "CMakeFiles/shared_lib.dir/src/gui.cpp.o" \
 "CMakeFiles/shared_lib.dir/src/king.cpp.o" \
@@ -242,7 +242,7 @@ shared_lib_EXTERNAL_OBJECTS =
 
 Shared/libshared_lib.a: Shared/CMakeFiles/shared_lib.dir/src/bishop.cpp.o
 Shared/libshared_lib.a: Shared/CMakeFiles/shared_lib.dir/src/board.cpp.o
-Shared/libshared_lib.a: Shared/CMakeFiles/shared_lib.dir/src/config.cpp.o
+Shared/libshared_lib.a: Shared/CMakeFiles/shared_lib.dir/src/common.cpp.o
 Shared/libshared_lib.a: Shared/CMakeFiles/shared_lib.dir/src/figure.cpp.o
 Shared/libshared_lib.a: Shared/CMakeFiles/shared_lib.dir/src/gui.cpp.o
 Shared/libshared_lib.a: Shared/CMakeFiles/shared_lib.dir/src/king.cpp.o

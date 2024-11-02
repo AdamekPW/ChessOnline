@@ -3,13 +3,13 @@
 Client::Client(string serverAddress, int serverPort){
     this->_serverAddr.sin_family = AF_INET;
     this->_serverAddr.sin_port = htons(serverPort);
-    char* modifiableCstr = new char[serverAddress.size() + 1]; // +1 dla znaku '\0'
-    std::strcpy(modifiableCstr, serverAddress.c_str());
-    this->_serverAddr.sin_addr.s_addr = inet_addr(modifiableCstr);
+
+    this->_serverAddr.sin_addr.s_addr = inet_addr(serverAddress.c_str());
 
     this->Socket = socket(AF_INET, SOCK_STREAM, 0);
     
     cout << "Client created!" << endl;
+
 }
 
 
@@ -29,6 +29,38 @@ bool Client::Connect(){
     return true;
 }
 
+bool Client::SendMove(int x_from, int y_from, int x_to, int y_to){
+    stringstream ss;
+    ss << x_from << "|" << y_from << "|" << x_to << "|" << y_to; 
+    string message = ss.str();
+    if (send(this->Socket, message.c_str(), 20, 0) == -1){
+        cout << "Error while sending a move!" << endl;
+        return false;
+    }
+    return true;
+}
+
 bool Client::SendJson(json json_obj){
 
+}
+
+
+bool Client::GetBoard(Board &board){
+    set_blocking(Socket);
+
+    char buffer[1024];
+    int bytes_received = recv(Socket, buffer, 1024 - 1, 0);
+    if (bytes_received < 0) {
+        cerr << "Receiving board failed" << endl;
+        return false;
+    }
+
+    cout << buffer;
+    // for (int i = 0; i < 8; i++){
+    //     for (int j = 0; j < 8; j++){
+
+    //     }
+    // }
+
+    return true;
 }

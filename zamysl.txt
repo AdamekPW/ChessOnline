@@ -12,6 +12,7 @@ W wątku:
     - nazwa przeciwnika (na obecną chwilę losowa)
     - kolor jakim ta osoba będzie grała
 2. Wyślij pakiety do obu graczy.
+3. Wyślij planszę do obu graczy. (W razie jakby miało być ustawienie niestandardowe)
 
 Rozpocznij grę:
 1. Czekaj na ruch gracza.-

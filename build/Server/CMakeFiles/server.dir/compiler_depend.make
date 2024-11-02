@@ -380,7 +380,12 @@ Server/CMakeFiles/server.dir/src/Game.cpp.o: ../Server/src/Game.cpp \
   /usr/include/nlohmann/detail/conversions/to_chars.hpp \
   /usr/include/nlohmann/ordered_map.hpp \
   /usr/include/nlohmann/detail/macro_unscope.hpp \
-  /usr/include/nlohmann/thirdparty/hedley/hedley_undef.hpp
+  /usr/include/nlohmann/thirdparty/hedley/hedley_undef.hpp \
+  ../Shared/include/board.hpp \
+  ../Shared/include/figure.hpp \
+  ../Shared/include/custom_structs.hpp \
+  ../Shared/include/pawn.hpp \
+  ../Shared/include/board.hpp
 
 Server/CMakeFiles/server.dir/src/Server.cpp.o: ../Server/src/Server.cpp \
   /usr/include/stdc-predef.h \
@@ -768,8 +773,13 @@ Server/CMakeFiles/server.dir/src/Server.cpp.o: ../Server/src/Server.cpp \
   /usr/include/nlohmann/ordered_map.hpp \
   /usr/include/nlohmann/detail/macro_unscope.hpp \
   /usr/include/nlohmann/thirdparty/hedley/hedley_undef.hpp \
+  ../Shared/include/board.hpp \
+  ../Shared/include/figure.hpp \
+  ../Shared/include/custom_structs.hpp \
+  ../Shared/include/pawn.hpp \
+  ../Shared/include/board.hpp \
   ../Server/include/ServerStructs.h \
-  ../Shared/include/config.hpp \
+  ../Shared/include/common.hpp \
   /usr/include/c++/11/fstream \
   /usr/include/x86_64-linux-gnu/c++/11/bits/basic_file.h \
   /usr/include/x86_64-linux-gnu/c++/11/bits/c++io.h \
@@ -1162,8 +1172,13 @@ Server/CMakeFiles/server.dir/src/main.cpp.o: ../Server/src/main.cpp \
   /usr/include/nlohmann/ordered_map.hpp \
   /usr/include/nlohmann/detail/macro_unscope.hpp \
   /usr/include/nlohmann/thirdparty/hedley/hedley_undef.hpp \
+  ../Shared/include/board.hpp \
+  ../Shared/include/figure.hpp \
+  ../Shared/include/custom_structs.hpp \
+  ../Shared/include/pawn.hpp \
+  ../Shared/include/board.hpp \
   ../Server/include/ServerStructs.h \
-  ../Shared/include/config.hpp \
+  ../Shared/include/common.hpp \
   /usr/include/c++/11/fstream \
   /usr/include/x86_64-linux-gnu/c++/11/bits/basic_file.h \
   /usr/include/x86_64-linux-gnu/c++/11/bits/c++io.h \
@@ -1181,6 +1196,10 @@ Server/CMakeFiles/server.dir/src/main.cpp.o: ../Server/src/main.cpp \
 /usr/include/c++/11/deque:
 
 ../Server/src/Server.cpp:
+
+../Shared/include/pawn.hpp:
+
+../Shared/include/figure.hpp:
 
 /usr/include/nlohmann/thirdparty/hedley/hedley_undef.hpp:
 
@@ -1261,8 +1280,6 @@ Server/CMakeFiles/server.dir/src/main.cpp.o: ../Server/src/main.cpp \
 /usr/include/nlohmann/thirdparty/hedley/hedley.hpp:
 
 /usr/include/nlohmann/detail/macro_scope.hpp:
-
-../Shared/include/config.hpp:
 
 /usr/include/c++/11/bits/locale_conv.h:
 
@@ -1411,6 +1428,8 @@ Server/CMakeFiles/server.dir/src/main.cpp.o: ../Server/src/main.cpp \
 /usr/include/c++/11/tr1/poly_laguerre.tcc:
 
 /usr/include/c++/11/bit:
+
+../Shared/include/custom_structs.hpp:
 
 /usr/include/x86_64-linux-gnu/bits/types/struct_osockaddr.h:
 
@@ -1646,6 +1665,8 @@ Server/CMakeFiles/server.dir/src/main.cpp.o: ../Server/src/main.cpp \
 
 /usr/include/c++/11/streambuf:
 
+../Shared/include/board.hpp:
+
 /usr/include/x86_64-linux-gnu/bits/libc-header-start.h:
 
 /usr/include/c++/11/chrono:
@@ -1701,6 +1722,8 @@ Server/CMakeFiles/server.dir/src/main.cpp.o: ../Server/src/main.cpp \
 /usr/include/x86_64-linux-gnu/bits/pthreadtypes.h:
 
 /usr/include/x86_64-linux-gnu/bits/thread-shared-types.h:
+
+../Shared/include/common.hpp:
 
 /usr/include/c++/11/ext/new_allocator.h:
 

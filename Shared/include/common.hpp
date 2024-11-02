@@ -1,5 +1,5 @@
-#ifndef CONFIG
-#define CONFIG
+#ifndef COMMON
+#define COMMON
 
 
 #include <fstream>
@@ -27,5 +27,6 @@ struct ServerConfig {
 ServerConfig loadConfig(const std::string& configPath);
 void set_nonblocking(int socket);
 void set_blocking(int socket); 
-
+bool SendConfirmation(int socket);
+int RecvConfirmation(int socket);
 #endif

@@ -27,6 +27,8 @@ add_executable(client ${CLIENT_SRC})
 # Dodajemy bibliotekę współdzieloną
 target_link_libraries(client PRIVATE shared_lib)
 
+
+
 # Ustawiamy ścieżki do folderów include
 target_include_directories(client PRIVATE
     ${CMAKE_SOURCE_DIR}/Shared/include

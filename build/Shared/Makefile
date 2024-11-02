@@ -178,29 +178,29 @@ src/board.cpp.s:
 	cd /home/adam/Pulpit/ChessServer/build && $(MAKE) $(MAKESILENT) -f Shared/CMakeFiles/shared_lib.dir/build.make Shared/CMakeFiles/shared_lib.dir/src/board.cpp.s
 .PHONY : src/board.cpp.s
 
-src/config.o: src/config.cpp.o
-.PHONY : src/config.o
+src/common.o: src/common.cpp.o
+.PHONY : src/common.o
 
 # target to build an object file
-src/config.cpp.o:
-	cd /home/adam/Pulpit/ChessServer/build && $(MAKE) $(MAKESILENT) -f Shared/CMakeFiles/shared_lib.dir/build.make Shared/CMakeFiles/shared_lib.dir/src/config.cpp.o
-.PHONY : src/config.cpp.o
+src/common.cpp.o:
+	cd /home/adam/Pulpit/ChessServer/build && $(MAKE) $(MAKESILENT) -f Shared/CMakeFiles/shared_lib.dir/build.make Shared/CMakeFiles/shared_lib.dir/src/common.cpp.o
+.PHONY : src/common.cpp.o
 
-src/config.i: src/config.cpp.i
-.PHONY : src/config.i
+src/common.i: src/common.cpp.i
+.PHONY : src/common.i
 
 # target to preprocess a source file
-src/config.cpp.i:
-	cd /home/adam/Pulpit/ChessServer/build && $(MAKE) $(MAKESILENT) -f Shared/CMakeFiles/shared_lib.dir/build.make Shared/CMakeFiles/shared_lib.dir/src/config.cpp.i
-.PHONY : src/config.cpp.i
+src/common.cpp.i:
+	cd /home/adam/Pulpit/ChessServer/build && $(MAKE) $(MAKESILENT) -f Shared/CMakeFiles/shared_lib.dir/build.make Shared/CMakeFiles/shared_lib.dir/src/common.cpp.i
+.PHONY : src/common.cpp.i
 
-src/config.s: src/config.cpp.s
-.PHONY : src/config.s
+src/common.s: src/common.cpp.s
+.PHONY : src/common.s
 
 # target to generate assembly for a file
-src/config.cpp.s:
-	cd /home/adam/Pulpit/ChessServer/build && $(MAKE) $(MAKESILENT) -f Shared/CMakeFiles/shared_lib.dir/build.make Shared/CMakeFiles/shared_lib.dir/src/config.cpp.s
-.PHONY : src/config.cpp.s
+src/common.cpp.s:
+	cd /home/adam/Pulpit/ChessServer/build && $(MAKE) $(MAKESILENT) -f Shared/CMakeFiles/shared_lib.dir/build.make Shared/CMakeFiles/shared_lib.dir/src/common.cpp.s
+.PHONY : src/common.cpp.s
 
 src/figure.o: src/figure.cpp.o
 .PHONY : src/figure.o
@@ -409,9 +409,9 @@ help:
 	@echo "... src/board.o"
 	@echo "... src/board.i"
 	@echo "... src/board.s"
-	@echo "... src/config.o"
-	@echo "... src/config.i"
-	@echo "... src/config.s"
+	@echo "... src/common.o"
+	@echo "... src/common.i"
+	@echo "... src/common.s"
 	@echo "... src/figure.o"
 	@echo "... src/figure.i"
 	@echo "... src/figure.s"

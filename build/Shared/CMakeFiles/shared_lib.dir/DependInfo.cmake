@@ -10,7 +10,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/home/adam/Pulpit/ChessServer/Shared/src/bishop.cpp" "Shared/CMakeFiles/shared_lib.dir/src/bishop.cpp.o" "gcc" "Shared/CMakeFiles/shared_lib.dir/src/bishop.cpp.o.d"
   "/home/adam/Pulpit/ChessServer/Shared/src/board.cpp" "Shared/CMakeFiles/shared_lib.dir/src/board.cpp.o" "gcc" "Shared/CMakeFiles/shared_lib.dir/src/board.cpp.o.d"
-  "/home/adam/Pulpit/ChessServer/Shared/src/config.cpp" "Shared/CMakeFiles/shared_lib.dir/src/config.cpp.o" "gcc" "Shared/CMakeFiles/shared_lib.dir/src/config.cpp.o.d"
+  "/home/adam/Pulpit/ChessServer/Shared/src/common.cpp" "Shared/CMakeFiles/shared_lib.dir/src/common.cpp.o" "gcc" "Shared/CMakeFiles/shared_lib.dir/src/common.cpp.o.d"
   "/home/adam/Pulpit/ChessServer/Shared/src/figure.cpp" "Shared/CMakeFiles/shared_lib.dir/src/figure.cpp.o" "gcc" "Shared/CMakeFiles/shared_lib.dir/src/figure.cpp.o.d"
   "/home/adam/Pulpit/ChessServer/Shared/src/gui.cpp" "Shared/CMakeFiles/shared_lib.dir/src/gui.cpp.o" "gcc" "Shared/CMakeFiles/shared_lib.dir/src/gui.cpp.o.d"
   "/home/adam/Pulpit/ChessServer/Shared/src/king.cpp" "Shared/CMakeFiles/shared_lib.dir/src/king.cpp.o" "gcc" "Shared/CMakeFiles/shared_lib.dir/src/king.cpp.o.d"

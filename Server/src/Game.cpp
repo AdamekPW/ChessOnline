@@ -25,8 +25,19 @@ Game::Game(int player_1_socket, int player_2_socket){
         this->player_2.isWhite = true;
     }
     
-    if (this->SendStartInfo()){
-        cout << "Sending success!" << endl;
+    if (!this->SendStartInfo()){
+        cout << "Error while sending starting information!" << endl;
+        return;
+    }
+
+    if (RecvConfirmation(player_1.socket) != 0 || RecvConfirmation(player_2.socket)){
+        cout << "Cannot receive confirmation " << endl;
+        return;
+    }
+
+    if (!this->SendBoard()){
+        cout << "Error while sending the board! "<< endl;
+        return;
     }
 
 
@@ -67,18 +78,74 @@ Player Game::_getPlayer(bool isWhite){
     return player_1.isWhite == isWhite ? player_1 : player_2;
 }
 
+
+
 int Game::Loop(){
     bool isWhiteToMove = true;
     while (true){
         Player movingPlayer = _getPlayer(isWhiteToMove);
-        char buff[20];
-        bzero(buff, 20);
+        char buff[MESSAGE_LENGTH];
+        bzero(buff, MESSAGE_LENGTH);
+
         cout << "Oczekiwanie na ruch gracza " << movingPlayer.socket << endl;
-        int bytes = read(movingPlayer.socket, buff, 20);
+        int bytes = read(movingPlayer.socket, buff, MESSAGE_LENGTH);
         printf("Otrzymano: %s\n", buff);
+        
+        if (bytes != -1){
+            vector<int> moves = this->GetMove(buff);
+            for (auto &move : moves){
+                cout << move << "\n";
+            }
+        }
+        
         isWhiteToMove = !isWhiteToMove;
     }
 
 
     return 0;
+}
+
+
+bool validateMove(vector<int>& moves){
+    for (auto &move : moves){
+        if (move < 0 || move > 7) 
+            return false;
+    }
+    return true;
+}
+
+vector<int> Game::GetMove(char move[MESSAGE_LENGTH]){
+    //move format: x_from|y_from|x_to|y_to
+    vector<int> result;
+    string move_string= string(move);
+    stringstream ss(move_string);
+    string token;
+
+    while (getline(ss, token, '|')) {
+        result.push_back(std::stoi(token));
+    }
+    
+    return result;
+}
+
+
+
+
+bool Game::SendBoard(){
+    stringstream ss;
+    for (int i = 0; i < 8; i++){
+        for (int j = 0; j < 7; j++){
+            ss << board.board[i][j] << "|";   
+        }
+        ss << board.board[i][7] << "\n";   
+    }
+    string message = ss.str();
+    if (send(player_1.socket, message.c_str(), message.size(), 0) < 0) {
+        return false;
+    }
+    if (send(player_2.socket, message.c_str(), message.size(), 0) < 0) {
+        return false;
+    }
+
+    return true;
 }

@@ -316,9 +316,14 @@ Server/CMakeFiles/server.dir/src/main.cpp.o: \
  /usr/include/nlohmann/ordered_map.hpp \
  /usr/include/nlohmann/detail/macro_unscope.hpp \
  /usr/include/nlohmann/thirdparty/hedley/hedley_undef.hpp \
- /home/adam/Pulpit/ChessServer/Server/include/ServerStructs.h \
- /home/adam/Pulpit/ChessServer/Shared/include/config.hpp \
+ /home/adam/Pulpit/ChessServer/Shared/include/board.hpp \
+ /home/adam/Pulpit/ChessServer/Shared/include/figure.hpp \
+ /home/adam/Pulpit/ChessServer/Shared/include/custom_structs.hpp \
+ /home/adam/Pulpit/ChessServer/Shared/include/pawn.hpp \
+ /home/adam/Pulpit/ChessServer/Shared/include/board.hpp \
+ /home/adam/Pulpit/ChessServer/Shared/include/common.hpp \
  /usr/include/c++/11/fstream \
  /usr/include/x86_64-linux-gnu/c++/11/bits/basic_file.h \
  /usr/include/x86_64-linux-gnu/c++/11/bits/c++io.h \
- /usr/include/c++/11/bits/fstream.tcc
+ /usr/include/c++/11/bits/fstream.tcc \
+ /home/adam/Pulpit/ChessServer/Server/include/ServerStructs.h

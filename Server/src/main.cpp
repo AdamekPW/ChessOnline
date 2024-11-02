@@ -11,7 +11,7 @@
 #include "ServerStructs.h"
 #include "Server.hpp"
 #include <iostream>
-#include "config.hpp"
+#include "common.hpp"
 //g++ server.c -lpthread -ServerStructs && ./a.out
 
 

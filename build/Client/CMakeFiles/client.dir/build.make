@@ -109,6 +109,9 @@ Client/client: Client/CMakeFiles/client.dir/src/Client.cpp.o
 Client/client: Client/CMakeFiles/client.dir/src/main.cpp.o
 Client/client: Client/CMakeFiles/client.dir/build.make
 Client/client: Shared/libshared_lib.a
+Client/client: /usr/lib/x86_64-linux-gnu/libsfml-graphics.so.2.5.1
+Client/client: /usr/lib/x86_64-linux-gnu/libsfml-window.so.2.5.1
+Client/client: /usr/lib/x86_64-linux-gnu/libsfml-system.so.2.5.1
 Client/client: Client/CMakeFiles/client.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/adam/Pulpit/ChessServer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable client"
 	cd /home/adam/Pulpit/ChessServer/build/Client && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/client.dir/link.txt --verbose=$(VERBOSE)

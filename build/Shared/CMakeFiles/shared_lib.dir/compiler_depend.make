@@ -432,9 +432,9 @@ Shared/CMakeFiles/shared_lib.dir/src/board.cpp.o: ../Shared/src/board.cpp \
   ../Shared/include/queen.hpp \
   ../Shared/include/king.hpp
 
-Shared/CMakeFiles/shared_lib.dir/src/config.cpp.o: ../Shared/src/config.cpp \
+Shared/CMakeFiles/shared_lib.dir/src/common.cpp.o: ../Shared/src/common.cpp \
   /usr/include/stdc-predef.h \
-  ../Shared/include/config.hpp \
+  ../Shared/include/common.hpp \
   /usr/include/c++/11/fstream \
   /usr/include/c++/11/istream \
   /usr/include/c++/11/ios \
@@ -2871,6 +2871,8 @@ Shared/CMakeFiles/shared_lib.dir/src/rook.cpp.o: ../Shared/src/rook.cpp \
 
 /usr/include/c++/11/tr1/special_function_util.h:
 
+/usr/include/c++/11/limits:
+
 /usr/include/c++/11/bits/specfun.h:
 
 /usr/include/x86_64-linux-gnu/bits/iscanonical.h:
@@ -3006,8 +3008,6 @@ Shared/CMakeFiles/shared_lib.dir/src/rook.cpp.o: ../Shared/src/rook.cpp \
 /usr/include/strings.h:
 
 /usr/include/x86_64-linux-gnu/bits/thread-shared-types.h:
-
-/usr/include/c++/11/ext/new_allocator.h:
 
 /usr/include/x86_64-linux-gnu/bits/pthreadtypes.h:
 
@@ -3206,10 +3206,6 @@ Shared/CMakeFiles/shared_lib.dir/src/rook.cpp.o: ../Shared/src/rook.cpp \
 /usr/include/c++/11/ext/numeric_traits.h:
 
 /usr/include/features.h:
-
-/usr/include/c++/11/limits:
-
-../Shared/src/config.cpp:
 
 /usr/include/x86_64-linux-gnu/bits/types/FILE.h:
 
@@ -3523,8 +3519,6 @@ Shared/CMakeFiles/shared_lib.dir/src/rook.cpp.o: ../Shared/src/rook.cpp \
 
 /usr/include/nlohmann/detail/exceptions.hpp:
 
-../Shared/include/config.hpp:
-
 /usr/include/c++/11/bits/locale_conv.h:
 
 /usr/include/c++/11/bits/stl_relops.h:
@@ -3578,6 +3572,12 @@ Shared/CMakeFiles/shared_lib.dir/src/rook.cpp.o: ../Shared/src/rook.cpp \
 /usr/include/nlohmann/thirdparty/hedley/hedley.hpp:
 
 ../Shared/include/king.hpp:
+
+../Shared/src/common.cpp:
+
+/usr/include/c++/11/ext/new_allocator.h:
+
+../Shared/include/common.hpp:
 
 /usr/include/x86_64-linux-gnu/c++/11/bits/basic_file.h:
 

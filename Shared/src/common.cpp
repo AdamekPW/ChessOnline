@@ -1,4 +1,4 @@
-#include "config.hpp"
+#include "common.hpp"
 
 
 // Funkcja wczytująca konfigurację z pliku JSON
@@ -36,4 +36,23 @@ void set_blocking(int socket) {
     if (fcntl(socket, F_SETFL, flags) == -1) {
         perror("fcntl F_SETFL");
     }
+}
+
+bool SendConfirmation(int socket){
+    char buff[20] = "PackageReceived";
+    if (send(socket, buff, 20, 0) == -1){
+        return false;
+    }
+    return true;
+}
+
+int RecvConfirmation(int socket){
+    char buff[20];
+    if (recv(socket, buff, 20, 0) == -1)
+        return -1;
+    
+    if (strcmp(buff, "PackageReceived") != 0)
+        return 1;
+    
+    return 0;
 }
