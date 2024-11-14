@@ -382,10 +382,20 @@ Server/CMakeFiles/server.dir/src/Game.cpp.o: ../Server/src/Game.cpp \
   /usr/include/nlohmann/detail/macro_unscope.hpp \
   /usr/include/nlohmann/thirdparty/hedley/hedley_undef.hpp \
   ../Shared/include/board.hpp \
+  ../Shared/include/board.hpp \
   ../Shared/include/figure.hpp \
   ../Shared/include/custom_structs.hpp \
   ../Shared/include/pawn.hpp \
-  ../Shared/include/board.hpp
+  ../Shared/include/rook.hpp \
+  ../Shared/include/knight.hpp \
+  ../Shared/include/bishop.hpp \
+  ../Shared/include/queen.hpp \
+  ../Shared/include/king.hpp \
+  ../Shared/include/common.hpp \
+  /usr/include/c++/11/fstream \
+  /usr/include/x86_64-linux-gnu/c++/11/bits/basic_file.h \
+  /usr/include/x86_64-linux-gnu/c++/11/bits/c++io.h \
+  /usr/include/c++/11/bits/fstream.tcc
 
 Server/CMakeFiles/server.dir/src/Server.cpp.o: ../Server/src/Server.cpp \
   /usr/include/stdc-predef.h \
@@ -774,16 +784,21 @@ Server/CMakeFiles/server.dir/src/Server.cpp.o: ../Server/src/Server.cpp \
   /usr/include/nlohmann/detail/macro_unscope.hpp \
   /usr/include/nlohmann/thirdparty/hedley/hedley_undef.hpp \
   ../Shared/include/board.hpp \
+  ../Shared/include/board.hpp \
   ../Shared/include/figure.hpp \
   ../Shared/include/custom_structs.hpp \
   ../Shared/include/pawn.hpp \
-  ../Shared/include/board.hpp \
-  ../Server/include/ServerStructs.h \
+  ../Shared/include/rook.hpp \
+  ../Shared/include/knight.hpp \
+  ../Shared/include/bishop.hpp \
+  ../Shared/include/queen.hpp \
+  ../Shared/include/king.hpp \
   ../Shared/include/common.hpp \
   /usr/include/c++/11/fstream \
   /usr/include/x86_64-linux-gnu/c++/11/bits/basic_file.h \
   /usr/include/x86_64-linux-gnu/c++/11/bits/c++io.h \
-  /usr/include/c++/11/bits/fstream.tcc
+  /usr/include/c++/11/bits/fstream.tcc \
+  ../Server/include/ServerStructs.h
 
 Server/CMakeFiles/server.dir/src/main.cpp.o: ../Server/src/main.cpp \
   /usr/include/stdc-predef.h \
@@ -1173,29 +1188,40 @@ Server/CMakeFiles/server.dir/src/main.cpp.o: ../Server/src/main.cpp \
   /usr/include/nlohmann/detail/macro_unscope.hpp \
   /usr/include/nlohmann/thirdparty/hedley/hedley_undef.hpp \
   ../Shared/include/board.hpp \
+  ../Shared/include/board.hpp \
   ../Shared/include/figure.hpp \
   ../Shared/include/custom_structs.hpp \
   ../Shared/include/pawn.hpp \
-  ../Shared/include/board.hpp \
-  ../Server/include/ServerStructs.h \
+  ../Shared/include/rook.hpp \
+  ../Shared/include/knight.hpp \
+  ../Shared/include/bishop.hpp \
+  ../Shared/include/queen.hpp \
+  ../Shared/include/king.hpp \
   ../Shared/include/common.hpp \
   /usr/include/c++/11/fstream \
   /usr/include/x86_64-linux-gnu/c++/11/bits/basic_file.h \
   /usr/include/x86_64-linux-gnu/c++/11/bits/c++io.h \
-  /usr/include/c++/11/bits/fstream.tcc
+  /usr/include/c++/11/bits/fstream.tcc \
+  ../Server/include/ServerStructs.h
 
 
 ../Server/src/main.cpp:
-
-/usr/include/x86_64-linux-gnu/c++/11/bits/c++io.h:
-
-/usr/include/x86_64-linux-gnu/c++/11/bits/basic_file.h:
 
 /usr/include/c++/11/bits/deque.tcc:
 
 /usr/include/c++/11/deque:
 
 ../Server/src/Server.cpp:
+
+/usr/include/x86_64-linux-gnu/c++/11/bits/c++io.h:
+
+/usr/include/x86_64-linux-gnu/c++/11/bits/basic_file.h:
+
+../Shared/include/queen.hpp:
+
+../Shared/include/bishop.hpp:
+
+../Shared/include/knight.hpp:
 
 ../Shared/include/pawn.hpp:
 
@@ -1276,6 +1302,8 @@ Server/CMakeFiles/server.dir/src/main.cpp.o: ../Server/src/main.cpp \
 /usr/include/c++/11/cassert:
 
 /usr/include/nlohmann/detail/meta/void_t.hpp:
+
+../Shared/include/king.hpp:
 
 /usr/include/nlohmann/thirdparty/hedley/hedley.hpp:
 
@@ -1902,6 +1930,8 @@ Server/CMakeFiles/server.dir/src/main.cpp.o: ../Server/src/main.cpp \
 /usr/include/c++/11/string_view:
 
 /usr/include/c++/11/bits/functional_hash.h:
+
+../Shared/include/rook.hpp:
 
 /usr/include/c++/11/bits/move.h:
 

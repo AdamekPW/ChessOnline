@@ -34,7 +34,8 @@ void* Server::_gameThread(void* arg){
 
     Game game = Game(p.player_1_socket, p.player_2_socket);
 
-    game.Loop();
+    int gameStatus = game.Loop();
+    cout << "Gra  zakonczona ze statusem: " << gameStatus << endl;
 
     pthread_exit(NULL);
 }
@@ -79,7 +80,6 @@ bool Server::Accept(){
 
 int Server::_takeFristConnected(){
     while (playerQueue.size() > 0){
-        cout << "lol\n";
         int socket = playerQueue.front();
         playerQueue.pop();
         if (!this->IsConnected(socket)){

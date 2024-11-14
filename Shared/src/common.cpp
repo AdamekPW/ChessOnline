@@ -47,6 +47,7 @@ bool SendConfirmation(int socket){
 }
 
 int RecvConfirmation(int socket){
+    set_blocking(socket);
     char buff[20];
     if (recv(socket, buff, 20, 0) == -1)
         return -1;

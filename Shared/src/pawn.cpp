@@ -1,12 +1,10 @@
 #include "pawn.hpp"
 
 
-Pawn::Pawn(string color, int x, int y){
+Pawn::Pawn(string color){
     this->_value = 1.0f;
     this->_id = 1;
     this->_setColor(color);
-    this->x = x;
-    this->y = y;
     if (this->_isWhite)
         this->_symbol = "♟";
     else

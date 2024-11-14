@@ -383,10 +383,20 @@ Server/CMakeFiles/server.dir/src/Game.cpp.o
  /usr/include/nlohmann/detail/macro_unscope.hpp
  /usr/include/nlohmann/thirdparty/hedley/hedley_undef.hpp
  /home/adam/Pulpit/ChessServer/Shared/include/board.hpp
+ /home/adam/Pulpit/ChessServer/Shared/include/board.hpp
  /home/adam/Pulpit/ChessServer/Shared/include/figure.hpp
  /home/adam/Pulpit/ChessServer/Shared/include/custom_structs.hpp
  /home/adam/Pulpit/ChessServer/Shared/include/pawn.hpp
- /home/adam/Pulpit/ChessServer/Shared/include/board.hpp
+ /home/adam/Pulpit/ChessServer/Shared/include/rook.hpp
+ /home/adam/Pulpit/ChessServer/Shared/include/knight.hpp
+ /home/adam/Pulpit/ChessServer/Shared/include/bishop.hpp
+ /home/adam/Pulpit/ChessServer/Shared/include/queen.hpp
+ /home/adam/Pulpit/ChessServer/Shared/include/king.hpp
+ /home/adam/Pulpit/ChessServer/Shared/include/common.hpp
+ /usr/include/c++/11/fstream
+ /usr/include/x86_64-linux-gnu/c++/11/bits/basic_file.h
+ /usr/include/x86_64-linux-gnu/c++/11/bits/c++io.h
+ /usr/include/c++/11/bits/fstream.tcc
 
 Server/CMakeFiles/server.dir/src/Server.cpp.o
  /home/adam/Pulpit/ChessServer/Server/src/Server.cpp
@@ -776,16 +786,21 @@ Server/CMakeFiles/server.dir/src/Server.cpp.o
  /usr/include/nlohmann/detail/macro_unscope.hpp
  /usr/include/nlohmann/thirdparty/hedley/hedley_undef.hpp
  /home/adam/Pulpit/ChessServer/Shared/include/board.hpp
+ /home/adam/Pulpit/ChessServer/Shared/include/board.hpp
  /home/adam/Pulpit/ChessServer/Shared/include/figure.hpp
  /home/adam/Pulpit/ChessServer/Shared/include/custom_structs.hpp
  /home/adam/Pulpit/ChessServer/Shared/include/pawn.hpp
- /home/adam/Pulpit/ChessServer/Shared/include/board.hpp
- /home/adam/Pulpit/ChessServer/Server/include/ServerStructs.h
+ /home/adam/Pulpit/ChessServer/Shared/include/rook.hpp
+ /home/adam/Pulpit/ChessServer/Shared/include/knight.hpp
+ /home/adam/Pulpit/ChessServer/Shared/include/bishop.hpp
+ /home/adam/Pulpit/ChessServer/Shared/include/queen.hpp
+ /home/adam/Pulpit/ChessServer/Shared/include/king.hpp
  /home/adam/Pulpit/ChessServer/Shared/include/common.hpp
  /usr/include/c++/11/fstream
  /usr/include/x86_64-linux-gnu/c++/11/bits/basic_file.h
  /usr/include/x86_64-linux-gnu/c++/11/bits/c++io.h
  /usr/include/c++/11/bits/fstream.tcc
+ /home/adam/Pulpit/ChessServer/Server/include/ServerStructs.h
 
 Server/CMakeFiles/server.dir/src/main.cpp.o
  /home/adam/Pulpit/ChessServer/Server/src/main.cpp
@@ -1176,14 +1191,19 @@ Server/CMakeFiles/server.dir/src/main.cpp.o
  /usr/include/nlohmann/detail/macro_unscope.hpp
  /usr/include/nlohmann/thirdparty/hedley/hedley_undef.hpp
  /home/adam/Pulpit/ChessServer/Shared/include/board.hpp
+ /home/adam/Pulpit/ChessServer/Shared/include/board.hpp
  /home/adam/Pulpit/ChessServer/Shared/include/figure.hpp
  /home/adam/Pulpit/ChessServer/Shared/include/custom_structs.hpp
  /home/adam/Pulpit/ChessServer/Shared/include/pawn.hpp
- /home/adam/Pulpit/ChessServer/Shared/include/board.hpp
- /home/adam/Pulpit/ChessServer/Server/include/ServerStructs.h
+ /home/adam/Pulpit/ChessServer/Shared/include/rook.hpp
+ /home/adam/Pulpit/ChessServer/Shared/include/knight.hpp
+ /home/adam/Pulpit/ChessServer/Shared/include/bishop.hpp
+ /home/adam/Pulpit/ChessServer/Shared/include/queen.hpp
+ /home/adam/Pulpit/ChessServer/Shared/include/king.hpp
  /home/adam/Pulpit/ChessServer/Shared/include/common.hpp
  /usr/include/c++/11/fstream
  /usr/include/x86_64-linux-gnu/c++/11/bits/basic_file.h
  /usr/include/x86_64-linux-gnu/c++/11/bits/c++io.h
  /usr/include/c++/11/bits/fstream.tcc
+ /home/adam/Pulpit/ChessServer/Server/include/ServerStructs.h
 

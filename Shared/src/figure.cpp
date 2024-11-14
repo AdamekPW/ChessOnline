@@ -32,11 +32,11 @@ bool Figure::checkLimits(int x, int y){
 }
 
 void Figure::Move(Board &board, int new_x, int new_y){
-    if (!board.IsEmpty(new_x, new_y))
-        delete board.board[new_x][new_y];
+    // if (!board.IsEmpty(new_x, new_y))
+    //     delete board.board[new_x][new_y];
         
-    board.board[new_x][new_y] = board.board[this->x][this->y];
-    board.board[this->x][this->y] = nullptr;
-    this->x = new_x;
-    this->y = new_y;
+    // board.board[new_x][new_y] = board.board[this->x][this->y];
+    // board.board[this->x][this->y] = nullptr;
+    // this->x = new_x;
+    // this->y = new_y;
 }

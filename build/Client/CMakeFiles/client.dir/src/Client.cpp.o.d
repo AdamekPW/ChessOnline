@@ -313,10 +313,15 @@ Client/CMakeFiles/client.dir/src/Client.cpp.o: \
  /usr/include/nlohmann/detail/macro_unscope.hpp \
  /usr/include/nlohmann/thirdparty/hedley/hedley_undef.hpp \
  /home/adam/Pulpit/ChessServer/Shared/include/board.hpp \
+ /home/adam/Pulpit/ChessServer/Shared/include/board.hpp \
  /home/adam/Pulpit/ChessServer/Shared/include/figure.hpp \
  /home/adam/Pulpit/ChessServer/Shared/include/custom_structs.hpp \
  /home/adam/Pulpit/ChessServer/Shared/include/pawn.hpp \
- /home/adam/Pulpit/ChessServer/Shared/include/board.hpp \
+ /home/adam/Pulpit/ChessServer/Shared/include/rook.hpp \
+ /home/adam/Pulpit/ChessServer/Shared/include/knight.hpp \
+ /home/adam/Pulpit/ChessServer/Shared/include/bishop.hpp \
+ /home/adam/Pulpit/ChessServer/Shared/include/queen.hpp \
+ /home/adam/Pulpit/ChessServer/Shared/include/king.hpp \
  /home/adam/Pulpit/ChessServer/Shared/include/common.hpp \
  /usr/include/c++/11/fstream \
  /usr/include/x86_64-linux-gnu/c++/11/bits/basic_file.h \

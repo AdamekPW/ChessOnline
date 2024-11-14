@@ -165,6 +165,18 @@ Shared/CMakeFiles/shared_lib.dir/src/figure.cpp.o: \
  /usr/include/c++/11/bits/stl_relops.h /usr/include/c++/11/tuple \
  /usr/include/c++/11/array /usr/include/c++/11/bits/uses_allocator.h \
  /usr/include/c++/11/bits/invoke.h /usr/include/c++/11/codecvt \
+ /usr/include/unistd.h /usr/include/x86_64-linux-gnu/bits/posix_opt.h \
+ /usr/include/x86_64-linux-gnu/bits/environments.h \
+ /usr/include/x86_64-linux-gnu/bits/confname.h \
+ /usr/include/x86_64-linux-gnu/bits/getopt_posix.h \
+ /usr/include/x86_64-linux-gnu/bits/getopt_core.h \
+ /usr/include/x86_64-linux-gnu/bits/unistd_ext.h \
+ /usr/include/linux/close_range.h \
+ /home/adam/Pulpit/ChessServer/Shared/include/board.hpp \
  /home/adam/Pulpit/ChessServer/Shared/include/figure.hpp \
  /home/adam/Pulpit/ChessServer/Shared/include/pawn.hpp \
- /home/adam/Pulpit/ChessServer/Shared/include/board.hpp
+ /home/adam/Pulpit/ChessServer/Shared/include/rook.hpp \
+ /home/adam/Pulpit/ChessServer/Shared/include/knight.hpp \
+ /home/adam/Pulpit/ChessServer/Shared/include/bishop.hpp \
+ /home/adam/Pulpit/ChessServer/Shared/include/queen.hpp \
+ /home/adam/Pulpit/ChessServer/Shared/include/king.hpp

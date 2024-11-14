@@ -37,6 +37,7 @@ bool Client::SendMove(int x_from, int y_from, int x_to, int y_to){
         cout << "Error while sending a move!" << endl;
         return false;
     }
+
     return true;
 }
 
@@ -46,21 +47,29 @@ bool Client::SendJson(json json_obj){
 
 
 bool Client::GetBoard(Board &board){
-    set_blocking(Socket);
 
     char buffer[1024];
     int bytes_received = recv(Socket, buffer, 1024 - 1, 0);
     if (bytes_received < 0) {
-        cerr << "Receiving board failed" << endl;
         return false;
     }
 
     cout << buffer;
-    // for (int i = 0; i < 8; i++){
-    //     for (int j = 0; j < 8; j++){
+    for (int i = 0; i < 8; i++){
+        for (int j = 0; j < 8; j++){
+            delete board.board[i][j];
+            board.board[i][j] = nullptr;
+            int index = i*24 + j*3;
+            char colorSymbol = buffer[index + 1];
+            
+            if (colorSymbol == 'N') 
+                continue;
+            int id = buffer[index] - '0';
 
-    //     }
-    // }
+            string color = colorSymbol == 'W' ? "White" : "Black";
+            board.board[i][j] = board.CreateFigure(id, color);
+        }
+    }
 
     return true;
 }

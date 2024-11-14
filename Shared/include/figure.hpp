@@ -16,7 +16,6 @@ class Figure {
         float _value;
         int _id;
         string _symbol;
-        int x, y;
         void _setColor(string color);
 
     public:

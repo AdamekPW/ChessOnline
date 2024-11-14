@@ -14,9 +14,9 @@ W wątku:
 2. Wyślij pakiety do obu graczy.
 3. Wyślij planszę do obu graczy. (W razie jakby miało być ustawienie niestandardowe)
 
-Rozpocznij grę:
-1. Czekaj na ruch gracza.-
-2. Biały gracz wysłał ruch, przeanalizuj go pod kątem poprawności.
-2.1. Ruch jest niemożliwy do zrobienia, wyślij informację graczowi. Przejdź do pkt 1.
-3. Wyślij do obu graczy nowy stan planszy.
-4. Wróc do pkt 1 i wykonaj dla przeciwnego koloru.
+Rozpocznij pętlę gry:
+1. Sprawdź, który gracz ma ruch.
+2. Czekaj na informację o ruchu tego gracza.
+3. Przyjmij ruch, przeanalizuj go pod kątem poprawności.
+3.1 Jeżeli ruch jest niepoprawny, wyślij komunikat do gracza. Przejdź do pkt 2.
+4. Zaaktualizuj planszę i wyślij ją do obu graczy.

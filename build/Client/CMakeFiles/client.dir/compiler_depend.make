@@ -379,10 +379,15 @@ Client/CMakeFiles/client.dir/src/Client.cpp.o: ../Client/src/Client.cpp \
   /usr/include/nlohmann/detail/macro_unscope.hpp \
   /usr/include/nlohmann/thirdparty/hedley/hedley_undef.hpp \
   ../Shared/include/board.hpp \
+  ../Shared/include/board.hpp \
   ../Shared/include/figure.hpp \
   ../Shared/include/custom_structs.hpp \
   ../Shared/include/pawn.hpp \
-  ../Shared/include/board.hpp \
+  ../Shared/include/rook.hpp \
+  ../Shared/include/knight.hpp \
+  ../Shared/include/bishop.hpp \
+  ../Shared/include/queen.hpp \
+  ../Shared/include/king.hpp \
   ../Shared/include/common.hpp \
   /usr/include/c++/11/fstream \
   /usr/include/x86_64-linux-gnu/c++/11/bits/basic_file.h \
@@ -789,10 +794,15 @@ Client/CMakeFiles/client.dir/src/main.cpp.o: ../Client/src/main.cpp \
   /usr/include/nlohmann/detail/macro_unscope.hpp \
   /usr/include/nlohmann/thirdparty/hedley/hedley_undef.hpp \
   ../Shared/include/board.hpp \
+  ../Shared/include/board.hpp \
   ../Shared/include/figure.hpp \
   ../Shared/include/custom_structs.hpp \
   ../Shared/include/pawn.hpp \
-  ../Shared/include/board.hpp \
+  ../Shared/include/rook.hpp \
+  ../Shared/include/knight.hpp \
+  ../Shared/include/bishop.hpp \
+  ../Shared/include/queen.hpp \
+  ../Shared/include/king.hpp \
   ../Shared/include/common.hpp \
   /usr/include/c++/11/fstream \
   /usr/include/x86_64-linux-gnu/c++/11/bits/basic_file.h \
@@ -984,6 +994,12 @@ Client/CMakeFiles/client.dir/src/main.cpp.o: ../Client/src/main.cpp \
 
 /usr/include/x86_64-linux-gnu/c++/11/bits/basic_file.h:
 
+../Shared/include/queen.hpp:
+
+../Shared/include/bishop.hpp:
+
+../Shared/include/knight.hpp:
+
 ../Shared/include/pawn.hpp:
 
 ../Shared/include/figure.hpp:
@@ -1075,6 +1091,8 @@ Client/CMakeFiles/client.dir/src/main.cpp.o: ../Client/src/main.cpp \
 /usr/include/c++/11/cassert:
 
 /usr/include/nlohmann/detail/meta/void_t.hpp:
+
+../Shared/include/king.hpp:
 
 /usr/include/nlohmann/thirdparty/hedley/hedley.hpp:
 
@@ -1667,6 +1685,8 @@ Client/CMakeFiles/client.dir/src/main.cpp.o: ../Client/src/main.cpp \
 /usr/include/c++/11/string_view:
 
 /usr/include/c++/11/bits/functional_hash.h:
+
+../Shared/include/rook.hpp:
 
 /usr/include/c++/11/bits/move.h:
 

@@ -241,11 +241,22 @@ Shared/CMakeFiles/shared_lib.dir/src/main.cpp.o: \
  /usr/include/SFML/Graphics/VertexBuffer.hpp \
  /home/adam/Pulpit/ChessServer/Shared/include/gui.hpp \
  /home/adam/Pulpit/ChessServer/Shared/include/board.hpp \
- /usr/include/c++/11/codecvt \
+ /usr/include/c++/11/codecvt /usr/include/c++/11/iostream \
+ /usr/include/c++/11/istream /usr/include/c++/11/bits/istream.tcc \
+ /usr/include/unistd.h /usr/include/x86_64-linux-gnu/bits/posix_opt.h \
+ /usr/include/x86_64-linux-gnu/bits/environments.h \
+ /usr/include/x86_64-linux-gnu/bits/confname.h \
+ /usr/include/x86_64-linux-gnu/bits/getopt_posix.h \
+ /usr/include/x86_64-linux-gnu/bits/getopt_core.h \
+ /usr/include/x86_64-linux-gnu/bits/unistd_ext.h \
+ /usr/include/linux/close_range.h \
  /home/adam/Pulpit/ChessServer/Shared/include/figure.hpp \
- /usr/include/c++/11/iostream /usr/include/c++/11/istream \
- /usr/include/c++/11/bits/istream.tcc \
  /home/adam/Pulpit/ChessServer/Shared/include/custom_structs.hpp \
  /home/adam/Pulpit/ChessServer/Shared/include/pawn.hpp \
+ /home/adam/Pulpit/ChessServer/Shared/include/rook.hpp \
+ /home/adam/Pulpit/ChessServer/Shared/include/knight.hpp \
+ /home/adam/Pulpit/ChessServer/Shared/include/bishop.hpp \
+ /home/adam/Pulpit/ChessServer/Shared/include/queen.hpp \
+ /home/adam/Pulpit/ChessServer/Shared/include/king.hpp \
  /home/adam/Pulpit/ChessServer/Shared/include/board.hpp \
  /home/adam/Pulpit/ChessServer/Shared/include/custom_structs.hpp

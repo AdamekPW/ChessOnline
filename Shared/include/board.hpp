@@ -5,8 +5,17 @@
 #include <locale>
 #include <codecvt>
 
+#include <iostream>
+#include <string>
+#include <unistd.h>
+#include "board.hpp"
 #include "figure.hpp"
 #include "pawn.hpp"
+#include "rook.hpp"
+#include "knight.hpp"
+#include "bishop.hpp"
+#include "queen.hpp"
+#include "king.hpp"
 #include "custom_structs.hpp"
 using namespace std;
 
@@ -20,6 +29,7 @@ class Board {
         bool _didBlackLongRookMove = false; 
         bool _didBlackShortRookMove = false;
         void _updateFlags(pair<int, int> &active_figure);
+        
     public:
         Figure* board[8][8] = {nullptr};
         Board();
@@ -36,6 +46,7 @@ class Board {
         bool IsBlack(int x, int y);
         int CheckMove(int old_x, int old_y, int new_x, int new_y);
         bool MakeMove(vector<pmove> &possible_moves, pair<int, int> &active_figure, pair<int, int> &move_cords);
+        Figure* CreateFigure(int id, string color);
         bool IsPromotion(int x, int y);
         void Promote(pair<int, int> active_figure, int y);
         bool IsCheck(bool isWhiteKing);

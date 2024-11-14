@@ -1,15 +1,4 @@
-#include <iostream>
-#include <string>
-#include <unistd.h>
 #include "board.hpp"
-#include "figure.hpp"
-#include "pawn.hpp"
-#include "rook.hpp"
-#include "knight.hpp"
-#include "bishop.hpp"
-#include "queen.hpp"
-#include "king.hpp"
-
 using namespace std;
 
 
@@ -40,14 +29,14 @@ void Board::Reset(){
     // this->board[7][4] = new King("Black");
     // this->board[7][0] = new Rook("Black");
     // this->board[7][7] = new Rook("Black");
-    this->board[6][6] = new Pawn("White", 6, 6);
-    this->board[6][7] = new Pawn("White", 6, 7);
-    this->board[6][0] = new Pawn("White", 6, 0);
-    this->board[6][1] = new Pawn("White", 6, 1);
-    this->board[1][6] = new Pawn("Black", 1, 6);
-    this->board[1][7] = new Pawn("Black", 1, 7);
-    this->board[1][0] = new Pawn("Black", 1, 0);
-    this->board[1][1] = new Pawn("Black", 1, 1);
+    this->board[6][6] = new Pawn("White");
+    this->board[6][7] = new Pawn("White");
+    this->board[6][0] = new Pawn("White");
+    this->board[6][1] = new Pawn("White");
+    this->board[1][6] = new Pawn("Black");
+    this->board[1][7] = new Pawn("Black");
+    this->board[1][0] = new Pawn("Black");
+    this->board[1][1] = new Pawn("Black");
     this->board[0][0] = new Rook("White");
     this->board[0][1] = new Knight("White");
     this->board[0][2] = new Bishop("White");
@@ -57,7 +46,7 @@ void Board::Reset(){
     this->board[0][6] = new Knight("White");
     this->board[0][7] = new Rook("White");
     for (int i = 0; i < 8; i++){
-        this->board[1][i] = new Pawn("White", 1, i);
+        this->board[1][i] = new Pawn("White");
     }
 
     this->board[7][0] = new Rook("Black");
@@ -69,7 +58,7 @@ void Board::Reset(){
     this->board[7][6] = new Knight("Black");
     this->board[7][7] = new Rook("Black");
     for (int i = 0; i < 8; i++){
-        this->board[6][i] = new Pawn("Black", 6, i);
+        this->board[6][i] = new Pawn("Black");
     }
 
 
@@ -445,6 +434,34 @@ bool Board::IsPromotion(int x, int y){
 }
 
 
+Figure* Board::CreateFigure(int id, string color){
+    Figure * new_figure;
+    switch (id){
+        case 1:
+            new_figure = new Pawn(color);
+            break;
+        case 2:
+            new_figure = new Rook(color);
+            break;
+        case 3:
+            new_figure = new Knight(color);
+            break;
+        case 4:
+            new_figure = new Bishop(color);
+            break;
+        case 5:
+            new_figure = new Queen(color);
+            break;
+        case 6:
+            new_figure = new King(color);
+            break;
+        default:
+            cout << "Error while creating new_figure" << endl;
+            new_figure = nullptr;
+    }
+    return new_figure;
+}
+
 void Board::Promote(pair<int, int> active_figure, int y){
     string color = this->IsWhite(active_figure.first, active_figure.second) ? "White" : "Black";
     int term = 0;
@@ -457,7 +474,7 @@ void Board::Promote(pair<int, int> active_figure, int y){
     }
     term = term < 0 ? -term : term;
     cout << term << endl;
-    Figure* new_figure;
+    Figure* new_figure = nullptr;
     switch (term){
         case 0:
             new_figure = new Rook(color);
@@ -472,9 +489,10 @@ void Board::Promote(pair<int, int> active_figure, int y){
             new_figure = new Queen(color);
             break;
         default:
-            cout << "Error while promoting" << endl;
+            cout << "Error while creating new_figure" << endl;
             return;
     }
+    
     delete this->board[active_figure.first][active_figure.second];
     this->board[active_figure.first][active_figure.second] = new_figure;
 }

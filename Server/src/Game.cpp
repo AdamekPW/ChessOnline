@@ -25,20 +25,20 @@ Game::Game(int player_1_socket, int player_2_socket){
         this->player_2.isWhite = true;
     }
     
+    //send starting information to both players
     if (!this->SendStartInfo()){
         cout << "Error while sending starting information!" << endl;
         return;
     }
-
-    if (RecvConfirmation(player_1.socket) != 0 || RecvConfirmation(player_2.socket)){
-        cout << "Cannot receive confirmation " << endl;
-        return;
-    }
-
+    RecvConfirmation(player_1_socket);
+    RecvConfirmation(player_2_socket);
+    
+    //send board to both players
     if (!this->SendBoard()){
-        cout << "Error while sending the board! "<< endl;
+        cout << "Error while sending starting board! "<< endl;
         return;
     }
+    
 
 
 }
@@ -81,6 +81,7 @@ Player Game::_getPlayer(bool isWhite){
 
 
 int Game::Loop(){
+    cout << "Entering game loop!" << endl;
     bool isWhiteToMove = true;
     while (true){
         Player movingPlayer = _getPlayer(isWhiteToMove);
@@ -91,12 +92,28 @@ int Game::Loop(){
         int bytes = read(movingPlayer.socket, buff, MESSAGE_LENGTH);
         printf("Otrzymano: %s\n", buff);
         
+        vector<int> moves;
         if (bytes != -1){
-            vector<int> moves = this->GetMove(buff);
+            moves = this->GetMove(buff);
             for (auto &move : moves){
-                cout << move << "\n";
+                cout << move << " ";
+            }
+            cout << endl;
+            //analize if move is correct
+            if (board.CheckMove(moves[0], moves[1], moves[2], moves[3]) != 0){
+                //move isn't correct send feedback
+                
+                continue;
             }
         }
+        cout << "Move is possible to make"<< endl;
+        //move is correct, do it
+        vector<pmove> possible_moves = board.board[moves[0]][moves[1]]->PossibleMoves(board, moves[0], moves[1]);
+        pair<int, int> active_figure = make_pair(moves[0], moves[1]);
+        pair<int, int> move_cords = make_pair(moves[2], moves[3]);
+        board.MakeMove(possible_moves, active_figure, move_cords),  
+        
+        SendBoard();
         
         isWhiteToMove = !isWhiteToMove;
     }
@@ -134,10 +151,17 @@ vector<int> Game::GetMove(char move[MESSAGE_LENGTH]){
 bool Game::SendBoard(){
     stringstream ss;
     for (int i = 0; i < 8; i++){
-        for (int j = 0; j < 7; j++){
-            ss << board.board[i][j] << "|";   
+        for (int j = 0; j < 8; j++){
+            int id = 0;
+            char colorSymbol = 'N';
+            if (!board.IsEmpty(i, j)){
+                id = board.board[i][j]->getId();
+                colorSymbol = board.board[i][j]->isWhite() ? 'W' : 'B';
+            }
+            ss << id << colorSymbol;  
+            if (j == 7) ss <<"\n";
+            else ss << "|";
         }
-        ss << board.board[i][7] << "\n";   
     }
     string message = ss.str();
     if (send(player_1.socket, message.c_str(), message.size(), 0) < 0) {

@@ -59,7 +59,7 @@ void HandleEvent(sf::Vector2i &mouse_position,
     bool move_maked = false;
     if (active_figure.first != -1 && board.IsWhite(active_figure) == is_white_to_move){
         cout << active_figure.first << " " << active_figure.second << endl;
-        move_maked = board.MakeMove(possible_moves, active_figure, cords);
+        //move_maked = board.MakeMove(possible_moves, active_figure, cords);
         if (!client.SendMove(active_figure.first, active_figure.second, cords.first, cords.second)){
             cout << "Error while sending move" << endl;
         }
@@ -129,6 +129,7 @@ int main(){
     buffer[bytes_received] = '\0';  
     cout << "Received JSON: " << buffer << endl;
 
+    SendConfirmation(client.Socket);
     bool asWhite = true;
 
     try {
@@ -157,6 +158,9 @@ int main(){
 
     while (window.isOpen())
     {
+        set_nonblocking(client.Socket);
+        client.GetBoard(board);
+
         sf::Event event;
         while (window.pollEvent(event))
         {    

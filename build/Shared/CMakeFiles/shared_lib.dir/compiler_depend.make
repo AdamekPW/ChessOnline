@@ -207,11 +207,25 @@ Shared/CMakeFiles/shared_lib.dir/src/bishop.cpp.o: ../Shared/src/bishop.cpp \
   /usr/include/c++/11/bits/uses_allocator.h \
   /usr/include/c++/11/bits/invoke.h \
   /usr/include/c++/11/codecvt \
-  ../Shared/include/pawn.hpp
+  /usr/include/unistd.h \
+  /usr/include/x86_64-linux-gnu/bits/posix_opt.h \
+  /usr/include/x86_64-linux-gnu/bits/environments.h \
+  /usr/include/x86_64-linux-gnu/bits/confname.h \
+  /usr/include/x86_64-linux-gnu/bits/getopt_posix.h \
+  /usr/include/x86_64-linux-gnu/bits/getopt_core.h \
+  /usr/include/x86_64-linux-gnu/bits/unistd_ext.h \
+  /usr/include/linux/close_range.h \
+  ../Shared/include/pawn.hpp \
+  ../Shared/include/rook.hpp \
+  ../Shared/include/knight.hpp \
+  ../Shared/include/bishop.hpp \
+  ../Shared/include/queen.hpp \
+  ../Shared/include/king.hpp
 
 Shared/CMakeFiles/shared_lib.dir/src/board.cpp.o: ../Shared/src/board.cpp \
   /usr/include/stdc-predef.h \
-  /usr/include/c++/11/iostream \
+  ../Shared/include/board.hpp \
+  /usr/include/c++/11/string \
   /usr/include/x86_64-linux-gnu/c++/11/bits/c++config.h \
   /usr/include/x86_64-linux-gnu/c++/11/bits/os_defines.h \
   /usr/include/features.h \
@@ -224,11 +238,26 @@ Shared/CMakeFiles/shared_lib.dir/src/board.cpp.o: ../Shared/src/board.cpp \
   /usr/include/x86_64-linux-gnu/gnu/stubs-64.h \
   /usr/include/x86_64-linux-gnu/c++/11/bits/cpu_defines.h \
   /usr/include/c++/11/pstl/pstl_config.h \
-  /usr/include/c++/11/ostream \
-  /usr/include/c++/11/ios \
-  /usr/include/c++/11/iosfwd \
   /usr/include/c++/11/bits/stringfwd.h \
   /usr/include/c++/11/bits/memoryfwd.h \
+  /usr/include/c++/11/bits/char_traits.h \
+  /usr/include/c++/11/bits/stl_algobase.h \
+  /usr/include/c++/11/bits/functexcept.h \
+  /usr/include/c++/11/bits/exception_defines.h \
+  /usr/include/c++/11/bits/cpp_type_traits.h \
+  /usr/include/c++/11/ext/type_traits.h \
+  /usr/include/c++/11/ext/numeric_traits.h \
+  /usr/include/c++/11/bits/stl_pair.h \
+  /usr/include/c++/11/bits/move.h \
+  /usr/include/c++/11/type_traits \
+  /usr/include/c++/11/bits/stl_iterator_base_types.h \
+  /usr/include/c++/11/bits/stl_iterator_base_funcs.h \
+  /usr/include/c++/11/bits/concept_check.h \
+  /usr/include/c++/11/debug/assertions.h \
+  /usr/include/c++/11/bits/stl_iterator.h \
+  /usr/include/c++/11/bits/ptr_traits.h \
+  /usr/include/c++/11/debug/debug.h \
+  /usr/include/c++/11/bits/predefined_ops.h \
   /usr/include/c++/11/bits/postypes.h \
   /usr/include/c++/11/cwchar \
   /usr/include/wchar.h \
@@ -245,32 +274,6 @@ Shared/CMakeFiles/shared_lib.dir/src/board.cpp.o: ../Shared/src/board.cpp \
   /usr/include/x86_64-linux-gnu/bits/types/FILE.h \
   /usr/include/x86_64-linux-gnu/bits/types/locale_t.h \
   /usr/include/x86_64-linux-gnu/bits/types/__locale_t.h \
-  /usr/include/c++/11/exception \
-  /usr/include/c++/11/bits/exception.h \
-  /usr/include/c++/11/bits/exception_ptr.h \
-  /usr/include/c++/11/bits/exception_defines.h \
-  /usr/include/c++/11/bits/cxxabi_init_exception.h \
-  /usr/include/c++/11/typeinfo \
-  /usr/include/c++/11/bits/hash_bytes.h \
-  /usr/include/c++/11/new \
-  /usr/include/c++/11/bits/move.h \
-  /usr/include/c++/11/type_traits \
-  /usr/include/c++/11/bits/nested_exception.h \
-  /usr/include/c++/11/bits/char_traits.h \
-  /usr/include/c++/11/bits/stl_algobase.h \
-  /usr/include/c++/11/bits/functexcept.h \
-  /usr/include/c++/11/bits/cpp_type_traits.h \
-  /usr/include/c++/11/ext/type_traits.h \
-  /usr/include/c++/11/ext/numeric_traits.h \
-  /usr/include/c++/11/bits/stl_pair.h \
-  /usr/include/c++/11/bits/stl_iterator_base_types.h \
-  /usr/include/c++/11/bits/stl_iterator_base_funcs.h \
-  /usr/include/c++/11/bits/concept_check.h \
-  /usr/include/c++/11/debug/assertions.h \
-  /usr/include/c++/11/bits/stl_iterator.h \
-  /usr/include/c++/11/bits/ptr_traits.h \
-  /usr/include/c++/11/debug/debug.h \
-  /usr/include/c++/11/bits/predefined_ops.h \
   /usr/include/c++/11/cstdint \
   /usr/lib/gcc/x86_64-linux-gnu/11/include/stdint.h \
   /usr/include/stdint.h \
@@ -279,16 +282,28 @@ Shared/CMakeFiles/shared_lib.dir/src/board.cpp.o: ../Shared/src/board.cpp \
   /usr/include/x86_64-linux-gnu/bits/time64.h \
   /usr/include/x86_64-linux-gnu/bits/stdint-intn.h \
   /usr/include/x86_64-linux-gnu/bits/stdint-uintn.h \
+  /usr/include/c++/11/bits/allocator.h \
+  /usr/include/x86_64-linux-gnu/c++/11/bits/c++allocator.h \
+  /usr/include/c++/11/ext/new_allocator.h \
+  /usr/include/c++/11/new \
+  /usr/include/c++/11/bits/exception.h \
   /usr/include/c++/11/bits/localefwd.h \
   /usr/include/x86_64-linux-gnu/c++/11/bits/c++locale.h \
   /usr/include/c++/11/clocale \
   /usr/include/locale.h \
   /usr/include/x86_64-linux-gnu/bits/locale.h \
+  /usr/include/c++/11/iosfwd \
   /usr/include/c++/11/cctype \
   /usr/include/ctype.h \
   /usr/include/x86_64-linux-gnu/bits/endian.h \
   /usr/include/x86_64-linux-gnu/bits/endianness.h \
-  /usr/include/c++/11/bits/ios_base.h \
+  /usr/include/c++/11/bits/ostream_insert.h \
+  /usr/include/c++/11/bits/cxxabi_forced.h \
+  /usr/include/c++/11/bits/stl_function.h \
+  /usr/include/c++/11/backward/binders.h \
+  /usr/include/c++/11/bits/range_access.h \
+  /usr/include/c++/11/initializer_list \
+  /usr/include/c++/11/bits/basic_string.h \
   /usr/include/c++/11/ext/atomicity.h \
   /usr/include/x86_64-linux-gnu/c++/11/bits/gthr.h \
   /usr/include/x86_64-linux-gnu/c++/11/bits/gthr-default.h \
@@ -320,23 +335,12 @@ Shared/CMakeFiles/shared_lib.dir/src/board.cpp.o: ../Shared/src/board.cpp \
   /usr/include/x86_64-linux-gnu/bits/pthread_stack_min-dynamic.h \
   /usr/include/x86_64-linux-gnu/c++/11/bits/atomic_word.h \
   /usr/include/x86_64-linux-gnu/sys/single_threaded.h \
-  /usr/include/c++/11/bits/locale_classes.h \
-  /usr/include/c++/11/string \
-  /usr/include/c++/11/bits/allocator.h \
-  /usr/include/x86_64-linux-gnu/c++/11/bits/c++allocator.h \
-  /usr/include/c++/11/ext/new_allocator.h \
-  /usr/include/c++/11/bits/ostream_insert.h \
-  /usr/include/c++/11/bits/cxxabi_forced.h \
-  /usr/include/c++/11/bits/stl_function.h \
-  /usr/include/c++/11/backward/binders.h \
-  /usr/include/c++/11/bits/range_access.h \
-  /usr/include/c++/11/initializer_list \
-  /usr/include/c++/11/bits/basic_string.h \
   /usr/include/c++/11/ext/alloc_traits.h \
   /usr/include/c++/11/bits/alloc_traits.h \
   /usr/include/c++/11/bits/stl_construct.h \
   /usr/include/c++/11/string_view \
   /usr/include/c++/11/bits/functional_hash.h \
+  /usr/include/c++/11/bits/hash_bytes.h \
   /usr/include/c++/11/bits/string_view.tcc \
   /usr/include/c++/11/ext/string_conversions.h \
   /usr/include/c++/11/cstdlib \
@@ -370,35 +374,28 @@ Shared/CMakeFiles/shared_lib.dir/src/board.cpp.o: ../Shared/src/board.cpp \
   /usr/include/x86_64-linux-gnu/bits/types/error_t.h \
   /usr/include/c++/11/bits/charconv.h \
   /usr/include/c++/11/bits/basic_string.tcc \
+  /usr/include/c++/11/locale \
+  /usr/include/c++/11/bits/locale_classes.h \
   /usr/include/c++/11/bits/locale_classes.tcc \
-  /usr/include/c++/11/system_error \
-  /usr/include/x86_64-linux-gnu/c++/11/bits/error_constants.h \
-  /usr/include/c++/11/stdexcept \
-  /usr/include/c++/11/streambuf \
-  /usr/include/c++/11/bits/streambuf.tcc \
-  /usr/include/c++/11/bits/basic_ios.h \
   /usr/include/c++/11/bits/locale_facets.h \
   /usr/include/c++/11/cwctype \
   /usr/include/wctype.h \
   /usr/include/x86_64-linux-gnu/bits/wctype-wchar.h \
   /usr/include/x86_64-linux-gnu/c++/11/bits/ctype_base.h \
+  /usr/include/c++/11/bits/ios_base.h \
+  /usr/include/c++/11/system_error \
+  /usr/include/x86_64-linux-gnu/c++/11/bits/error_constants.h \
+  /usr/include/c++/11/stdexcept \
+  /usr/include/c++/11/exception \
+  /usr/include/c++/11/bits/exception_ptr.h \
+  /usr/include/c++/11/bits/cxxabi_init_exception.h \
+  /usr/include/c++/11/typeinfo \
+  /usr/include/c++/11/bits/nested_exception.h \
+  /usr/include/c++/11/streambuf \
+  /usr/include/c++/11/bits/streambuf.tcc \
   /usr/include/c++/11/bits/streambuf_iterator.h \
   /usr/include/x86_64-linux-gnu/c++/11/bits/ctype_inline.h \
   /usr/include/c++/11/bits/locale_facets.tcc \
-  /usr/include/c++/11/bits/basic_ios.tcc \
-  /usr/include/c++/11/bits/ostream.tcc \
-  /usr/include/c++/11/istream \
-  /usr/include/c++/11/bits/istream.tcc \
-  /usr/include/unistd.h \
-  /usr/include/x86_64-linux-gnu/bits/posix_opt.h \
-  /usr/include/x86_64-linux-gnu/bits/environments.h \
-  /usr/include/x86_64-linux-gnu/bits/confname.h \
-  /usr/include/x86_64-linux-gnu/bits/getopt_posix.h \
-  /usr/include/x86_64-linux-gnu/bits/getopt_core.h \
-  /usr/include/x86_64-linux-gnu/bits/unistd_ext.h \
-  /usr/include/linux/close_range.h \
-  ../Shared/include/board.hpp \
-  /usr/include/c++/11/locale \
   /usr/include/c++/11/bits/locale_facets_nonio.h \
   /usr/include/c++/11/ctime \
   /usr/include/x86_64-linux-gnu/c++/11/bits/time_members.h \
@@ -415,6 +412,23 @@ Shared/CMakeFiles/shared_lib.dir/src/board.cpp.o: ../Shared/src/board.cpp \
   /usr/include/c++/11/bits/uses_allocator.h \
   /usr/include/c++/11/bits/invoke.h \
   /usr/include/c++/11/codecvt \
+  /usr/include/c++/11/iostream \
+  /usr/include/c++/11/ostream \
+  /usr/include/c++/11/ios \
+  /usr/include/c++/11/bits/basic_ios.h \
+  /usr/include/c++/11/bits/basic_ios.tcc \
+  /usr/include/c++/11/bits/ostream.tcc \
+  /usr/include/c++/11/istream \
+  /usr/include/c++/11/bits/istream.tcc \
+  /usr/include/unistd.h \
+  /usr/include/x86_64-linux-gnu/bits/posix_opt.h \
+  /usr/include/x86_64-linux-gnu/bits/environments.h \
+  /usr/include/x86_64-linux-gnu/bits/confname.h \
+  /usr/include/x86_64-linux-gnu/bits/getopt_posix.h \
+  /usr/include/x86_64-linux-gnu/bits/getopt_core.h \
+  /usr/include/x86_64-linux-gnu/bits/unistd_ext.h \
+  /usr/include/linux/close_range.h \
+  ../Shared/include/board.hpp \
   ../Shared/include/figure.hpp \
   /usr/include/c++/11/vector \
   /usr/include/c++/11/bits/stl_uninitialized.h \
@@ -422,9 +436,6 @@ Shared/CMakeFiles/shared_lib.dir/src/board.cpp.o: ../Shared/src/board.cpp \
   /usr/include/c++/11/bits/stl_bvector.h \
   /usr/include/c++/11/bits/vector.tcc \
   ../Shared/include/custom_structs.hpp \
-  ../Shared/include/pawn.hpp \
-  ../Shared/include/board.hpp \
-  ../Shared/include/figure.hpp \
   ../Shared/include/pawn.hpp \
   ../Shared/include/rook.hpp \
   ../Shared/include/knight.hpp \
@@ -1018,9 +1029,22 @@ Shared/CMakeFiles/shared_lib.dir/src/figure.cpp.o: ../Shared/src/figure.cpp \
   /usr/include/c++/11/bits/uses_allocator.h \
   /usr/include/c++/11/bits/invoke.h \
   /usr/include/c++/11/codecvt \
+  /usr/include/unistd.h \
+  /usr/include/x86_64-linux-gnu/bits/posix_opt.h \
+  /usr/include/x86_64-linux-gnu/bits/environments.h \
+  /usr/include/x86_64-linux-gnu/bits/confname.h \
+  /usr/include/x86_64-linux-gnu/bits/getopt_posix.h \
+  /usr/include/x86_64-linux-gnu/bits/getopt_core.h \
+  /usr/include/x86_64-linux-gnu/bits/unistd_ext.h \
+  /usr/include/linux/close_range.h \
+  ../Shared/include/board.hpp \
   ../Shared/include/figure.hpp \
   ../Shared/include/pawn.hpp \
-  ../Shared/include/board.hpp
+  ../Shared/include/rook.hpp \
+  ../Shared/include/knight.hpp \
+  ../Shared/include/bishop.hpp \
+  ../Shared/include/queen.hpp \
+  ../Shared/include/king.hpp
 
 Shared/CMakeFiles/shared_lib.dir/src/gui.cpp.o: ../Shared/src/gui.cpp \
   /usr/include/stdc-predef.h \
@@ -1322,12 +1346,25 @@ Shared/CMakeFiles/shared_lib.dir/src/gui.cpp.o: ../Shared/src/gui.cpp \
   /usr/include/SFML/Graphics/VertexBuffer.hpp \
   ../Shared/include/board.hpp \
   /usr/include/c++/11/codecvt \
-  ../Shared/include/figure.hpp \
   /usr/include/c++/11/iostream \
   /usr/include/c++/11/istream \
   /usr/include/c++/11/bits/istream.tcc \
+  /usr/include/unistd.h \
+  /usr/include/x86_64-linux-gnu/bits/posix_opt.h \
+  /usr/include/x86_64-linux-gnu/bits/environments.h \
+  /usr/include/x86_64-linux-gnu/bits/confname.h \
+  /usr/include/x86_64-linux-gnu/bits/getopt_posix.h \
+  /usr/include/x86_64-linux-gnu/bits/getopt_core.h \
+  /usr/include/x86_64-linux-gnu/bits/unistd_ext.h \
+  /usr/include/linux/close_range.h \
+  ../Shared/include/figure.hpp \
   ../Shared/include/custom_structs.hpp \
-  ../Shared/include/pawn.hpp
+  ../Shared/include/pawn.hpp \
+  ../Shared/include/rook.hpp \
+  ../Shared/include/knight.hpp \
+  ../Shared/include/bishop.hpp \
+  ../Shared/include/queen.hpp \
+  ../Shared/include/king.hpp
 
 Shared/CMakeFiles/shared_lib.dir/src/king.cpp.o: ../Shared/src/king.cpp \
   /usr/include/stdc-predef.h \
@@ -1535,7 +1572,20 @@ Shared/CMakeFiles/shared_lib.dir/src/king.cpp.o: ../Shared/src/king.cpp \
   /usr/include/c++/11/bits/uses_allocator.h \
   /usr/include/c++/11/bits/invoke.h \
   /usr/include/c++/11/codecvt \
-  ../Shared/include/pawn.hpp
+  /usr/include/unistd.h \
+  /usr/include/x86_64-linux-gnu/bits/posix_opt.h \
+  /usr/include/x86_64-linux-gnu/bits/environments.h \
+  /usr/include/x86_64-linux-gnu/bits/confname.h \
+  /usr/include/x86_64-linux-gnu/bits/getopt_posix.h \
+  /usr/include/x86_64-linux-gnu/bits/getopt_core.h \
+  /usr/include/x86_64-linux-gnu/bits/unistd_ext.h \
+  /usr/include/linux/close_range.h \
+  ../Shared/include/pawn.hpp \
+  ../Shared/include/rook.hpp \
+  ../Shared/include/knight.hpp \
+  ../Shared/include/bishop.hpp \
+  ../Shared/include/queen.hpp \
+  ../Shared/include/king.hpp
 
 Shared/CMakeFiles/shared_lib.dir/src/knight.cpp.o: ../Shared/src/knight.cpp \
   /usr/include/stdc-predef.h \
@@ -1743,7 +1793,20 @@ Shared/CMakeFiles/shared_lib.dir/src/knight.cpp.o: ../Shared/src/knight.cpp \
   /usr/include/c++/11/bits/uses_allocator.h \
   /usr/include/c++/11/bits/invoke.h \
   /usr/include/c++/11/codecvt \
-  ../Shared/include/pawn.hpp
+  /usr/include/unistd.h \
+  /usr/include/x86_64-linux-gnu/bits/posix_opt.h \
+  /usr/include/x86_64-linux-gnu/bits/environments.h \
+  /usr/include/x86_64-linux-gnu/bits/confname.h \
+  /usr/include/x86_64-linux-gnu/bits/getopt_posix.h \
+  /usr/include/x86_64-linux-gnu/bits/getopt_core.h \
+  /usr/include/x86_64-linux-gnu/bits/unistd_ext.h \
+  /usr/include/linux/close_range.h \
+  ../Shared/include/pawn.hpp \
+  ../Shared/include/rook.hpp \
+  ../Shared/include/knight.hpp \
+  ../Shared/include/bishop.hpp \
+  ../Shared/include/queen.hpp \
+  ../Shared/include/king.hpp
 
 Shared/CMakeFiles/shared_lib.dir/src/main.cpp.o: ../Shared/src/main.cpp \
   /usr/include/stdc-predef.h \
@@ -2045,12 +2108,25 @@ Shared/CMakeFiles/shared_lib.dir/src/main.cpp.o: ../Shared/src/main.cpp \
   ../Shared/include/gui.hpp \
   ../Shared/include/board.hpp \
   /usr/include/c++/11/codecvt \
-  ../Shared/include/figure.hpp \
   /usr/include/c++/11/iostream \
   /usr/include/c++/11/istream \
   /usr/include/c++/11/bits/istream.tcc \
+  /usr/include/unistd.h \
+  /usr/include/x86_64-linux-gnu/bits/posix_opt.h \
+  /usr/include/x86_64-linux-gnu/bits/environments.h \
+  /usr/include/x86_64-linux-gnu/bits/confname.h \
+  /usr/include/x86_64-linux-gnu/bits/getopt_posix.h \
+  /usr/include/x86_64-linux-gnu/bits/getopt_core.h \
+  /usr/include/x86_64-linux-gnu/bits/unistd_ext.h \
+  /usr/include/linux/close_range.h \
+  ../Shared/include/figure.hpp \
   ../Shared/include/custom_structs.hpp \
   ../Shared/include/pawn.hpp \
+  ../Shared/include/rook.hpp \
+  ../Shared/include/knight.hpp \
+  ../Shared/include/bishop.hpp \
+  ../Shared/include/queen.hpp \
+  ../Shared/include/king.hpp \
   ../Shared/include/board.hpp \
   ../Shared/include/custom_structs.hpp
 
@@ -2260,7 +2336,20 @@ Shared/CMakeFiles/shared_lib.dir/src/pawn.cpp.o: ../Shared/src/pawn.cpp \
   /usr/include/c++/11/bits/uses_allocator.h \
   /usr/include/c++/11/bits/invoke.h \
   /usr/include/c++/11/codecvt \
-  ../Shared/include/pawn.hpp
+  /usr/include/unistd.h \
+  /usr/include/x86_64-linux-gnu/bits/posix_opt.h \
+  /usr/include/x86_64-linux-gnu/bits/environments.h \
+  /usr/include/x86_64-linux-gnu/bits/confname.h \
+  /usr/include/x86_64-linux-gnu/bits/getopt_posix.h \
+  /usr/include/x86_64-linux-gnu/bits/getopt_core.h \
+  /usr/include/x86_64-linux-gnu/bits/unistd_ext.h \
+  /usr/include/linux/close_range.h \
+  ../Shared/include/pawn.hpp \
+  ../Shared/include/rook.hpp \
+  ../Shared/include/knight.hpp \
+  ../Shared/include/bishop.hpp \
+  ../Shared/include/queen.hpp \
+  ../Shared/include/king.hpp
 
 Shared/CMakeFiles/shared_lib.dir/src/queen.cpp.o: ../Shared/src/queen.cpp \
   /usr/include/stdc-predef.h \
@@ -2468,7 +2557,20 @@ Shared/CMakeFiles/shared_lib.dir/src/queen.cpp.o: ../Shared/src/queen.cpp \
   /usr/include/c++/11/bits/uses_allocator.h \
   /usr/include/c++/11/bits/invoke.h \
   /usr/include/c++/11/codecvt \
-  ../Shared/include/pawn.hpp
+  /usr/include/unistd.h \
+  /usr/include/x86_64-linux-gnu/bits/posix_opt.h \
+  /usr/include/x86_64-linux-gnu/bits/environments.h \
+  /usr/include/x86_64-linux-gnu/bits/confname.h \
+  /usr/include/x86_64-linux-gnu/bits/getopt_posix.h \
+  /usr/include/x86_64-linux-gnu/bits/getopt_core.h \
+  /usr/include/x86_64-linux-gnu/bits/unistd_ext.h \
+  /usr/include/linux/close_range.h \
+  ../Shared/include/pawn.hpp \
+  ../Shared/include/rook.hpp \
+  ../Shared/include/knight.hpp \
+  ../Shared/include/bishop.hpp \
+  ../Shared/include/queen.hpp \
+  ../Shared/include/king.hpp
 
 Shared/CMakeFiles/shared_lib.dir/src/rook.cpp.o: ../Shared/src/rook.cpp \
   /usr/include/stdc-predef.h \
@@ -2676,7 +2778,20 @@ Shared/CMakeFiles/shared_lib.dir/src/rook.cpp.o: ../Shared/src/rook.cpp \
   /usr/include/c++/11/bits/uses_allocator.h \
   /usr/include/c++/11/bits/invoke.h \
   /usr/include/c++/11/codecvt \
-  ../Shared/include/pawn.hpp
+  /usr/include/unistd.h \
+  /usr/include/x86_64-linux-gnu/bits/posix_opt.h \
+  /usr/include/x86_64-linux-gnu/bits/environments.h \
+  /usr/include/x86_64-linux-gnu/bits/confname.h \
+  /usr/include/x86_64-linux-gnu/bits/getopt_posix.h \
+  /usr/include/x86_64-linux-gnu/bits/getopt_core.h \
+  /usr/include/x86_64-linux-gnu/bits/unistd_ext.h \
+  /usr/include/linux/close_range.h \
+  ../Shared/include/pawn.hpp \
+  ../Shared/include/rook.hpp \
+  ../Shared/include/knight.hpp \
+  ../Shared/include/bishop.hpp \
+  ../Shared/include/queen.hpp \
+  ../Shared/include/king.hpp
 
 
 ../Shared/src/queen.cpp:
@@ -3539,12 +3654,6 @@ Shared/CMakeFiles/shared_lib.dir/src/rook.cpp.o: ../Shared/src/rook.cpp \
 
 /usr/include/linux/falloc.h:
 
-../Shared/include/pawn.hpp:
-
-/usr/include/c++/11/valarray:
-
-../Shared/src/board.cpp:
-
 /usr/include/x86_64-linux-gnu/bits/posix_opt.h:
 
 /usr/include/x86_64-linux-gnu/c++/11/bits/os_defines.h:
@@ -3559,6 +3668,8 @@ Shared/CMakeFiles/shared_lib.dir/src/rook.cpp.o: ../Shared/src/rook.cpp \
 
 /usr/include/x86_64-linux-gnu/bits/getopt_posix.h:
 
+../Shared/include/pawn.hpp:
+
 /usr/include/c++/11/bits/move.h:
 
 /usr/include/c++/11/bits/hash_bytes.h:
@@ -3572,6 +3683,10 @@ Shared/CMakeFiles/shared_lib.dir/src/rook.cpp.o: ../Shared/src/rook.cpp \
 /usr/include/nlohmann/thirdparty/hedley/hedley.hpp:
 
 ../Shared/include/king.hpp:
+
+/usr/include/c++/11/valarray:
+
+../Shared/src/board.cpp:
 
 ../Shared/src/common.cpp:
 
