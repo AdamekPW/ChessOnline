@@ -57,7 +57,7 @@ void HandleEvent(sf::Vector2i &mouse_position,
 
     
     bool move_maked = false;
-    if (active_figure.first != -1 && board.IsWhite(active_figure) == is_white_to_move){
+    if (active_figure.first != -1 && board.IsWhite(active_figure) == asWhite){
         cout << active_figure.first << " " << active_figure.second << endl;
         //move_maked = board.MakeMove(possible_moves, active_figure, cords);
         if (!client.SendMove(active_figure.first, active_figure.second, cords.first, cords.second)){
@@ -70,7 +70,7 @@ void HandleEvent(sf::Vector2i &mouse_position,
         int x = cords.first;
         int y = cords.second;
         
-        if (!board.IsEmpty(x, y) && board.IsWhite(x, y) == is_white_to_move){
+        if (!board.IsEmpty(x, y) && board.IsWhite(x, y) == asWhite){
             cout << "Calculating moves for " << x << " " << y << endl;
             possible_moves = board.board[x][y]->PossibleMoves(board, x, y);
             //adding possible castling moves
@@ -154,12 +154,14 @@ int main(){
 
     vector<pmove> possible_moves;
     pair<int, int> active_figure = make_pair(4, 4);
-    bool is_white_to_move = true;
+    bool is_white_to_move = false;
 
     while (window.isOpen())
     {
         set_nonblocking(client.Socket);
-        client.GetBoard(board);
+        if (client.GetBoard(board)){
+            is_white_to_move = !is_white_to_move;
+        }
 
         sf::Event event;
         while (window.pollEvent(event))

@@ -50,7 +50,7 @@ bool Client::GetBoard(Board &board){
 
     char buffer[1024];
     int bytes_received = recv(Socket, buffer, 1024 - 1, 0);
-    if (bytes_received < 0) {
+    if (bytes_received <= 0) {
         return false;
     }
 

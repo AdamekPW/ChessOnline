@@ -316,8 +316,12 @@ bool Board::IsBlack(int x, int y){
 
 
 int Board::CheckMove(int old_x, int old_y, int new_x, int new_y){
+    if (this->IsEmpty(old_x, old_y)){
+        return -1;
+    }
     vector<pmove> possible_moves = this->board[old_x][old_y]->PossibleMoves(*this, old_x, old_y);
     bool my_color = this->board[old_x][old_y] -> isWhite();
+ 
     for (auto &move : possible_moves){
         if (move.x == new_x && move.y == new_y){
             //save position before moving
@@ -326,7 +330,7 @@ int Board::CheckMove(int old_x, int old_y, int new_x, int new_y){
             //make a move
             this->board[new_x][new_y] = this->board[old_x][old_y];
             this->board[old_x][old_y] = nullptr;
-
+   
             //check if this move will expose your king
             if (this->IsCheck(my_color)){
                 //this move exposes your king, it can't be made, undo
@@ -337,7 +341,7 @@ int Board::CheckMove(int old_x, int old_y, int new_x, int new_y){
 
             this->board[new_x][new_y] = temp_new;
             this->board[old_x][old_y] = temp_old;
-            
+
             return 0;
 
         }

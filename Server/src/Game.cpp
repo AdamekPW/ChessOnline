@@ -89,7 +89,11 @@ int Game::Loop(){
         bzero(buff, MESSAGE_LENGTH);
 
         cout << "Oczekiwanie na ruch gracza " << movingPlayer.socket << endl;
-        int bytes = read(movingPlayer.socket, buff, MESSAGE_LENGTH);
+        int bytes = recv(movingPlayer.socket, buff, MESSAGE_LENGTH, 0);
+        if (bytes == 0){
+            cout << "gracz " << movingPlayer.nick << " rozlaczyl sie" << endl;
+            return -1;
+        }
         printf("Otrzymano: %s\n", buff);
         
         vector<int> moves;
@@ -114,6 +118,7 @@ int Game::Loop(){
         board.MakeMove(possible_moves, active_figure, move_cords),  
         
         SendBoard();
+        board.Print(true);
         
         isWhiteToMove = !isWhiteToMove;
     }
