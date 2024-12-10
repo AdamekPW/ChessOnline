@@ -310,4 +310,13 @@ Shared/CMakeFiles/shared_lib.dir/src/common.cpp.o: \
  /usr/include/nlohmann/detail/conversions/to_chars.hpp \
  /usr/include/nlohmann/ordered_map.hpp \
  /usr/include/nlohmann/detail/macro_unscope.hpp \
- /usr/include/nlohmann/thirdparty/hedley/hedley_undef.hpp
+ /usr/include/nlohmann/thirdparty/hedley/hedley_undef.hpp \
+ /home/adam/Pulpit/ChessServer/Shared/include/board.hpp \
+ /home/adam/Pulpit/ChessServer/Shared/include/figure.hpp \
+ /home/adam/Pulpit/ChessServer/Shared/include/custom_structs.hpp \
+ /home/adam/Pulpit/ChessServer/Shared/include/pawn.hpp \
+ /home/adam/Pulpit/ChessServer/Shared/include/rook.hpp \
+ /home/adam/Pulpit/ChessServer/Shared/include/knight.hpp \
+ /home/adam/Pulpit/ChessServer/Shared/include/bishop.hpp \
+ /home/adam/Pulpit/ChessServer/Shared/include/queen.hpp \
+ /home/adam/Pulpit/ChessServer/Shared/include/king.hpp

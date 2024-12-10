@@ -5,7 +5,7 @@ using namespace std;
 
 Board::Board(){
     this->Reset();
-    cout << this->isWhiteCastlingPossible(true) << endl;
+    //cout << this->isWhiteCastlingPossible(true) << endl;
 
 }
 Board::~Board(){
@@ -23,43 +23,45 @@ void Board::Clear(){
 
 void Board::Reset(){
     this->Clear();
-    // this->board[0][4] = new King("White");
-    // this->board[0][0] = new Rook("White");
-    // this->board[0][7] = new Rook("White");
-    // this->board[7][4] = new King("Black");
-    // this->board[7][0] = new Rook("Black");
-    // this->board[7][7] = new Rook("Black");
-    this->board[6][6] = new Pawn("White");
-    this->board[6][7] = new Pawn("White");
-    this->board[6][0] = new Pawn("White");
-    this->board[6][1] = new Pawn("White");
-    this->board[1][6] = new Pawn("Black");
-    this->board[1][7] = new Pawn("Black");
-    this->board[1][0] = new Pawn("Black");
-    this->board[1][1] = new Pawn("Black");
-    this->board[0][0] = new Rook("White");
-    this->board[0][1] = new Knight("White");
-    this->board[0][2] = new Bishop("White");
-    this->board[0][3] = new Queen("White");
     this->board[0][4] = new King("White");
-    this->board[0][5] = new Bishop("White");
-    this->board[0][6] = new Knight("White");
+    this->board[0][0] = new Rook("White");
     this->board[0][7] = new Rook("White");
-    for (int i = 0; i < 8; i++){
-        this->board[1][i] = new Pawn("White");
-    }
-
-    this->board[7][0] = new Rook("Black");
-    this->board[7][1] = new Knight("Black");
-    this->board[7][2] = new Bishop("Black");
-    this->board[7][3] = new Queen("Black");
+    this->board[6][1] = new Pawn("White");
+    this->board[6][2] = new Pawn("White");
     this->board[7][4] = new King("Black");
-    this->board[7][5] = new Bishop("Black");
-    this->board[7][6] = new Knight("Black");
+    this->board[7][0] = new Rook("Black");
     this->board[7][7] = new Rook("Black");
-    for (int i = 0; i < 8; i++){
-        this->board[6][i] = new Pawn("Black");
-    }
+    // this->board[6][6] = new Pawn("White");
+    // this->board[6][7] = new Pawn("White");
+    // this->board[6][0] = new Pawn("White");
+    // this->board[6][1] = new Pawn("White");
+    // this->board[1][6] = new Pawn("Black");
+    // this->board[1][7] = new Pawn("Black");
+    // this->board[1][0] = new Pawn("Black");
+    // this->board[1][1] = new Pawn("Black");
+    // this->board[0][0] = new Rook("White");
+    // this->board[0][1] = new Knight("White");
+    // this->board[0][2] = new Bishop("White");
+    // this->board[0][3] = new Queen("White");
+    // this->board[0][4] = new King("White");
+    // this->board[0][5] = new Bishop("White");
+    // this->board[0][6] = new Knight("White");
+    // this->board[0][7] = new Rook("White");
+    // for (int i = 0; i < 8; i++){
+    //     this->board[1][i] = new Pawn("White");
+    // }
+
+    // this->board[7][0] = new Rook("Black");
+    // this->board[7][1] = new Knight("Black");
+    // this->board[7][2] = new Bishop("Black");
+    // this->board[7][3] = new Queen("Black");
+    // this->board[7][4] = new King("Black");
+    // this->board[7][5] = new Bishop("Black");
+    // this->board[7][6] = new Knight("Black");
+    // this->board[7][7] = new Rook("Black");
+    // for (int i = 0; i < 8; i++){
+    //     this->board[6][i] = new Pawn("Black");
+    // }
 
 
 }
@@ -320,6 +322,7 @@ int Board::CheckMove(int old_x, int old_y, int new_x, int new_y){
         return -1;
     }
     vector<pmove> possible_moves = this->board[old_x][old_y]->PossibleMoves(*this, old_x, old_y);
+    this->addCastlingMoves(possible_moves, old_x, old_y);
     bool my_color = this->board[old_x][old_y] -> isWhite();
  
     for (auto &move : possible_moves){
@@ -350,7 +353,14 @@ int Board::CheckMove(int old_x, int old_y, int new_x, int new_y){
 }
 
 
+bool Board::MakeMove(vector<int> &moves){
+    vector<pmove> possible_moves = board[moves[0]][moves[1]]->PossibleMoves(*this, moves[0], moves[1]);
+    addCastlingMoves(possible_moves, moves[0], moves[1]);
+    pair<int, int> active_figure = make_pair(moves[0], moves[1]);
+    pair<int, int> move_cords = make_pair(moves[2], moves[3]);
 
+    return MakeMove(possible_moves, active_figure, move_cords);  
+}
 bool Board::MakeMove(vector<pmove> &possible_moves, pair<int, int> &active_figure, pair<int, int> &move_cords){
     if (possible_moves.size() == 0 || active_figure.first == -1) 
         return false;

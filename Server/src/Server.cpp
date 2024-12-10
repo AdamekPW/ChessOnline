@@ -33,11 +33,16 @@ void* Server::_gameThread(void* arg){
     cout << "Obsluga gry dla: " << p.player_1_socket << " | " << p.player_2_socket << endl;
 
     Game game = Game(p.player_1_socket, p.player_2_socket);
-
+    if (!game.Prepare()){
+        cout << "Preparing error" << endl;
+        pthread_exit(0);
+    } else {
+        cout << "Preparing complete" << endl;
+    }
     int gameStatus = game.Loop();
     cout << "Gra  zakonczona ze statusem: " << gameStatus << endl;
 
-    pthread_exit(NULL);
+    pthread_exit(0);
 }
 
 bool Server::Accept(){

@@ -32,7 +32,6 @@ class Client {
         ~Client();
         bool Connect();
         bool SendMove(int x_from, int y_from, int x_to, int y_to);
-        bool SendJson(json json_obj);
         bool GetBoard(Board &board);
 
 };

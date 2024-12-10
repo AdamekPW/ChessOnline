@@ -45,21 +45,14 @@ void HandleEvent(sf::Vector2i &mouse_position,
         cords.second = 7 - cords.second;
     }
     //cout << cords.first << " " << cords.second << endl;
-    if (is_promotion){
-        if (cords.first == 8 || cords.first == -1){
-            cout << "promotion" << endl;
-            board.Promote(active_figure, cords.second);
-            is_promotion = false;
-        }
-        return;
-    }
+
     if (cords.first < 0 || cords.first > 7) return;
 
     
     bool move_maked = false;
     if (active_figure.first != -1 && board.IsWhite(active_figure) == asWhite){
         cout << active_figure.first << " " << active_figure.second << endl;
-        //move_maked = board.MakeMove(possible_moves, active_figure, cords);
+
         if (!client.SendMove(active_figure.first, active_figure.second, cords.first, cords.second)){
             cout << "Error while sending move" << endl;
         }
@@ -82,21 +75,7 @@ void HandleEvent(sf::Vector2i &mouse_position,
             
         }
     } else {
-        //check for promotions
-        if (board.IsPromotion(active_figure.first, active_figure.second)){
-            is_promotion = true;
-        }
-
         is_white_to_move = !is_white_to_move;
-        //check for mate
-        if (board.IsMate(is_white_to_move)){
-            END=true;
-            if (is_white_to_move){
-                cout << "Black wins!" << endl;
-            } else {
-                cout << "White wins!" << endl;
-            }
-        }
     }
 }   
 
@@ -116,37 +95,18 @@ int main(){
     
     cout << "Połączono z serwerem." << endl;
 
-
-    set_blocking(client.Socket);
-
-    char buffer[1024];
-    int bytes_received = recv(client.Socket, buffer, 1024 - 1, 0);
-    if (bytes_received < 0) {
-        cerr << "Receive failed" << endl;
-        close(client.Socket);
-        return 1;
-    }
-    buffer[bytes_received] = '\0';  
-    cout << "Received JSON: " << buffer << endl;
-
+    Board board;
+    DataPackage dataPackage(board);
+    RecvDataPackage(client.Socket, dataPackage, true);
     SendConfirmation(client.Socket);
-    bool asWhite = true;
 
-    try {
-        json json_obj = json::parse(buffer);
-        cout << "Type: " << json_obj["type"].get<string>() << endl;
-        cout << "Color: " << json_obj["color"].get<string>() << endl;
-        cout << "Opponent_nick: " << json_obj["opponent_nick"].get<string>() << endl;
-        asWhite = json_obj["color"].get<string>() == "White" ? true : false;
-    } catch (json::parse_error& e) {
-        cerr << "JSON parsing error: " << e.what() << endl;
-        return EXIT_FAILURE;
-    }
+    bool asWhite = dataPackage.amIWhite;
+
 
     //game loop
     sf::RenderWindow window(sf::VideoMode(SQUARE_SIZE/2*8, SQUARE_SIZE/2*10), "Chess");
     GUI GUI(SQUARE_SIZE, asWhite);
-    Board board;
+    
     bool END = false;
     bool is_promotion = false;
     sf::Sprite board_sprite;
@@ -158,10 +118,7 @@ int main(){
 
     while (window.isOpen())
     {
-        set_nonblocking(client.Socket);
-        if (client.GetBoard(board)){
-            is_white_to_move = !is_white_to_move;
-        }
+        RecvDataPackage(client.Socket, dataPackage, false);
 
         sf::Event event;
         while (window.pollEvent(event))

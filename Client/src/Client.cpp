@@ -41,9 +41,6 @@ bool Client::SendMove(int x_from, int y_from, int x_to, int y_to){
     return true;
 }
 
-bool Client::SendJson(json json_obj){
-
-}
 
 
 bool Client::GetBoard(Board &board){

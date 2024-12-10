@@ -21,6 +21,7 @@ using namespace std;
 
 class Board {
     private:
+        //zamien na is...CastlePossible, waliduj po stronie serwera
         pair<int, int> _findKing(bool isWhite);
         bool _didWhiteKingMove = false;
         bool _didBlackKingMove = false;
@@ -45,6 +46,7 @@ class Board {
         bool IsWhite(pair<int, int> &active_figure);
         bool IsBlack(int x, int y);
         int CheckMove(int old_x, int old_y, int new_x, int new_y);
+        bool MakeMove(vector<int> &move);
         bool MakeMove(vector<pmove> &possible_moves, pair<int, int> &active_figure, pair<int, int> &move_cords);
         Figure* CreateFigure(int id, string color);
         bool IsPromotion(int x, int y);

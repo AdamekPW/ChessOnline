@@ -33,17 +33,21 @@ struct Player {
 class Game {
     private:
         Player _getPlayer(bool isWhite);
+        
     public:
         Player player_1, player_2;
         Board board;
+        DataPackage dataPackage;
         
         Game(int player_1_socket, int player_2_socket);
         ~Game();
         bool SendStartInfo();
+        bool Prepare();
+        int RecvMove(Player movingPlayer, vector<int> &moves);
         int Loop();
 
         vector<int> GetMove(char move[MESSAGE_LENGTH]);
-        bool SendBoard();
+        //bool SendBoard();
 };
 
 #endif

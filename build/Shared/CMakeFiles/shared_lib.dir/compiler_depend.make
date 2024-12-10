@@ -822,7 +822,16 @@ Shared/CMakeFiles/shared_lib.dir/src/common.cpp.o: ../Shared/src/common.cpp \
   /usr/include/nlohmann/detail/conversions/to_chars.hpp \
   /usr/include/nlohmann/ordered_map.hpp \
   /usr/include/nlohmann/detail/macro_unscope.hpp \
-  /usr/include/nlohmann/thirdparty/hedley/hedley_undef.hpp
+  /usr/include/nlohmann/thirdparty/hedley/hedley_undef.hpp \
+  ../Shared/include/board.hpp \
+  ../Shared/include/figure.hpp \
+  ../Shared/include/custom_structs.hpp \
+  ../Shared/include/pawn.hpp \
+  ../Shared/include/rook.hpp \
+  ../Shared/include/knight.hpp \
+  ../Shared/include/bishop.hpp \
+  ../Shared/include/queen.hpp \
+  ../Shared/include/king.hpp
 
 Shared/CMakeFiles/shared_lib.dir/src/figure.cpp.o: ../Shared/src/figure.cpp \
   /usr/include/stdc-predef.h \
