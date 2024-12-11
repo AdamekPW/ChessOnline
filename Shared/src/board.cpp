@@ -75,22 +75,24 @@ void Board::_updateFlags(pair<int, int> &active_figure){
     switch (active_figure.first*10 + active_figure.second)
     {
     case 0:
-        this->_didWhiteLongRookMove = true;
+        this->isLongWhiteCastlePossible = false;
         break;
     case 7:
-        this->_didWhiteShortRookMove = true;
+        this->isShortWhiteCastlePossible = false;
         break;
     case 70:
-        this->_didBlackLongRookMove = true;
+        this->isLongBlackCastlePossible = false;
         break;
     case 77:
-        this->_didBlackShortRookMove = true;
+        this->isShortBlackCastlePossible = false;
         break;
     case 4:
-        this->_didWhiteKingMove = true;
+        this->isLongWhiteCastlePossible = false;
+        this->isShortWhiteCastlePossible = false;
         break;
     case 74:
-        this->_didBlackKingMove = true;
+        this->isLongBlackCastlePossible = false;
+        this->isShortBlackCastlePossible = false;
         break;
     
     }
@@ -100,17 +102,12 @@ void Board::_updateFlags(pair<int, int> &active_figure){
 }
 
 bool Board::isWhiteCastlingPossible(bool isLong){
-    //king didn't move
-    if (_didWhiteKingMove) 
-        return false;
-
     //there are no checks
     if (this->IsCheck(true)) return false;
 
     if (isLong){
         //long castling
-        //rook didn't move
-        if (_didWhiteLongRookMove) 
+        if (!this->isLongWhiteCastlePossible) 
             return false;
 
         //there is nothing between them
@@ -136,8 +133,7 @@ bool Board::isWhiteCastlingPossible(bool isLong){
 
     } else {
         //short castling
-        //rook didn't move
-        if (_didWhiteShortRookMove) 
+        if (!this->isShortWhiteCastlePossible) 
             return false;
 
         //there is nothing between them
@@ -165,17 +161,13 @@ bool Board::isWhiteCastlingPossible(bool isLong){
 }
 
 bool Board::isBlackCastlingPossible(bool isLong){
-    //king didn't move
-    if (_didBlackKingMove) 
-        return false;
-
     //there are no checks
     if (this->IsCheck(false)) return false;
 
     if (isLong){
         //long castling
         //rook didn't move
-        if (_didBlackLongRookMove) 
+        if (!this->isLongBlackCastlePossible) 
             return false;
 
         //there is nothing between them
@@ -202,7 +194,7 @@ bool Board::isBlackCastlingPossible(bool isLong){
     } else {
         //short castling
         //rook didn't move
-        if (_didBlackShortRookMove) 
+        if (!this->isShortBlackCastlePossible) 
             return false;
 
         //there is nothing between them
@@ -256,7 +248,8 @@ void Board::addCastlingMoves(vector<pmove> &possible_moves, int x, int y){
 
 void Board::Castle(bool isWhite, bool isLong){
     if (isWhite){
-        this->_didWhiteKingMove = true;
+        this->isLongWhiteCastlePossible = false;
+        this->isShortWhiteCastlePossible = false;
         if (isLong){
             this->board[0][2] = this->board[0][4]; //move king
             this->board[0][4] = nullptr;
@@ -269,7 +262,8 @@ void Board::Castle(bool isWhite, bool isLong){
             this->board[0][7] = nullptr;
         }
     } else {
-        this->_didBlackKingMove = true;
+        this->isLongBlackCastlePossible = false;
+        this->isShortBlackCastlePossible = false;
         if (isLong){
             this->board[7][2] = this->board[7][4]; //move king
             this->board[7][4] = nullptr;

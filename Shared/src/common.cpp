@@ -5,6 +5,7 @@ void DataPackage::Print(){
     cout << "Type: " << type << endl;    
     cout << "MyColor: " << (amIWhite ? "White" : "Black") << endl;
     cout << "Opponent nick: " << opponentNick << endl;
+    cout << "Castling: " << castling << endl;
     cout << "Now moving: " << (isWhiteToMove ? "White" : "Black") << endl;   
     board.Print(amIWhite); 
 }
@@ -85,13 +86,28 @@ void parseBoard(string &board_str, Board &board){
     }
 }
 
+void getCastling(string &castling, Board &board){
+    board.isLongWhiteCastlePossible = castling[0] == '1' ? true : false;
+    board.isShortWhiteCastlePossible = castling[1] == '1' ? true : false;
+    board.isLongBlackCastlePossible = castling[2] == '1' ? true : false;
+    board.isShortBlackCastlePossible = castling[3] == '1' ? true : false;  
+}
+string getCastlingString(Board &board){
+    stringstream ss;
+    ss << (board.isLongWhiteCastlePossible ? '1' : '0');
+    ss << (board.isShortWhiteCastlePossible ? '1' : '0');
+    ss << (board.isLongBlackCastlePossible ? '1' : '0');
+    ss << (board.isShortBlackCastlePossible ? '1' : '0');
+    return ss.str();
+}
+
 bool RecvDataPackage(int socket, DataPackage &dataPackage, bool isBlocking){
     if (isBlocking)
         set_blocking(socket);
     else
         set_nonblocking(socket);
 
-    char buffer[1024];
+    char buffer[2000];
     bzero(buffer, sizeof(buffer));
     int n = recv(socket, buffer, sizeof(buffer), 0);
     if (n <= 0) {
@@ -107,6 +123,7 @@ bool RecvDataPackage(int socket, DataPackage &dataPackage, bool isBlocking){
         dataPackage.amIWhite = json_obj["myColor"].get<string>() == "White" ? true : false;
         dataPackage.opponentNick = json_obj["opponentNick"].get<string>();
         dataPackage.isWhiteToMove = json_obj["colorToMove"].get<string>() == "White" ? true : false;
+        dataPackage.castling = json_obj["castling"].get<string>();
         board_str = json_obj["board"].get<string>();
 
     } catch (json::parse_error& e) {
@@ -115,7 +132,8 @@ bool RecvDataPackage(int socket, DataPackage &dataPackage, bool isBlocking){
     }
 
     parseBoard(board_str, dataPackage.board);
-
+    getCastling(dataPackage.castling, dataPackage.board);
+    cout << getCastlingString(dataPackage.board);
     dataPackage.Print();
     return true;
     
@@ -142,11 +160,12 @@ bool SendDataPackage(int socket, DataPackage &dataPackage){
     json_obj["myColor"] = dataPackage.amIWhite ? "White" : "Black";
     json_obj["opponentNick"] = dataPackage.opponentNick;
     json_obj["colorToMove"] = dataPackage.isWhiteToMove ? "White" : "Black";
+    json_obj["castling"] = getCastlingString(dataPackage.board);
     json_obj["number"] = dataPackage.moveNumber;
     json_obj["board"] = ss.str();
 
     string json_str = json_obj.dump();
-
+    cout << getCastlingString(dataPackage.board) << endl;
     if (send(socket, json_str.c_str(), json_str.size(), 0) < 0) {
         cout << "Error while sending " << socket << endl;
         return false;

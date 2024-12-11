@@ -30,12 +30,12 @@ struct DataPackage {
     bool amIWhite = false;     
     string opponentNick = ""; 
 
-    bool isWhiteToMove = false; 
+    bool isWhiteToMove = true;
+    string castling = "1111";
     int moveNumber = 0;         
     Board& board;              
 
     void Print();
-    // Konstruktor inicjalizujący tylko Board
     explicit DataPackage(Board& board)
         : board(board) {} 
 };
@@ -46,6 +46,8 @@ void set_nonblocking(int socket);
 void set_blocking(int socket); 
 bool SendConfirmation(int socket);
 int RecvConfirmation(int socket);
+void getCastling(string &castling, Board &board);
+string getCastlingString(Board &board);
 bool RecvDataPackage(int socket, DataPackage &dataPackage, bool isBlocking);
 bool SendDataPackage(int socket, DataPackage &dataPackage);
 

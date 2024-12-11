@@ -23,15 +23,13 @@ class Board {
     private:
         //zamien na is...CastlePossible, waliduj po stronie serwera
         pair<int, int> _findKing(bool isWhite);
-        bool _didWhiteKingMove = false;
-        bool _didBlackKingMove = false;
-        bool _didWhiteLongRookMove = false; 
-        bool _didWhiteShortRookMove = false;
-        bool _didBlackLongRookMove = false; 
-        bool _didBlackShortRookMove = false;
         void _updateFlags(pair<int, int> &active_figure);
         
     public:
+        bool isLongWhiteCastlePossible = true;
+        bool isShortWhiteCastlePossible = true;
+        bool isLongBlackCastlePossible = true;
+        bool isShortBlackCastlePossible = true;
         Figure* board[8][8] = {nullptr};
         Board();
         ~Board();

@@ -120,6 +120,7 @@ int Game::Loop(){
         
         cout << "Move is possible to make"<< endl;
         board.MakeMove(moves);
+
         
         dataPackage.isWhiteToMove = !dataPackage.isWhiteToMove;
         dataPackage.moveNumber++;
