@@ -46,9 +46,11 @@ void set_nonblocking(int socket);
 void set_blocking(int socket); 
 bool SendConfirmation(int socket);
 int RecvConfirmation(int socket);
+bool SendPromotion(int socket, int &figureId);
+int RecvPromotion(int socket, int &figureId);
 void getCastling(string &castling, Board &board);
 string getCastlingString(Board &board);
-bool RecvDataPackage(int socket, DataPackage &dataPackage, bool isBlocking);
+int RecvDataPackage(int socket, DataPackage &dataPackage, bool isBlocking);
 bool SendDataPackage(int socket, DataPackage &dataPackage);
 
 #endif

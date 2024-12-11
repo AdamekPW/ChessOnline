@@ -34,49 +34,66 @@ void HandleEvent(sf::Vector2i &mouse_position,
                 GUI &GUI,
                 vector<pmove> &possible_moves,
                 pair<int, int> &active_figure, 
+                pair<int, int> &cords,
                 bool &asWhite,
-                bool &is_white_to_move,
-                bool &is_promotion,
+                bool &isWhiteToMove,
+                bool &isPromotion,
                 bool &END){
 
-    pair<int, int> cords = GUI.ClickedFigure(window, board, mouse_position);
+    cords = GUI.ClickedFigure(window, board, mouse_position);
     if (!asWhite){
         cords.first = 7 - cords.first;
         cords.second = 7 - cords.second;
     }
-    //cout << cords.first << " " << cords.second << endl;
+    
+    cout << cords.first << " " << cords.second << endl;
+
+    if (isPromotion){
+        if (cords.first == 8 || cords.first == -1){
+            cout << "promotion" << endl;
+            if (cords.second < 2 || cords.second > 5) 
+                return;
+            int _y = asWhite ? cords.second : (7-cords.second);
+            int figureId = board.GetPromotingFigureId(_y);
+            cout << "New figure for: "<< figureId << endl;
+            SendPromotion(client.Socket, figureId);
+
+            isPromotion = false;
+        }
+        return;
+    }
 
     if (cords.first < 0 || cords.first > 7) return;
 
-    
     bool move_maked = false;
-    if (active_figure.first != -1 && board.IsWhite(active_figure) == asWhite){
+    if (active_figure.first != -1 && board.IsWhite(active_figure) == asWhite 
+        && active_figure != cords && asWhite == isWhiteToMove){
         cout << active_figure.first << " " << active_figure.second << endl;
-
-        if (!client.SendMove(active_figure.first, active_figure.second, cords.first, cords.second)){
-            cout << "Error while sending move" << endl;
-        }
+        client.SendMove(active_figure.first, active_figure.second, cords.first, cords.second);
+        move_maked = true;
     }
+
     possible_moves.resize(0);
-    if (!move_maked){
-        //show possible moves
-        int x = cords.first;
-        int y = cords.second;
-        
-        if (!board.IsEmpty(x, y) && board.IsWhite(x, y) == asWhite){
-            cout << "Calculating moves for " << x << " " << y << endl;
-            possible_moves = board.board[x][y]->PossibleMoves(board, x, y);
-            //adding possible castling moves
-            board.addCastlingMoves(possible_moves, x, y);
+    
 
-            active_figure = make_pair(x, y);
-        } else {
-            active_figure = make_pair(-1, -1);
-            
-        }
-    } else {
-        is_white_to_move = !is_white_to_move;
+    //show possible moves
+    int x = cords.first;
+    int y = cords.second;
+    
+    if (!board.IsEmpty(x, y) && board.IsWhite(x, y) == asWhite){
+        cout << "Calculating moves for " << x << " " << y << endl;
+        possible_moves = board.board[x][y]->PossibleMoves(board, x, y);
+
+        //adding possible castling moves
+        board.addCastlingMoves(possible_moves, x, y);
+
+        active_figure = make_pair(x, y);
+        return;
+    } 
+    if (!move_maked){
+        active_figure = make_pair(-1, -1);
     }
+    
 }   
 
 int main(){
@@ -101,37 +118,43 @@ int main(){
     SendConfirmation(client.Socket);
 
     bool asWhite = dataPackage.amIWhite;
+    bool END = false;
 
 
     //game loop
     sf::RenderWindow window(sf::VideoMode(SQUARE_SIZE/2*8, SQUARE_SIZE/2*10), "Chess");
     GUI GUI(SQUARE_SIZE, asWhite);
     
-    bool END = false;
-    bool is_promotion = false;
+
     sf::Sprite board_sprite;
     window.setFramerateLimit(60);    
 
     vector<pmove> possible_moves;
     pair<int, int> active_figure = make_pair(4, 4);
-    bool is_white_to_move = false;
+    pair<int, int> cords;
+    bool isPromotion = false;
 
     while (window.isOpen())
     {
         RecvDataPackage(client.Socket, dataPackage, false);
+        if (dataPackage.type == "Promotion"){
+            isPromotion = true;
+        }
 
         sf::Event event;
         while (window.pollEvent(event))
         {    
-            if (event.type == sf::Event::Closed)
+            if (event.type == sf::Event::Closed){
+                client.~Client();
                 window.close();
+            }
 
             if (event.type == sf::Event::MouseButtonPressed && !END){
                 if (event.mouseButton.button == sf::Mouse::Left){
                     sf::Vector2i mouse_position = sf::Mouse::getPosition(window);
 
                     HandleEvent(mouse_position, board, client, window, 
-                        GUI, possible_moves, active_figure, asWhite, is_white_to_move, is_promotion, END);
+                        GUI, possible_moves, active_figure, cords, asWhite, dataPackage.isWhiteToMove, isPromotion, END);
 
                 }
             }
@@ -141,9 +164,8 @@ int main(){
         window.clear(sf::Color(145, 184, 154));
         
         GUI.Draw(window, board, possible_moves);
-        if (is_promotion)
-            GUI.DrawPromotion(window, !is_white_to_move, active_figure.second);
-
+        if (isPromotion)
+            GUI.DrawPromotion(window, asWhite, active_figure.second);
      
         window.display();
 

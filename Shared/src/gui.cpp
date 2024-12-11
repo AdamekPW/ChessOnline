@@ -178,8 +178,9 @@ void GUI::Draw(sf::RenderWindow &window, Board &board, vector<pmove> &possible_m
 }
 
 void GUI::DrawPromotion(sf::RenderWindow &window, bool asWhite, int y){
+    y = 2;
     if (asWhite){
-        if (y > 4) y = 4;
+        //if (y > 4) y = 4;
         this->white_rook_sprite.setPosition((y)*SQUARE_SIZE/2, 0);
         this->white_knight_sprite.setPosition((y+1)*SQUARE_SIZE/2, 0);
         this->white_bishop_sprite.setPosition((y+2)*SQUARE_SIZE/2, 0);
@@ -189,11 +190,11 @@ void GUI::DrawPromotion(sf::RenderWindow &window, bool asWhite, int y){
         window.draw(this->white_bishop_sprite);
         window.draw(this->white_queen_sprite);
     } else {
-        if (y < 3) y = 3;
-        this->black_rook_sprite.setPosition((7-y)*SQUARE_SIZE/2, 0);
-        this->black_knight_sprite.setPosition((7-y+1)*SQUARE_SIZE/2, 0);
-        this->black_bishop_sprite.setPosition((7-y+2)*SQUARE_SIZE/2, 0);
-        this->black_queen_sprite.setPosition((7-y+3)*SQUARE_SIZE/2, 0);
+        //if (y < 3) y = 3;
+        this->black_rook_sprite.setPosition((y)*SQUARE_SIZE/2, 0);
+        this->black_knight_sprite.setPosition((y+1)*SQUARE_SIZE/2, 0);
+        this->black_bishop_sprite.setPosition((y+2)*SQUARE_SIZE/2, 0);
+        this->black_queen_sprite.setPosition((y+3)*SQUARE_SIZE/2, 0);
         window.draw(this->black_rook_sprite);
         window.draw(this->black_knight_sprite);
         window.draw(this->black_bishop_sprite);

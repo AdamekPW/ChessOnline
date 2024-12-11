@@ -46,9 +46,10 @@ class Board {
         int CheckMove(int old_x, int old_y, int new_x, int new_y);
         bool MakeMove(vector<int> &move);
         bool MakeMove(vector<pmove> &possible_moves, pair<int, int> &active_figure, pair<int, int> &move_cords);
-        Figure* CreateFigure(int id, string color);
+        static Figure* CreateFigure(int id, string color);
         bool IsPromotion(int x, int y);
-        void Promote(pair<int, int> active_figure, int y);
+        int GetPromotingFigureId(int y);
+        
         bool IsCheck(bool isWhiteKing);
         bool IsMate(bool isWhiteKing);
         void Print(bool asWhite);

@@ -120,8 +120,28 @@ int Game::Loop(){
         
         cout << "Move is possible to make"<< endl;
         board.MakeMove(moves);
+        board.Print(true);
 
-        
+        if (board.IsPromotion(moves[2], moves[3])){
+            cout << "Promotion time!" << endl;
+            dataPackage.type = "Promotion";
+            if (!SendDataPackage(movingPlayer.socket, dataPackage)){
+                cout << "Sending promotion package error" << endl;
+                return -1;
+            }
+            int figureId;
+            if (RecvPromotion(movingPlayer.socket, figureId) <= 0){
+                status = 1;
+                break;
+            }
+            //cout << "Promoted! |" << moves[2] << "," << moves[3] << endl;
+            string color = movingPlayer.isWhite ? "White" : "Black";
+            delete board.board[moves[2]][moves[3]];
+            board.board[moves[2]][moves[3]] = Board::CreateFigure(figureId, color);
+            board.Print(true);
+        }
+
+        dataPackage.type = "GameMove";
         dataPackage.isWhiteToMove = !dataPackage.isWhiteToMove;
         dataPackage.moveNumber++;
         if(!SendDataPackage(player_1.socket, dataPackage)
@@ -130,7 +150,7 @@ int Game::Loop(){
             return -1;
         }
 
-        board.Print(true);
+        
         if (board.IsMate(dataPackage.isWhiteToMove)){
             if (dataPackage.isWhiteToMove){
                 cout << "Black wins!" << endl;

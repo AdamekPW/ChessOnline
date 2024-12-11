@@ -26,10 +26,14 @@ void Board::Reset(){
     this->board[0][4] = new King("White");
     this->board[0][0] = new Rook("White");
     this->board[0][7] = new Rook("White");
+    this->board[6][0] = new Pawn("White");
     this->board[6][1] = new Pawn("White");
     this->board[6][2] = new Pawn("White");
+
     this->board[7][4] = new King("Black");
-    this->board[7][0] = new Rook("Black");
+    this->board[1][5] = new Pawn("Black");
+    this->board[1][6] = new Pawn("Black");
+    //this->board[7][0] = new Rook("Black");
     this->board[7][7] = new Rook("Black");
     // this->board[6][6] = new Pawn("White");
     // this->board[6][7] = new Pawn("White");
@@ -39,6 +43,8 @@ void Board::Reset(){
     // this->board[1][7] = new Pawn("Black");
     // this->board[1][0] = new Pawn("Black");
     // this->board[1][1] = new Pawn("Black");
+
+
     // this->board[0][0] = new Rook("White");
     // this->board[0][1] = new Knight("White");
     // this->board[0][2] = new Bishop("White");
@@ -470,40 +476,14 @@ Figure* Board::CreateFigure(int id, string color){
     return new_figure;
 }
 
-void Board::Promote(pair<int, int> active_figure, int y){
-    string color = this->IsWhite(active_figure.first, active_figure.second) ? "White" : "Black";
-    int term = 0;
-    if (color == "White"){
-        int corretion = active_figure.second > 4 ? 4 : active_figure.second;
-        term = y - corretion;
-    } else {
-        int corretion = active_figure.second < 3 ? 3 : active_figure.second;
-        term = y - corretion;
-    }
-    term = term < 0 ? -term : term;
-    cout << term << endl;
-    Figure* new_figure = nullptr;
-    switch (term){
-        case 0:
-            new_figure = new Rook(color);
-            break;
-        case 1:
-            new_figure = new Knight(color);
-            break;
-        case 2:
-            new_figure = new Bishop(color);
-            break;
-        case 3:
-            new_figure = new Queen(color);
-            break;
-        default:
-            cout << "Error while creating new_figure" << endl;
-            return;
-    }
-    
-    delete this->board[active_figure.first][active_figure.second];
-    this->board[active_figure.first][active_figure.second] = new_figure;
+
+int Board::GetPromotingFigureId(int y){
+    if (y < 2 || y > 5) return 5; //queen by default
+    return y;
+
 }
+
+
 
 bool Board::IsCheck(bool isWhiteKing){
     pair<int, int> king_cords = this->_findKing(isWhiteKing);

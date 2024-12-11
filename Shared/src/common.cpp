@@ -49,8 +49,8 @@ void set_blocking(int socket) {
 }
 
 bool SendConfirmation(int socket){
-    char buff[20] = "PackageReceived";
-    if (send(socket, buff, 20, 0) == -1){
+    char buff[] = "PackageReceived";
+    if (send(socket, buff, sizeof(buff), 0) == -1){
         return false;
     }
     return true;
@@ -59,6 +59,7 @@ bool SendConfirmation(int socket){
 int RecvConfirmation(int socket){
     set_blocking(socket);
     char buff[20];
+    bzero(buff, sizeof(buff));
     if (recv(socket, buff, 20, 0) == -1)
         return -1;
     
@@ -86,6 +87,27 @@ void parseBoard(string &board_str, Board &board){
     }
 }
 
+bool SendPromotion(int socket, int &figureId){
+    char buff[20];
+    bzero(buff, sizeof(buff));
+    sprintf(buff, "%d", figureId);
+    if (send(socket, buff, sizeof(buff), 0) == -1){
+        return false;
+    }
+    return true;
+}
+
+int RecvPromotion(int socket, int &figureId){
+    char buff[20];
+    bzero(buff, sizeof(buff));
+    int n = recv(socket, buff, sizeof(buff), 0);
+    if (n > 0)
+        figureId = atoi(buff);
+    
+    return n;
+}
+
+
 void getCastling(string &castling, Board &board){
     board.isLongWhiteCastlePossible = castling[0] == '1' ? true : false;
     board.isShortWhiteCastlePossible = castling[1] == '1' ? true : false;
@@ -101,7 +123,7 @@ string getCastlingString(Board &board){
     return ss.str();
 }
 
-bool RecvDataPackage(int socket, DataPackage &dataPackage, bool isBlocking){
+int RecvDataPackage(int socket, DataPackage &dataPackage, bool isBlocking){
     if (isBlocking)
         set_blocking(socket);
     else
@@ -111,7 +133,7 @@ bool RecvDataPackage(int socket, DataPackage &dataPackage, bool isBlocking){
     bzero(buffer, sizeof(buffer));
     int n = recv(socket, buffer, sizeof(buffer), 0);
     if (n <= 0) {
-        return false;
+        return n;
     }
 
     //printf("%s\n", buffer);
@@ -133,9 +155,9 @@ bool RecvDataPackage(int socket, DataPackage &dataPackage, bool isBlocking){
 
     parseBoard(board_str, dataPackage.board);
     getCastling(dataPackage.castling, dataPackage.board);
-    cout << getCastlingString(dataPackage.board);
+
     dataPackage.Print();
-    return true;
+    return 0;
     
 }
 
@@ -165,7 +187,6 @@ bool SendDataPackage(int socket, DataPackage &dataPackage){
     json_obj["board"] = ss.str();
 
     string json_str = json_obj.dump();
-    cout << getCastlingString(dataPackage.board) << endl;
     if (send(socket, json_str.c_str(), json_str.size(), 0) < 0) {
         cout << "Error while sending " << socket << endl;
         return false;
