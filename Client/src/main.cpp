@@ -136,7 +136,9 @@ int main(){
 
     while (window.isOpen())
     {
-        RecvDataPackage(client.Socket, dataPackage, false);
+        if (RecvDataPackage(client.Socket, dataPackage, false) > 0){
+            SendConfirmation(client.Socket);
+        }
         if (dataPackage.type == "Promotion"){
             isPromotion = true;
         }

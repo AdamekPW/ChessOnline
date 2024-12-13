@@ -93,7 +93,7 @@ int Game::Loop(){
     cout << "Entering game loop!" << endl;
 
     dataPackage.type = "GameMove";
-    dataPackage.opponentNick = "";
+    dataPackage.opponentNick = "-";
     dataPackage.amIWhite = false;
 
     int status = 0;
@@ -149,15 +149,28 @@ int Game::Loop(){
             cout << "Sending data package error" << endl;
             return -1;
         }
+        if (RecvConfirmation(player_1.socket) <= 0){
+            cout << player_1.nick << " didn't send confirmation" << endl;
+        }
+        if (RecvConfirmation(player_2.socket) <= 0){
+            cout << player_1.nick << " didn't send confirmation" << endl;
+        }
 
         
         if (board.IsMate(dataPackage.isWhiteToMove)){
+            dataPackage.type = "GameEnd";
+            dataPackage.winner = dataPackage.isWhiteToMove ? "Black" : "White";
             if (dataPackage.isWhiteToMove){
                 cout << "Black wins!" << endl;
                 status = 1;
             } else {
                 cout << "White wins!" << endl;
                 status = 1;
+            }
+            if(!SendDataPackage(player_1.socket, dataPackage)
+            || !SendDataPackage(player_2.socket, dataPackage)){
+                cout << "Sending data package error" << endl;
+                return -1;
             }
         }
     }

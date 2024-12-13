@@ -26,14 +26,15 @@ struct ServerConfig {
 };
 
 struct DataPackage {
-    string type = "";     
+    string type = "-";     
     bool amIWhite = false;     
-    string opponentNick = ""; 
+    string opponentNick = "-"; 
 
     bool isWhiteToMove = true;
     string castling = "1111";
-    int moveNumber = 0;         
+    int moveNumber = 1;         
     Board& board;              
+    string winner = "-";
 
     void Print();
     explicit DataPackage(Board& board)

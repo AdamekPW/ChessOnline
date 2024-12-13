@@ -2,12 +2,13 @@
 
 
 void DataPackage::Print(){
-    cout << "Type: " << type << endl;    
+    cout << "Type: " << type << " | Number: " << moveNumber <<endl;    
     cout << "MyColor: " << (amIWhite ? "White" : "Black") << endl;
-    cout << "Opponent nick: " << opponentNick << endl;
+    if (opponentNick != "-") cout << "Opponent nick: " << opponentNick << endl;
     cout << "Castling: " << castling << endl;
     cout << "Now moving: " << (isWhiteToMove ? "White" : "Black") << endl;   
     board.Print(amIWhite); 
+    if (winner != "-") cout << "Winner: " << winner << endl;
 }
 
 
@@ -26,7 +27,6 @@ ServerConfig loadConfig(const std::string& configPath) {
     json jsonConfig;
     configFile >> jsonConfig;
 
-    // Pobieranie wartości IP i portu, z domyślnymi wartościami w razie braku klucza
     config.ip = jsonConfig.value("server_ip", "127.0.0.1");
     config.port = jsonConfig.value("server_port", 8080);
 
@@ -60,13 +60,14 @@ int RecvConfirmation(int socket){
     set_blocking(socket);
     char buff[20];
     bzero(buff, sizeof(buff));
-    if (recv(socket, buff, 20, 0) == -1)
-        return -1;
+    int n = recv(socket, buff, 20, 0);
+    if (n <= 0)
+        return n;
     
     if (strcmp(buff, "PackageReceived") != 0)
         return 1;
     
-    return 0;
+    return -1;
 }
 
 void parseBoard(string &board_str, Board &board){
@@ -136,28 +137,29 @@ int RecvDataPackage(int socket, DataPackage &dataPackage, bool isBlocking){
         return n;
     }
 
-    //printf("%s\n", buffer);
+    printf("%s\n", buffer);
 
     string board_str;
     try {
         json json_obj = json::parse(buffer);
         dataPackage.type = json_obj["type"].get<string>();
         dataPackage.amIWhite = json_obj["myColor"].get<string>() == "White" ? true : false;
+        dataPackage.moveNumber = json_obj["moveNumber"].get<int>();
         dataPackage.opponentNick = json_obj["opponentNick"].get<string>();
         dataPackage.isWhiteToMove = json_obj["colorToMove"].get<string>() == "White" ? true : false;
         dataPackage.castling = json_obj["castling"].get<string>();
         board_str = json_obj["board"].get<string>();
-
+        dataPackage.winner = json_obj["winner"].get<string>();
     } catch (json::parse_error& e) {
         cerr << "JSON parsing error: " << e.what() << endl;
-        return false;
+        return -1;
     }
 
     parseBoard(board_str, dataPackage.board);
     getCastling(dataPackage.castling, dataPackage.board);
 
     dataPackage.Print();
-    return 0;
+    return 1;
     
 }
 
@@ -180,11 +182,13 @@ bool SendDataPackage(int socket, DataPackage &dataPackage){
     json json_obj;
     json_obj["type"] = dataPackage.type;
     json_obj["myColor"] = dataPackage.amIWhite ? "White" : "Black";
+    json_obj["moveNumber"] = dataPackage.moveNumber;
     json_obj["opponentNick"] = dataPackage.opponentNick;
     json_obj["colorToMove"] = dataPackage.isWhiteToMove ? "White" : "Black";
     json_obj["castling"] = getCastlingString(dataPackage.board);
     json_obj["number"] = dataPackage.moveNumber;
     json_obj["board"] = ss.str();
+    json_obj["winner"] = dataPackage.winner;
 
     string json_str = json_obj.dump();
     if (send(socket, json_str.c_str(), json_str.size(), 0) < 0) {

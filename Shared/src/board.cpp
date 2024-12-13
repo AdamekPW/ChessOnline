@@ -24,25 +24,24 @@ void Board::Clear(){
 void Board::Reset(){
     this->Clear();
     this->board[0][4] = new King("White");
-    this->board[0][0] = new Rook("White");
-    this->board[0][7] = new Rook("White");
-    this->board[6][0] = new Pawn("White");
-    this->board[6][1] = new Pawn("White");
-    this->board[6][2] = new Pawn("White");
-
+    this->board[6][0] = new Rook("White");
+    this->board[6][7] = new Rook("White");
     this->board[7][4] = new King("Black");
-    this->board[1][5] = new Pawn("Black");
-    this->board[1][6] = new Pawn("Black");
-    //this->board[7][0] = new Rook("Black");
-    this->board[7][7] = new Rook("Black");
-    // this->board[6][6] = new Pawn("White");
-    // this->board[6][7] = new Pawn("White");
+
+    
+    // this->board[0][4] = new King("White");
+    // this->board[0][0] = new Rook("White");
+    // this->board[0][7] = new Rook("White");
     // this->board[6][0] = new Pawn("White");
     // this->board[6][1] = new Pawn("White");
+    // this->board[6][2] = new Pawn("White");
+
+    // this->board[7][4] = new King("Black");
+    // this->board[1][5] = new Pawn("Black");
     // this->board[1][6] = new Pawn("Black");
-    // this->board[1][7] = new Pawn("Black");
-    // this->board[1][0] = new Pawn("Black");
-    // this->board[1][1] = new Pawn("Black");
+    // this->board[7][0] = new Rook("Black");
+    // this->board[7][7] = new Rook("Black");
+
 
 
     // this->board[0][0] = new Rook("White");
@@ -112,6 +111,9 @@ bool Board::isWhiteCastlingPossible(bool isLong){
     if (this->IsCheck(true)) return false;
 
     if (isLong){
+        //white rook is there
+        if (!this->IsWhite(0, 0) || this->board[0][0]->getId() != 2)
+            return false;
         //long castling
         if (!this->isLongWhiteCastlePossible) 
             return false;
@@ -139,6 +141,10 @@ bool Board::isWhiteCastlingPossible(bool isLong){
 
     } else {
         //short castling
+        //white rook is there
+        if (!this->IsWhite(0, 7) || this->board[0][7]->getId() != 2)
+            return false;
+        
         if (!this->isShortWhiteCastlePossible) 
             return false;
 
@@ -170,8 +176,13 @@ bool Board::isBlackCastlingPossible(bool isLong){
     //there are no checks
     if (this->IsCheck(false)) return false;
 
+
     if (isLong){
         //long castling
+        //black rook is there
+        if (!this->IsBlack(7, 0) || this->board[7][0]->getId() != 2)
+            return false;
+        
         //rook didn't move
         if (!this->isLongBlackCastlePossible) 
             return false;
@@ -199,6 +210,9 @@ bool Board::isBlackCastlingPossible(bool isLong){
 
     } else {
         //short castling
+        //black rook is there
+        if (!this->IsBlack(7, 7) || this->board[7][7]->getId() != 2)
+            return false;
         //rook didn't move
         if (!this->isShortBlackCastlePossible) 
             return false;
