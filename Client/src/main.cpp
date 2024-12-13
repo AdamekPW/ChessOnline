@@ -136,13 +136,6 @@ int main(){
 
     while (window.isOpen())
     {
-        if (RecvDataPackage(client.Socket, dataPackage, false) > 0){
-            SendConfirmation(client.Socket);
-        }
-        if (dataPackage.type == "Promotion"){
-            isPromotion = true;
-        }
-
         sf::Event event;
         while (window.pollEvent(event))
         {    
@@ -150,6 +143,7 @@ int main(){
                 client.~Client();
                 window.close();
             }
+            if (END) break;
 
             if (event.type == sf::Event::MouseButtonPressed && !END){
                 if (event.mouseButton.button == sf::Mouse::Left){
@@ -162,6 +156,31 @@ int main(){
             }
         }
 
+        if (END) continue;
+
+        int RecvDataPackageStatus = RecvDataPackage(client.Socket, dataPackage, false);
+        if (RecvDataPackageStatus > 0){
+            if (dataPackage.type == "GameMove"){
+                SendConfirmation(client.Socket);
+            } else if (dataPackage.type == "Promotion"){
+                isPromotion = true;
+            } else if (dataPackage.type == "GameEnd"){
+                if (dataPackage.winner == "none")
+                    cout << "Draw!" << endl;
+                else if ((asWhite ? "White" : "Black") == dataPackage.winner)
+                    cout << "You have won! :)" << endl;
+                else 
+                    cout << "You have lost :(" << endl;
+                
+                END = true;
+            }
+        } else if (RecvDataPackageStatus == 0){
+            cout << "Server disconnected!" << endl;
+            client.~Client();
+            return EXIT_SUCCESS;
+        }
+
+
 
         window.clear(sf::Color(145, 184, 154));
         
@@ -171,9 +190,7 @@ int main(){
      
         window.display();
 
-        if (END){
-            cin.get();
-        }
+        
     }
 
   return 0;

@@ -89,32 +89,38 @@ int Game::RecvMove(Player movingPlayer, vector<int> &moves){
     return bytes;
 }
 
+
+bool Game::SendCustomizedPackage(Player &player){
+    dataPackage.amIWhite = player.isWhite;
+    dataPackage.opponentNick = (player.socket == player_1.socket) ? player_2.nick : player_1.nick;
+    if (!SendDataPackage(player.socket, dataPackage))
+        return false;
+    return true;
+}
+
+
 int Game::Loop(){
     cout << "Entering game loop!" << endl;
-
-    dataPackage.type = "GameMove";
-    dataPackage.opponentNick = "-";
-    dataPackage.amIWhite = false;
-
-    int status = 0;
-    while (status == 0){
+    Player loser;
+    bool isDraw = false;
+    while (true){
+        dataPackage.type = "GameMove";
         Player movingPlayer = _getPlayer(dataPackage.isWhiteToMove);
+        cout << "Waiting for player " << movingPlayer.nick << " to move" << endl;
         
-
-        cout << "Oczekiwanie na ruch gracza " << movingPlayer.socket << endl;
-        vector<int> moves;
-        int n = RecvMove(movingPlayer, moves);
-        if (n == 0){
-            cout << "Player disconnected" << endl;
-            status = 1;
+        vector<int> moves; 
+        int RecvMoveStatus = RecvMove(movingPlayer, moves);
+        if (RecvMoveStatus == 0){
+            cout << "Player "<< movingPlayer.nick << " disconnected" << endl;
+            loser = movingPlayer;
             break;
-        } else if (n < 0){
+        } else if (RecvMoveStatus < 0){
             cout << "Receiving move error" << endl;
             continue;
         }
          
         if (board.CheckMove(moves[0], moves[1], moves[2], moves[3]) != 0){
-            //move isn't correct send feedback
+            //move isn't correct, skip
             continue;
         }
         
@@ -125,16 +131,28 @@ int Game::Loop(){
         if (board.IsPromotion(moves[2], moves[3])){
             cout << "Promotion time!" << endl;
             dataPackage.type = "Promotion";
-            if (!SendDataPackage(movingPlayer.socket, dataPackage)){
-                cout << "Sending promotion package error" << endl;
-                return -1;
-            }
-            int figureId;
-            if (RecvPromotion(movingPlayer.socket, figureId) <= 0){
-                status = 1;
+
+            if (!IsConnected(movingPlayer.socket)){
+                cout << "Player "<< movingPlayer.nick << " disconnected" << endl;
+                loser = movingPlayer;
                 break;
             }
-            //cout << "Promoted! |" << moves[2] << "," << moves[3] << endl;
+            if (!SendCustomizedPackage(movingPlayer)){
+                cout << "Sending promotion information failed, skipping" << endl;
+                continue;
+            }
+
+            int figureId;
+            int RecvPromotionStatus = RecvPromotion(movingPlayer.socket, figureId);
+            if (RecvPromotionStatus == -1){
+                cout << "Receiving promotion failed, skipping" << endl;
+                continue;
+            } else if (RecvPromotionStatus == 0){
+                cout << "Player "<< movingPlayer.nick << " disconnected" << endl;
+                loser = movingPlayer;
+                break;
+            }
+
             string color = movingPlayer.isWhite ? "White" : "Black";
             delete board.board[moves[2]][moves[3]];
             board.board[moves[2]][moves[3]] = Board::CreateFigure(figureId, color);
@@ -144,36 +162,60 @@ int Game::Loop(){
         dataPackage.type = "GameMove";
         dataPackage.isWhiteToMove = !dataPackage.isWhiteToMove;
         dataPackage.moveNumber++;
-        if(!SendDataPackage(player_1.socket, dataPackage)
-        || !SendDataPackage(player_2.socket, dataPackage)){
-            cout << "Sending data package error" << endl;
+
+        if (!IsConnected(player_1.socket)){
+            cout << "Player "<< player_1.nick << " disconnected" << endl;
+            loser = player_1;
+            break;
+        }
+        if (!IsConnected(player_2.socket)){
+            cout << "Player "<< player_2.nick << " disconnected" << endl;
+            loser = player_2;
+            break;
+        }
+        if (!SendCustomizedPackage(player_1) || !SendCustomizedPackage(player_2)){
+            cout << "Sending updated dataPackage failed, exiting" << endl;
             return -1;
         }
-        if (RecvConfirmation(player_1.socket) <= 0){
-            cout << player_1.nick << " didn't send confirmation" << endl;
+        
+     
+        if (RecvConfirmation(player_1.socket) == 0){
+            cout << "Player "<< player_1.nick << " disconnected (didn't send move confirmation)" << endl;
+            loser = player_1;
+            break;
         }
-        if (RecvConfirmation(player_2.socket) <= 0){
-            cout << player_1.nick << " didn't send confirmation" << endl;
+        if (RecvConfirmation(player_2.socket) == 0){
+            cout << "Player "<< player_2.nick << " disconnected (didn't send move confirmation)" << endl;
+            loser = player_2;
+            break;
         }
 
-        
+        dataPackage.type = "GameEnd";
         if (board.IsMate(dataPackage.isWhiteToMove)){
-            dataPackage.type = "GameEnd";
             dataPackage.winner = dataPackage.isWhiteToMove ? "Black" : "White";
-            if (dataPackage.isWhiteToMove){
-                cout << "Black wins!" << endl;
-                status = 1;
-            } else {
-                cout << "White wins!" << endl;
-                status = 1;
-            }
-            if(!SendDataPackage(player_1.socket, dataPackage)
-            || !SendDataPackage(player_2.socket, dataPackage)){
-                cout << "Sending data package error" << endl;
-                return -1;
-            }
+            loser = player_1.isWhite == dataPackage.isWhiteToMove ? player_1 : player_2;
+            break;
+        }
+
+        if (board.IsDraw(dataPackage.isWhiteToMove)){
+            isDraw = true;
+            dataPackage.winner = "none";
+            break;
+        } else {
+            cout << "its not a draw"<<endl;
         }
     }
+
+    if (!isDraw){
+        Player winner = player_1.socket == loser.socket ? player_2 : player_1;
+        cout << "Winner: " << winner.nick << " (" << (winner.isWhite ? "White":"Black") <<")"<< endl;
+        cout << "Loser: " << loser.nick << " (" << (loser.isWhite ? "White":"Black") <<")"<< endl;
+    } else {
+        cout << "Draw!" << endl;
+    }
+
+    SendCustomizedPackage(player_1);
+    SendCustomizedPackage(player_2);
 
 
     return 0;

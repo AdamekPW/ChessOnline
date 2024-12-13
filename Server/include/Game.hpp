@@ -33,7 +33,6 @@ struct Player {
 class Game {
     private:
         Player _getPlayer(bool isWhite);
-        
     public:
         Player player_1, player_2;
         Board board;
@@ -44,6 +43,7 @@ class Game {
         bool SendStartInfo();
         bool Prepare();
         int RecvMove(Player movingPlayer, vector<int> &moves);
+        bool SendCustomizedPackage(Player &player);
         int Loop();
 
         vector<int> GetMove(char move[MESSAGE_LENGTH]);

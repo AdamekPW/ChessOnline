@@ -40,7 +40,6 @@ class Server{
         bool Listen();
         bool Accept();
         bool StartGame();
-        bool IsConnected(int clientSocket);
        
 
 };

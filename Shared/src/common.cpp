@@ -48,6 +48,29 @@ void set_blocking(int socket) {
     }
 }
 
+bool IsConnected(int socket){
+    set_nonblocking(socket);
+    char buffer;
+    int result = recv(socket, &buffer, 1, MSG_PEEK);
+    set_blocking(socket);
+    if (result == 0) {
+        // Client closed a connection
+        return false;
+    } else if (result < 0) {
+        if (errno == EWOULDBLOCK || errno == EAGAIN) {
+            // no data to read, but still connected
+            return true;
+        } else {
+            // Error 
+            std::cerr << "Error on recv: " << strerror(errno) << std::endl;
+            return false;
+        }
+    }
+    //Client is connected
+    return true;
+
+}
+
 bool SendConfirmation(int socket){
     char buff[] = "PackageReceived";
     if (send(socket, buff, sizeof(buff), 0) == -1){
@@ -137,7 +160,7 @@ int RecvDataPackage(int socket, DataPackage &dataPackage, bool isBlocking){
         return n;
     }
 
-    printf("%s\n", buffer);
+    //printf("%s\n", buffer);
 
     string board_str;
     try {

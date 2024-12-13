@@ -1202,8 +1202,54 @@ Server/CMakeFiles/server.dir/src/main.cpp.o: ../Server/src/main.cpp \
   /usr/include/x86_64-linux-gnu/c++/11/bits/basic_file.h \
   /usr/include/x86_64-linux-gnu/c++/11/bits/c++io.h \
   /usr/include/c++/11/bits/fstream.tcc \
-  ../Server/include/ServerStructs.h
+  ../Server/include/ServerStructs.h \
+  /usr/include/signal.h \
+  /usr/include/x86_64-linux-gnu/bits/signum-generic.h \
+  /usr/include/x86_64-linux-gnu/bits/signum-arch.h \
+  /usr/include/x86_64-linux-gnu/bits/types/sig_atomic_t.h \
+  /usr/include/x86_64-linux-gnu/bits/types/siginfo_t.h \
+  /usr/include/x86_64-linux-gnu/bits/types/__sigval_t.h \
+  /usr/include/x86_64-linux-gnu/bits/siginfo-arch.h \
+  /usr/include/x86_64-linux-gnu/bits/siginfo-consts.h \
+  /usr/include/x86_64-linux-gnu/bits/siginfo-consts-arch.h \
+  /usr/include/x86_64-linux-gnu/bits/types/sigval_t.h \
+  /usr/include/x86_64-linux-gnu/bits/types/sigevent_t.h \
+  /usr/include/x86_64-linux-gnu/bits/sigevent-consts.h \
+  /usr/include/x86_64-linux-gnu/bits/sigaction.h \
+  /usr/include/x86_64-linux-gnu/bits/sigcontext.h \
+  /usr/include/x86_64-linux-gnu/bits/types/stack_t.h \
+  /usr/include/x86_64-linux-gnu/sys/ucontext.h \
+  /usr/include/x86_64-linux-gnu/bits/sigstack.h \
+  /usr/include/x86_64-linux-gnu/bits/sigstksz.h \
+  /usr/include/x86_64-linux-gnu/bits/ss_flags.h \
+  /usr/include/x86_64-linux-gnu/bits/types/struct_sigstack.h \
+  /usr/include/x86_64-linux-gnu/bits/sigthread.h \
+  /usr/include/x86_64-linux-gnu/bits/signal_ext.h
 
+
+/usr/include/x86_64-linux-gnu/bits/signal_ext.h:
+
+/usr/include/x86_64-linux-gnu/bits/sigthread.h:
+
+/usr/include/x86_64-linux-gnu/sys/ucontext.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/stack_t.h:
+
+/usr/include/x86_64-linux-gnu/bits/sigcontext.h:
+
+/usr/include/x86_64-linux-gnu/bits/sigaction.h:
+
+/usr/include/x86_64-linux-gnu/bits/sigevent-consts.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/sigval_t.h:
+
+/usr/include/x86_64-linux-gnu/bits/siginfo-consts.h:
+
+/usr/include/x86_64-linux-gnu/bits/siginfo-arch.h:
+
+/usr/include/x86_64-linux-gnu/bits/ss_flags.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/sig_atomic_t.h:
 
 ../Server/src/main.cpp:
 
@@ -1262,6 +1308,8 @@ Server/CMakeFiles/server.dir/src/main.cpp.o: ../Server/src/main.cpp \
 /usr/include/c++/11/bits/fs_ops.h:
 
 /usr/include/c++/11/bits/fs_dir.h:
+
+/usr/include/x86_64-linux-gnu/bits/signum-generic.h:
 
 /usr/include/c++/11/bits/quoted_string.h:
 
@@ -1443,6 +1491,8 @@ Server/CMakeFiles/server.dir/src/main.cpp.o: ../Server/src/main.cpp \
 
 /usr/include/fcntl.h:
 
+/usr/include/signal.h:
+
 /usr/include/strings.h:
 
 /usr/include/x86_64-linux-gnu/bits/struct_rwlock.h:
@@ -1456,6 +1506,8 @@ Server/CMakeFiles/server.dir/src/main.cpp.o: ../Server/src/main.cpp \
 /usr/include/c++/11/tr1/poly_laguerre.tcc:
 
 /usr/include/c++/11/bit:
+
+/usr/include/x86_64-linux-gnu/bits/types/sigevent_t.h:
 
 ../Shared/include/custom_structs.hpp:
 
@@ -1559,6 +1611,8 @@ Server/CMakeFiles/server.dir/src/main.cpp.o: ../Server/src/main.cpp \
 
 /usr/include/c++/11/bits/basic_string.h:
 
+/usr/include/x86_64-linux-gnu/bits/sigstksz.h:
+
 /usr/include/x86_64-linux-gnu/bits/stat.h:
 
 /usr/include/x86_64-linux-gnu/c++/11/bits/c++locale.h:
@@ -1582,6 +1636,8 @@ Server/CMakeFiles/server.dir/src/main.cpp.o: ../Server/src/main.cpp \
 /usr/include/features.h:
 
 /usr/include/x86_64-linux-gnu/bits/fp-logb.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/siginfo_t.h:
 
 /usr/include/c++/11/bits/ios_base.h:
 
@@ -1651,6 +1707,8 @@ Server/CMakeFiles/server.dir/src/main.cpp.o: ../Server/src/main.cpp \
 
 /usr/include/x86_64-linux-gnu/bits/getopt_posix.h:
 
+/usr/include/x86_64-linux-gnu/bits/types/struct_sigstack.h:
+
 /usr/include/x86_64-linux-gnu/bits/types/__locale_t.h:
 
 /usr/include/stdio.h:
@@ -1689,6 +1747,8 @@ Server/CMakeFiles/server.dir/src/main.cpp.o: ../Server/src/main.cpp \
 
 /usr/include/x86_64-linux-gnu/bits/time64.h:
 
+/usr/include/x86_64-linux-gnu/bits/types/__sigval_t.h:
+
 /usr/include/c++/11/bits/functexcept.h:
 
 /usr/include/c++/11/streambuf:
@@ -1726,6 +1786,8 @@ Server/CMakeFiles/server.dir/src/main.cpp.o: ../Server/src/main.cpp \
 /usr/include/x86_64-linux-gnu/bits/byteswap.h:
 
 /usr/include/x86_64-linux-gnu/bits/waitflags.h:
+
+/usr/include/x86_64-linux-gnu/bits/siginfo-consts-arch.h:
 
 /usr/include/c++/11/tr1/special_function_util.h:
 
@@ -1873,6 +1935,8 @@ Server/CMakeFiles/server.dir/src/main.cpp.o: ../Server/src/main.cpp \
 
 /usr/include/c++/11/bits/exception.h:
 
+/usr/include/x86_64-linux-gnu/bits/sigstack.h:
+
 /usr/include/c++/11/clocale:
 
 /usr/include/nlohmann/detail/meta/detected.hpp:
@@ -1950,6 +2014,8 @@ Server/CMakeFiles/server.dir/src/main.cpp.o: ../Server/src/main.cpp \
 /usr/include/c++/11/cerrno:
 
 /usr/include/errno.h:
+
+/usr/include/x86_64-linux-gnu/bits/signum-arch.h:
 
 /usr/include/x86_64-linux-gnu/bits/errno.h:
 

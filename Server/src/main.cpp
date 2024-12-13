@@ -12,6 +12,7 @@
 #include "Server.hpp"
 #include <iostream>
 #include "common.hpp"
+#include <signal.h>
 //g++ server.c -lpthread -ServerStructs && ./a.out
 
 
@@ -20,6 +21,7 @@ using namespace std;
 
 
 int main(){
+
     ServerConfig config;
     try {
         config = loadConfig("../Shared/config.json");
@@ -34,17 +36,16 @@ int main(){
     socklen_t addr_size;
 
     Server server = Server(config.port);
+    if (server.serverSocket == -1){
+        return EXIT_FAILURE;
+    }
     
     if (!server.Listen()) 
         return EXIT_FAILURE;
 
-
     while(1)
     {
         server.Accept();
-
-        //pthread_detach(thread_id);
-        //pthread_join(thread_id, NULL);
     }
     return EXIT_SUCCESS;
 }

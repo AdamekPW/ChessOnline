@@ -23,12 +23,16 @@ void Board::Clear(){
 
 void Board::Reset(){
     this->Clear();
-    this->board[0][4] = new King("White");
-    this->board[6][0] = new Rook("White");
-    this->board[6][7] = new Rook("White");
-    this->board[7][4] = new King("Black");
+    //draw symulation 1
+    // this->board[0][4] = new King("White");
+    // this->board[7][0] = new King("Black");
+    // this->board[0][1] = new Queen("White");
 
-    
+    //draw symulation 2
+    this->board[0][4] = new King("Black");
+    this->board[7][0] = new King("White");
+    this->board[0][1] = new Queen("Black");
+
     // this->board[0][4] = new King("White");
     // this->board[0][0] = new Rook("White");
     // this->board[0][7] = new Rook("White");
@@ -535,6 +539,48 @@ bool Board::IsMate(bool isWhiteKing){
         if (this->CheckMove(king_x, king_y, move.x, move.y) == 0)
             return false;
     }
+
+    return true;
+}
+
+
+bool Board::IsDraw(bool isWhite){
+    //there is no check
+    if (IsCheck(isWhite))
+        return false;
+    
+    //king cannot move
+    pair<int, int> king_cords = this->_findKing(isWhite);
+    int king_x = king_cords.first;
+    int king_y = king_cords.second;
+    vector<pmove> possible_king_moves = this->board[king_x][king_y]->PossibleMoves(*this, king_x, king_y);
+    for (auto &move : possible_king_moves){
+        if (this->CheckMove(king_x, king_y, move.x, move.y) == 0)
+            return false;
+    }
+    cout << "King cannot move" << endl;
+
+    //check all other figures legal moves
+    for (int i = 0; i < 8; i++){
+        for (int j = 0; j < 8; j++){
+            if (IsEmpty(i, j)) continue;
+            if (IsWhite(i, j) == isWhite && board[i][j]->getId() != 6){
+                vector<pmove> possible_moves = board[i][j]->PossibleMoves(*this, i, j);
+                for (auto &move : possible_moves){
+                    if (CheckMove(i, j, move.x, move.y) == 0)
+                        return false;
+                }
+            } else if (IsBlack(i, j) == !isWhite && board[i][j]->getId() != 6){
+                vector<pmove> possible_moves = board[i][j]->PossibleMoves(*this, i, j);
+                for (auto &move : possible_moves){
+                    if (CheckMove(i, j, move.x, move.y) == 0)
+                        return false;
+                }
+            }
+        }
+    } 
+
+    cout << "Other peaces cannot move" << endl;
 
     return true;
 }

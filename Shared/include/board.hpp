@@ -52,6 +52,7 @@ class Board {
         
         bool IsCheck(bool isWhiteKing);
         bool IsMate(bool isWhiteKing);
+        bool IsDraw(bool isWhite);
         void Print(bool asWhite);
         
 

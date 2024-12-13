@@ -4,10 +4,25 @@
 Server::Server(int port){
     this->_port = port;
     this->serverSocket = socket(AF_INET, SOCK_STREAM, 0);
+    if (this->serverSocket == -1){
+        perror("Creating server socket error");
+        return;
+    }
+    int opt = 1;
+    if (setsockopt(serverSocket, SOL_SOCKET, SO_REUSEADDR, &opt, sizeof(opt)) < 0) {
+        perror("setsockopt(SO_REUSEADDR) failed");
+        close(serverSocket);
+        exit(EXIT_FAILURE);
+    }
     this->serverAddr.sin_family = AF_INET;
     this->serverAddr.sin_port = htons(port);
     this->serverAddr.sin_addr.s_addr = htonl(INADDR_ANY);
-    bind(serverSocket, (struct sockaddr *) &serverAddr, sizeof(serverAddr));
+    if (bind(serverSocket, (struct sockaddr *) &serverAddr, sizeof(serverAddr)) == -1){
+        perror("Binding error");
+        close(serverSocket);
+        serverSocket = -1;
+        return;
+    }
     cout << "Server created!" << endl;
 }   
 
@@ -30,7 +45,7 @@ bool Server::Listen(){
 
 void* Server::_gameThread(void* arg){
     struct players p = *((players *)arg);
-    cout << "Obsluga gry dla: " << p.player_1_socket << " | " << p.player_2_socket << endl;
+    cout << "Game for: " << p.player_1_socket << " | " << p.player_2_socket << endl;
 
     Game game = Game(p.player_1_socket, p.player_2_socket);
     if (!game.Prepare()){
@@ -40,7 +55,7 @@ void* Server::_gameThread(void* arg){
         cout << "Preparing complete" << endl;
     }
     int gameStatus = game.Loop();
-    cout << "Gra  zakonczona ze statusem: " << gameStatus << endl;
+    cout << "Game ended with status: " << gameStatus << endl;
 
     pthread_exit(0);
 }
@@ -87,7 +102,7 @@ int Server::_takeFristConnected(){
     while (playerQueue.size() > 0){
         int socket = playerQueue.front();
         playerQueue.pop();
-        if (!this->IsConnected(socket)){
+        if (!IsConnected(socket)){
             cout << "Client " << socket << " closed connection" << endl;
             close(socket);
             continue;
@@ -100,12 +115,12 @@ int Server::_takeFristConnected(){
 
 struct players p;
 bool Server::StartGame(){
-    cout << "Wielkosc kolejki: " << playerQueue.size() << endl;
+    cout << "Queue size: " << playerQueue.size() << endl;
     if (this->playerQueue.size() <= 1) 
         return false;
     int socket1 = this->_takeFristConnected();
     int socket2 = this->_takeFristConnected();
-    cout << "Znaleziono: " << socket1 << " | " << socket2 << endl;
+    cout << "Found: " << socket1 << " | " << socket2 << endl;
 
     if (socket1 == -1 && socket2 == -1){
         cout << "All clients connections are closed by them" << endl;
@@ -137,25 +152,5 @@ bool Server::StartGame(){
 
 
 
-bool Server::IsConnected(int clientSocket){
-    set_nonblocking(clientSocket);
-    char buffer;
-    int result = recv(clientSocket, &buffer, 1, MSG_PEEK);
-    set_blocking(clientSocket);
-    if (result == 0) {
-        // Client closed a connection
-        return false;
-    } else if (result < 0) {
-        if (errno == EWOULDBLOCK || errno == EAGAIN) {
-            // no data to read, but still connected
-            return true;
-        } else {
-            // Error 
-            std::cerr << "Error on recv: " << strerror(errno) << std::endl;
-            return false;
-        }
-    }
-    //Client is connected
-    return true;
-}
+
 

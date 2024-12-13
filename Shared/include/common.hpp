@@ -45,6 +45,7 @@ struct DataPackage {
 ServerConfig loadConfig(const std::string& configPath);
 void set_nonblocking(int socket);
 void set_blocking(int socket); 
+bool IsConnected(int socket);
 bool SendConfirmation(int socket);
 int RecvConfirmation(int socket);
 bool SendPromotion(int socket, int &figureId);

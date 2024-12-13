@@ -20,3 +20,8 @@ Rozpocznij pętlę gry:
 3. Przyjmij ruch, przeanalizuj go pod kątem poprawności.
 3.1 Jeżeli ruch jest niepoprawny, wyślij komunikat do gracza. Przejdź do pkt 2.
 4. Zaaktualizuj planszę i wyślij ją do obu graczy.
+
+
+Statusy zakończenia gry:
+0 => gra zakończyła się pomyślnie
+-1 => wystąpił nieoczekiwany błąd serwera, przerwanie rozgrywki
