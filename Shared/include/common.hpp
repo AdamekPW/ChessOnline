@@ -47,6 +47,8 @@ void set_nonblocking(int socket);
 void set_blocking(int socket); 
 bool IsConnected(int socket);
 bool SendConfirmation(int socket);
+bool SendNick(int socket, string &nick);
+int RecvNick(int socket, string &nick);
 int RecvConfirmation(int socket);
 bool SendPromotion(int socket, int &figureId);
 int RecvPromotion(int socket, int &figureId);

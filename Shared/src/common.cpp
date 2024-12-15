@@ -93,6 +93,25 @@ int RecvConfirmation(int socket){
     return -1;
 }
 
+bool SendNick(int socket, string &nick){
+    if (send(socket, nick.c_str(), nick.size(), 0) != 0){
+        return false;
+    }
+    return true;
+}
+
+int RecvNick(int socket, string &nick){
+    set_blocking(socket);
+    char buff[100];
+    bzero(buff, sizeof(buff));
+    int n = recv(socket, buff, sizeof(buff), 0);
+    if (n <= 0)
+        return n;
+    nick = string(buff);
+    return n;
+}
+
+
 void parseBoard(string &board_str, Board &board){
     for (int i = 0; i < 8; i++){
         for (int j = 0; j < 8; j++){

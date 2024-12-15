@@ -105,6 +105,12 @@ int main(){
         cout << "Error while opening config.json file: " << e.what() << std::endl;
         return 1;
     }
+    string nick = "";
+    cout << "Podaj nick: ";
+    getline(cin, nick);
+    if (nick.length() > 25){
+        nick = nick.substr(0, 25);
+    }
 
     Client client = Client(config.ip, config.port);
     if (!client.Connect())
@@ -114,6 +120,9 @@ int main(){
 
     Board board;
     DataPackage dataPackage(board);
+    RecvConfirmation(client.Socket);
+    SendNick(client.Socket, nick);
+    
     RecvDataPackage(client.Socket, dataPackage, true);
     SendConfirmation(client.Socket);
 
@@ -174,11 +183,12 @@ int main(){
                 
                 END = true;
             }
-        } else if (RecvDataPackageStatus == 0){
-            cout << "Server disconnected!" << endl;
-            client.~Client();
-            return EXIT_SUCCESS;
-        }
+        } 
+        // else if (RecvDataPackageStatus == 0){
+        //     cout << "Server disconnected!" << endl;
+        //     client.~Client();
+        //     return EXIT_SUCCESS;
+        // }
 
 
 

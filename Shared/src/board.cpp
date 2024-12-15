@@ -29,48 +29,37 @@ void Board::Reset(){
     // this->board[0][1] = new Queen("White");
 
     //draw symulation 2
-    this->board[0][4] = new King("Black");
-    this->board[7][0] = new King("White");
-    this->board[0][1] = new Queen("Black");
-
-    // this->board[0][4] = new King("White");
-    // this->board[0][0] = new Rook("White");
-    // this->board[0][7] = new Rook("White");
-    // this->board[6][0] = new Pawn("White");
-    // this->board[6][1] = new Pawn("White");
-    // this->board[6][2] = new Pawn("White");
-
-    // this->board[7][4] = new King("Black");
-    // this->board[1][5] = new Pawn("Black");
-    // this->board[1][6] = new Pawn("Black");
-    // this->board[7][0] = new Rook("Black");
-    // this->board[7][7] = new Rook("Black");
+    // this->board[0][4] = new King("Black");
+    // this->board[7][0] = new King("White");
+    // this->board[0][1] = new Queen("Black");
 
 
 
-    // this->board[0][0] = new Rook("White");
-    // this->board[0][1] = new Knight("White");
-    // this->board[0][2] = new Bishop("White");
-    // this->board[0][3] = new Queen("White");
-    // this->board[0][4] = new King("White");
-    // this->board[0][5] = new Bishop("White");
-    // this->board[0][6] = new Knight("White");
-    // this->board[0][7] = new Rook("White");
-    // for (int i = 0; i < 8; i++){
-    //     this->board[1][i] = new Pawn("White");
-    // }
 
-    // this->board[7][0] = new Rook("Black");
-    // this->board[7][1] = new Knight("Black");
-    // this->board[7][2] = new Bishop("Black");
-    // this->board[7][3] = new Queen("Black");
-    // this->board[7][4] = new King("Black");
-    // this->board[7][5] = new Bishop("Black");
-    // this->board[7][6] = new Knight("Black");
-    // this->board[7][7] = new Rook("Black");
-    // for (int i = 0; i < 8; i++){
-    //     this->board[6][i] = new Pawn("Black");
-    // }
+
+    this->board[0][0] = new Rook("White");
+    this->board[0][1] = new Knight("White");
+    this->board[0][2] = new Bishop("White");
+    this->board[0][3] = new Queen("White");
+    this->board[0][4] = new King("White");
+    this->board[0][5] = new Bishop("White");
+    this->board[0][6] = new Knight("White");
+    this->board[0][7] = new Rook("White");
+    for (int i = 0; i < 8; i++){
+        this->board[1][i] = new Pawn("White");
+    }
+
+    this->board[7][0] = new Rook("Black");
+    this->board[7][1] = new Knight("Black");
+    this->board[7][2] = new Bishop("Black");
+    this->board[7][3] = new Queen("Black");
+    this->board[7][4] = new King("Black");
+    this->board[7][5] = new Bishop("Black");
+    this->board[7][6] = new Knight("Black");
+    this->board[7][7] = new Rook("Black");
+    for (int i = 0; i < 8; i++){
+        this->board[6][i] = new Pawn("Black");
+    }
 
 
 }

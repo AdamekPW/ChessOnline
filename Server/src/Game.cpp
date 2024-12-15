@@ -12,8 +12,6 @@ Game::Game(int player_1_socket, int player_2_socket): board(),                //
     this->player_1.socket = player_1_socket;
     this->player_2.socket = player_2_socket;
 
-    this->player_1.nick = genereteNick(player_1_socket);
-    this->player_2.nick = genereteNick(player_2_socket);
 
     random_device rd;   
     mt19937 gen(rd());   
@@ -42,6 +40,15 @@ bool Game::Prepare(){
     dataPackage.isWhiteToMove = true;
 
     //send starting information to both players
+    SendConfirmation(player_1.socket);
+    SendConfirmation(player_2.socket);
+    if (RecvNick(player_1.socket, player_1.nick) <= 0){
+        player_1.nick = genereteNick(player_1.socket);
+    }
+    if (RecvNick(player_2.socket, player_2.nick) <= 0){
+        player_2.nick = genereteNick(player_2.socket);
+    }
+
     if (!SendStartInfo()){
         cout << "Error while sending starting informations" << endl;
         return false;
@@ -111,7 +118,7 @@ int Game::Loop(){
         vector<int> moves; 
         int RecvMoveStatus = RecvMove(movingPlayer, moves);
         if (RecvMoveStatus == 0){
-            cout << "Player "<< movingPlayer.nick << " disconnected" << endl;
+            cout << "Player "<< movingPlayer.nick << " disconnected (0)" << endl;
             loser = movingPlayer;
             break;
         } else if (RecvMoveStatus < 0){
@@ -164,12 +171,12 @@ int Game::Loop(){
         dataPackage.moveNumber++;
 
         if (!IsConnected(player_1.socket)){
-            cout << "Player "<< player_1.nick << " disconnected" << endl;
+            cout << "Player "<< player_1.nick << " disconnected (1)" << endl;
             loser = player_1;
             break;
         }
         if (!IsConnected(player_2.socket)){
-            cout << "Player "<< player_2.nick << " disconnected" << endl;
+            cout << "Player "<< player_2.nick << " disconnected (1)" << endl;
             loser = player_2;
             break;
         }
@@ -190,9 +197,7 @@ int Game::Loop(){
             break;
         }
 
-        dataPackage.type = "GameEnd";
         if (board.IsMate(dataPackage.isWhiteToMove)){
-            dataPackage.winner = dataPackage.isWhiteToMove ? "Black" : "White";
             loser = player_1.isWhite == dataPackage.isWhiteToMove ? player_1 : player_2;
             break;
         }
@@ -208,12 +213,14 @@ int Game::Loop(){
 
     if (!isDraw){
         Player winner = player_1.socket == loser.socket ? player_2 : player_1;
+        dataPackage.winner = dataPackage.isWhiteToMove ? "Black" : "White";
         cout << "Winner: " << winner.nick << " (" << (winner.isWhite ? "White":"Black") <<")"<< endl;
         cout << "Loser: " << loser.nick << " (" << (loser.isWhite ? "White":"Black") <<")"<< endl;
     } else {
         cout << "Draw!" << endl;
     }
 
+    dataPackage.type = "GameEnd";
     SendCustomizedPackage(player_1);
     SendCustomizedPackage(player_2);
 
